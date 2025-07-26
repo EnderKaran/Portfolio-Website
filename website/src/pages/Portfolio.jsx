@@ -38,8 +38,8 @@ export const Portfolio = () => {
     return (
         <div className="text-white py-24 md:py-64" id="portfolio">
             <div className="container mx-auto px-4">
-                <h2 className="text-6xl font-bold text-center mb-16">
-                    Seçilen <span className="text-emerald-300">Projeler</span>
+                <h2 className="text-6xl font-bold text-center mb-8">
+                    Proj<span className="text-emerald-300">eler</span>
                 </h2>
 
                 <div className="space-y-6">
