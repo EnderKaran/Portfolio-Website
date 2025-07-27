@@ -3,8 +3,6 @@ import {
     AiFillLinkedin
 } from "react-icons/ai";
 
-
-
 export const Footer = () => {
     return (
         <footer className="py-8" id="contact">
