@@ -9,12 +9,12 @@ export const Footer = () => {
             <div className="max-w-[1200px] mx-auto px-4">
                 <div className="flex items-center justify-between flex-col md:flex-row">
                     <div>
-                        <h2 className="md:text-7xl text-4xl font-bold mb-10 text-white/50">
-                            İletişime <span className="text-gray-400">Geçin</span>
+                        <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white/80">
+                            İletişime <span className="text-emerald-300">Geçin</span>
                         </h2>
 
                         <a
-                            className="md:text-7xl text-4xl font-semibold text-white underline decoration-gray-400 decoration-2 underline-offset-4 hover:decoration-gray-200 transition duration-300"
+                            className="text-xl md:text-3xl font-semibold text-white underline decoration-gray-400 decoration-2 underline-offset-4 hover:text-emerald-300 hover:decoration-emerald-400 transition-all duration-300 break-all"
                             href="mailto:ender.karan14@gmail.com"
                         >
                             ender.karan14@gmail.com
