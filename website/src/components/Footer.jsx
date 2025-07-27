@@ -37,7 +37,7 @@ export const Footer = () => {
                         EnderKaran
                     </h1>
 
-                    <h1 className="md:hidden relative text-9xl md:text-[12rem] lg:text-[15rem] font-bold text-white opacity-10">
+                    <h1 className="md:hidden relative text-8xl md:text-[12rem] lg:text-[15rem] font-bold text-white opacity-10">
                         Ender
                         <br />
                         Karan
