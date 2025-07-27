@@ -10,12 +10,14 @@ function App() {
 
   return (
     <>
-      <Navbar/>
-      <Hero />
-      <About />
-      <Portfolio />
-      <Stack />
-      <Footer/>
+      <main className="overflow-hidden">
+        <Navbar />
+        <Hero />
+        <About />
+        <Portfolio />
+        <Stack />
+        <Footer />
+     </main>
     </>
   )
 }
