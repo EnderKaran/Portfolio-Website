@@ -11,6 +11,13 @@ html{
   }
 }
 
+.active {
+  color: #34d399;
+  /* Tailwind'deki emerald-300 rengi */
+  transform: scale(1.1);
+  /* Aktif linki biraz büyüt */
+}
+
 body{
   font-family: "Poppins", sans-serif;
   background-color: #000;
