@@ -24,3 +24,7 @@ body{
   color: white;
   overflow-x: hidden;
 }
+
+body , a , button{
+  cursor: none;
+}
