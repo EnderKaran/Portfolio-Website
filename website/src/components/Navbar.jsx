@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navlinks = [
     { title: "Hakkımda", path: "about" },
     { title: "Projeler", path: "portfolio" },
-    { title: "Teknojiler", path: "stack" },
+    { title: "Teknolojiler", path: "stack" },
     { title: "İletişim", path: "contact" },
 ];
 
 export const Navbar = () => {
     const [nav, setNav] = useState(false);
 
-    
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
         stiffness: 100,
@@ -30,19 +30,19 @@ export const Navbar = () => {
     };
 
     return (
-        
         <>
             {/* Okuma İlerlemesi Çubuğu */}
             <motion.div
-                className="fixed top-0 left-0 right-0 h-1 bg-emerald-400 origin-left z-[60]"
+                // DEĞİŞİKLİK: Renkler anlamsal 'bg-accent' yerine doğrudan tanımlandı.
+                className="fixed top-0 left-0 right-0 h-1 bg-emerald-500 dark:bg-emerald-400 origin-left z-[60]"
                 style={{ scaleX }}
             />
             
-            
-            <div className="z-50 fixed flex justify-center w-full text-white font-bold">
+            <div className="z-50 fixed flex justify-center w-full font-bold"> 
+                
                 {/* Masaüstü Menüsü */}
-                <div className="border border-white/20 mt-8 backdrop-blur-3xl rounded-3xl hidden md:flex items-center justify-center p-2 max-w-[400px] mx-auto">
-                    <ul className="flex flex-row p-2 space-x-8">
+                <div className="border border-card-border mt-8 bg-card-background/80 backdrop-blur-xl rounded-3xl hidden md:flex items-center justify-center p-2 max-w-fit mx-auto text-primary">
+                    <ul className="flex flex-row items-center p-2 space-x-6">
                         {navlinks.map((link, index) => (
                             <li key={index}>
                                 <ScrollLink
@@ -51,31 +51,34 @@ export const Navbar = () => {
                                     smooth={true}
                                     offset={-100}
                                     duration={500}
-                                    activeClass="active"
-                                    className="text-base cursor-pointer transform hover:skew-x-12 hover:text-white/50 transition-all duration-300 ease-in-out"
+                                    activeClass="active-link"
+                                    className="text-sm cursor-pointer hover:text-accent transition-colors duration-300"
                                 >
                                     {link.title}
                                 </ScrollLink>
                             </li>
                         ))}
+                        <li>
+                            <ThemeToggle />
+                        </li>
                     </ul>
                 </div>
 
                 {/* Mobil Menü Butonu */}
                 <div
                     onClick={toggleNav}
-                    className="md:hidden absolute top-5 right-5 border rounded-lg z-50 text-white/70 border-white/20 p-2 cursor-pointer"
+                    className="md:hidden absolute top-5 right-5 border rounded-lg z-[70] text-primary border-card-border/50 p-2 cursor-pointer bg-card-background/80 backdrop-blur-xl"
                 >
                     {nav ? <AiOutlineClose size={30} /> : <AiOutlineMenu size={30} />}
                 </div>
 
                 {/* Mobil Menü Paneli */}
                 <div
-                    className={`fixed left-0 top-0 w-full h-full bg-black/90 transform transition-transform duration-300 ${
+                    className={`fixed left-0 top-0 w-full h-full bg-background/90 backdrop-blur-lg transform transition-transform duration-300 ${
                         nav ? "translate-x-0" : "-translate-x-full"
                     }`}
                 >
-                    <ul className="flex flex-col items-center justify-center space-y-8 h-full">
+                    <ul className="flex flex-col items-center justify-center space-y-8 h-full text-primary"> 
                         {navlinks.map((link, index) => (
                             <li key={index}>
                                 <ScrollLink
@@ -85,12 +88,15 @@ export const Navbar = () => {
                                     offset={-70}
                                     duration={500}
                                     onClick={closeNav}
-                                    className="text-5xl cursor-pointer"
+                                    className="text-5xl cursor-pointer hover:text-accent transition-colors"
                                 >
                                     {link.title}
                                 </ScrollLink>
                             </li>
                         ))}
+                        <li className="absolute bottom-16">
+                           <ThemeToggle />
+                        </li>
                     </ul>
                 </div>
             </div>
