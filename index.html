@@ -5,8 +5,25 @@
     <link rel="icon" type="image/svg+xml" href="/Portfolio-Website/icons.svg"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ender.Dev</title>
-    <script type="module" crossorigin src="/Portfolio-Website/assets/index-C8DEr31i.js"></script>
-    <link rel="stylesheet" crossorigin href="/Portfolio-Website/assets/index-C6cGg2pR.css">
+
+    <script>
+      (function () {
+        function getInitialTheme() {
+          const savedTheme = localStorage.getItem('theme');
+          if (savedTheme) {
+            return savedTheme;
+          }
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          return prefersDark ? 'dark' : 'light';
+        }
+        const theme = getInitialTheme();
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/Portfolio-Website/assets/index-0IlgNpVq.js"></script>
+    <link rel="stylesheet" crossorigin href="/Portfolio-Website/assets/index-CSyMR6x_.css">
   </head>
   <body>
     <div id="root"></div>
