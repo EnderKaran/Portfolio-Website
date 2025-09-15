@@ -21,9 +21,9 @@ export const SkillProgressBar = ({ skill, percentage }) => {
     <div className="w-full">
       <div className="flex justify-between items-center mb-1">
         
-        {/* DÜZELTME: Renk sınıflarının başına '!' eklenerek ezilmeleri engellendi */}
-        <p className="text-base font-medium !text-zinc-700 dark:!text-white/90">{skill}</p>
-        <p className="text-sm font-medium !text-emerald-600 dark:!text-emerald-400">{percentage}%</p>
+        
+        <p className="text-base font-medium text-emerald-600">{skill}</p>
+        <p className="text-sm font-medium text-emerald-600 dark:text-emerald-400">{percentage}%</p>
         
       </div>
       

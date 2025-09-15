@@ -1,5 +1,3 @@
-// src/components/CustomCursor.jsx
-
 import React, { useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
@@ -39,7 +37,6 @@ export const CustomCursor = () => {
     hover: {
       height: 64,
       width: 64,
-      // DEĞİŞİKLİK: Hover arka plan rengi artık CSS değişkeninden geliyor
       backgroundColor: 'rgb(var(--color-cursor-hover-bg))',
       borderWidth: '2px',
     },
@@ -53,22 +50,19 @@ export const CustomCursor = () => {
 
   return (
     <>
-      {/* Nokta (Dot) */}
+      
       <motion.div
         variants={dotVariants}
         animate={isHovering ? "hover" : "default"}
-        style={{ left: mouseX, top: mouseY }}
-        // DEĞİŞİKLİK: Noktanın rengi artık anlamsal 'primary' rengi
+        style={{ left: mouseX, top: mouseY }}    
         className="fixed bg-primary rounded-full z-[9999] pointer-events-none transform -translate-x-1/2 -translate-y-1/2 w-2 h-2"
       />
-      
-      {/* Halka (Circle) */}
+       
       <motion.div
         variants={circleVariants}
         animate={isHovering ? "hover" : "default"}
         transition={spring}
         style={{ left: smoothMouseX, top: smoothMouseY }}
-        // DEĞİŞİKLİK: Halkanın kenarlık rengi artık anlamsal 'primary' rengi
         className="fixed border border-primary rounded-full z-[9999] pointer-events-none transform -translate-x-1/2 -translate-y-1/2"
       />
     </>
