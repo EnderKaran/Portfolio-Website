@@ -2,9 +2,6 @@ import React from 'react';
 import { motion } from "framer-motion";
 import { SiFramer, SiBootstrap, SiReact, SiNodedotjs, SiGit } from "react-icons/si";
 
-
-// Projede kullanılacak teknolojilerin verisi
-// DEĞİŞİKLİK: 'color' özelliği kaldırıldı, çünkü renkler artık doğrudan CSS ile yönetiliyor.
 const stackItems = [
     { id: 1, name: "Framer", icon: <SiFramer size={80} /> },
     { id: 2, name: "Bootstrap", icon: <SiBootstrap size={80} /> },
@@ -30,7 +27,6 @@ export const Stack = () => {
     };
 
     return (
-        // DEĞİŞİKLİK: Ana kapsayıcı anlamsal renklere bağlandı
         <section
             id="stack"
             className="bg-background text-primary py-24 md:py-48 transition-colors duration-300"
@@ -49,10 +45,10 @@ export const Stack = () => {
                             whileInView="visible"
                             viewport={{ once: true }}
                             custom={index}
-                            // DEĞİŞİKLİK: Kart stili anlamsal renklere bağlandı
+                           
                             className="aspect-square w-40 rounded-2xl bg-card-background border border-card-border p-4 shadow-lg backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-accent/20 flex flex-col items-center justify-center text-center md:w-48"
                         >
-                            {/* DEĞİŞİKLİK: İkon ve metin renkleri anlamsal sınıflara bağlandı */}
+                            
                             <div className="mb-4 text-accent">
                                 {item.icon}
                             </div>

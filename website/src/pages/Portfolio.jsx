@@ -36,7 +36,7 @@ export const Portfolio = () => {
     };
 
     return (
-        // DEĞİŞİKLİK: Ana kapsayıcı anlamsal renklere bağlandı
+        
         <section id="portfolio" className="bg-background text-primary py-24 md:py-48 transition-colors duration-300">
             <div className="container mx-auto px-4">
                 <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
@@ -51,7 +51,7 @@ export const Portfolio = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.2 }}
-                            // DEĞİŞİKLİK: Proje kartının ana stili
+                            
                             className="bg-card-background border border-card-border rounded-lg overflow-hidden shadow-lg transition-shadow duration-300 hover:shadow-xl"
                         >
                             <div

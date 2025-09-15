@@ -5,7 +5,6 @@ import project2 from "../assets/images/project-2.png";
 
 export const About = () => {
     return (
-        // DEĞİŞİKLİK: Ana kapsayıcı, anlamsal renk sınıflarını kullanıyor
         <section id="about" className="bg-background text-primary p-8 transition-colors duration-300">
             <h2 className="text-5xl md:text-6xl font-bold mb-12 text-center">
                 Hakkım<span className="text-accent">da</span>
@@ -43,7 +42,7 @@ export const About = () => {
                     <p className="text-secondary leading-relaxed">
                         Masaüstü (Delphi) ve backend (.NET) geliştirme temellerinden gelen, uzmanlığını modern frontend teknolojileri üzerine inşa etmiş çok yönlü bir yazılım geliştiriciyim. Özellikle React ve Tailwind CSS kullanarak, sadece estetik değil, aynı zamanda mühendislik prensipleriyle tasarlanmış sağlam ve ölçeklenebilir çözümler üretmeye odaklanıyorum.
                     </p>
-                    {/* DÜZELTME: Resmin doğru konumlanması için 'relative' sınıfı eklendi */}
+                    
                     <div className="mt-4 relative rounded-lg h-[220px] overflow-hidden">
                         <img
                             src={project1}
@@ -86,10 +85,13 @@ export const About = () => {
                 
                 {/* 04. Yaklaşım ve Yetenek Seviyeleri Kartı */}
                 <div className="bg-card-background border border-card-border rounded-lg p-6">
-                    <h3 className="text-2xl font-bold mb-2 text-primary">04. Yaklaşım</h3>
+                    
+                    <h3 className="text-2xl font-bold mb-2 text-emerald-600">04. Yaklaşım</h3>
+                    
                     <p className="text-secondary mb-6 leading-relaxed">
                         Temiz, sürdürülebilir kod yazmaya ve en iyi uygulamaları takip etmeye inanıyorum. Yaklaşımım, müşteri ihtiyaçlarını anlamak, kapsamlı planlama yapmak ve zamanında yüksek kaliteli çözümler sunmaktır.
                     </p>
+                    
                     <div className="space-y-6 mt-6 border-t border-card-border pt-6">
                         <SkillProgressBar skill="Frontend (React, Tailwind)" percentage={85} />
                         <SkillProgressBar skill="Backend (ASP.NET, C#)" percentage={50} />
@@ -99,7 +101,7 @@ export const About = () => {
 
                 {/* 05. Hedefler Kartı */}
                 <div className="bg-card-background border border-card-border rounded-lg p-6 flex flex-col justify-between">
-                    {/* DÜZELTME: Resmin doğru konumlanması için 'relative' sınıfı eklendi */}
+                    
                     <div className="relative rounded-lg h-[200px] overflow-hidden mb-4">
                         <img
                             src={project2}

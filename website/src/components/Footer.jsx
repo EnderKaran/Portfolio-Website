@@ -29,7 +29,6 @@ export const Footer = () => {
   };
 
   return (
-    // DEĞİŞİKLİK: Ana footer alanı anlamsal renklere bağlandı
     <footer className="bg-background text-primary py-8 transition-colors duration-300" id="contact">
       <div className="max-w-[1200px] mx-auto px-4">
         <div className="flex items-center justify-between flex-col md:flex-row gap-8">
@@ -54,11 +53,12 @@ export const Footer = () => {
           </div>
         </div>
 
-        {/* Arka plan yazı efekti */}
+       
         <div className="relative text-center mt-8 py-12">
+            
             <h1
                 aria-hidden="true"
-                className="absolute inset-0 z-0 flex items-center justify-center text-[20vw] lg:text-[12rem] font-bold text-primary/5 pointer-events-none"
+                className="absolute inset-0 z-0 flex items-center justify-center text-[15vw] sm:text-[18vw] md:text-[20vw] lg:text-[12rem] font-bold text-primary/5 pointer-events-none"
             >
                 EnderKaran
             </h1>
@@ -96,7 +96,7 @@ export const Footer = () => {
         </div>
       </div>
 
-      {/* Yukarı Çık Butonu (Değiştirilmedi) */}
+      {/* Yukarı Çık Butonu */}
       <AnimatePresence>
         {isVisible && (
           <motion.button

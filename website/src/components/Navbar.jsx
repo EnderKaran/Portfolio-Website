@@ -33,7 +33,6 @@ export const Navbar = () => {
         <>
             {/* Okuma İlerlemesi Çubuğu */}
             <motion.div
-                // DEĞİŞİKLİK: Renkler anlamsal 'bg-accent' yerine doğrudan tanımlandı.
                 className="fixed top-0 left-0 right-0 h-1 bg-emerald-500 dark:bg-emerald-400 origin-left z-[60]"
                 style={{ scaleX }}
             />
@@ -41,7 +40,10 @@ export const Navbar = () => {
             <div className="z-50 fixed flex justify-center w-full font-bold"> 
                 
                 {/* Masaüstü Menüsü */}
-                <div className="border border-card-border mt-8 bg-card-background/80 backdrop-blur-xl rounded-3xl hidden md:flex items-center justify-center p-2 max-w-fit mx-auto text-primary">
+                <div 
+                    
+                    className="border border-emerald-500/40 mt-8 bg-white/80 dark:bg-black/70 backdrop-blur-xl rounded-3xl hidden md:flex items-center justify-center p-2 max-w-fit mx-auto text-slate-800 dark:text-slate-200"
+                >
                     <ul className="flex flex-row items-center p-2 space-x-6">
                         {navlinks.map((link, index) => (
                             <li key={index}>
@@ -67,18 +69,20 @@ export const Navbar = () => {
                 {/* Mobil Menü Butonu */}
                 <div
                     onClick={toggleNav}
-                    className="md:hidden absolute top-5 right-5 border rounded-lg z-[70] text-primary border-card-border/50 p-2 cursor-pointer bg-card-background/80 backdrop-blur-xl"
+                    
+                    className="md:hidden absolute top-5 right-5 border border-emerald-500/40 rounded-lg z-[70] text-slate-800 dark:text-slate-200 p-2 cursor-pointer bg-white/80 dark:bg-black/70 backdrop-blur-xl"
                 >
                     {nav ? <AiOutlineClose size={30} /> : <AiOutlineMenu size={30} />}
                 </div>
 
                 {/* Mobil Menü Paneli */}
                 <div
-                    className={`fixed left-0 top-0 w-full h-full bg-background/90 backdrop-blur-lg transform transition-transform duration-300 ${
+                   
+                    className={`fixed left-0 top-0 w-full h-full bg-white/95 dark:bg-black/95 backdrop-blur-lg transform transition-transform duration-300 ${
                         nav ? "translate-x-0" : "-translate-x-full"
                     }`}
                 >
-                    <ul className="flex flex-col items-center justify-center space-y-8 h-full text-primary"> 
+                    <ul className="flex flex-col items-center justify-center space-y-8 h-full text-slate-800 dark:text-slate-200"> 
                         {navlinks.map((link, index) => (
                             <li key={index}>
                                 <ScrollLink
