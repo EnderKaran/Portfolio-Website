@@ -1,23 +1,39 @@
-import React from 'react'; 
-import { About } from "./pages/About";
-import { Footer } from "./components/Footer";
-import { Hero } from "./pages/Hero";
-import { Portfolio } from "./pages/Portfolio";
-import { Stack } from "./pages/Stack";
-import { Navbar } from "./components/Navbar";
+
+import React from 'react';
+import { Routes, Route, Outlet } from 'react-router-dom';
+import { Navbar } from './components/Navbar';
+import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
+import HomePage from './pages/Home'; 
+import ChangelogPage from './pages/Changelog'; 
+
+
+const Layout = () => {
+  return (
+    <>
+      <CustomCursor />
+      <Navbar />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
+    </>
+  );
+};
+
 
 function App() {
   return (
-    <main className="bg-background text-primary overflow-hidden transition-colors duration-300">
-      <CustomCursor />
-      <Navbar />
-      <Hero />
-      <About />
-      <Portfolio />
-      <Stack />
-      <Footer />
-    </main>
+    <Routes>
+      
+      <Route path="/" element={<Layout />}>
+        
+        <Route index element={<HomePage />} />
+           
+        <Route path="changelog" element={<ChangelogPage />} />
+
+      </Route>
+    </Routes>
   );
 }
 
