@@ -2,16 +2,16 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import profileimg from "../assets/images/logo-profile.png";
 
-// Gerekli kütüphaneleri ve bileşenleri içe aktarıyoruz
+
 import { Link as ScrollLink } from "react-scroll";
 import { Link as RouterLink, useLocation } from "react-router-dom";
-import { FiArrowRight } from "react-icons/fi"; // İkon ekleyerek görselliği artırıyoruz
+import { FiArrowRight } from "react-icons/fi"; 
 
-// Navigasyon linklerini tanımlıyoruz.
+
 const navlinks = [
     { title: "Beni Tanıyın", path: "about", type: "scroll" },
     { title: "Çalışmalarıma Göz At", path: "portfolio", type: "scroll" },
-    { title: "Teknoloji Setim", path: "stack", type: "scroll" },
+    { title: "Kullandığım Teknojiler", path: "stack", type: "scroll" },
     { title: "İletişime Geçin", path: "contact", type: "scroll" },
 ];
 
@@ -21,10 +21,8 @@ export const Hero = () => {
 
     // Link render fonksiyonu
     const renderLink = (link) => {
-        // Link konteynerinin sınıfları. `cursor-pointer` eklemek iyi bir pratiktir.
         const linkClasses = "group flex items-center gap-3 text-sm text-slate-400 hover:text-slate-200 transition-colors duration-300 cursor-pointer";
 
-        // --- DEĞİŞİKLİK BURADA: İkonun animasyon sınıflarını güncelledik ---
         const iconClasses = "transition-all duration-300 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0";
 
         if (link.type === 'scroll' && onHomePage) {
@@ -47,7 +45,7 @@ export const Hero = () => {
 
     return (
         <div className="relative overflow-hidden min-h-screen bg-white dark:bg-black text-slate-800 dark:text-slate-200 transition-colors duration-500">
-            {/* Arka Plan Elementleri (değişiklik yok) */}
+           
             <div className="absolute inset-0 z-0 opacity-100 dark:opacity-0 transition-opacity duration-500 bg-gradient-to-b from-white to-emerald-50" />
             <div className="absolute w-[200vmax] h-[200vmax] md:w-[2400px] md:h-[1000px] rounded-[50%] left-1/2 -translate-x-1/2 top-[450px] z-10 bg-white bg-[radial-gradient(closest-side,white_85%,#d1fae5)] opacity-100 dark:opacity-0 transition-opacity duration-500" />
             <div className="absolute inset-0 z-0 opacity-0 dark:opacity-100 transition-opacity duration-500 bg-[linear-gradient(to_bottom,#000,#071E18_35%,#208A65_67%,#35FB8E_85%)]" />
