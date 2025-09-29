@@ -6,6 +6,7 @@ import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
 import HomePage from './pages/Home'; 
 import ChangelogPage from './pages/Changelog'; 
+import ContactPage from './pages/ContactPage';
 
 
 const Layout = () => {
@@ -31,6 +32,8 @@ function App() {
         <Route index element={<HomePage />} />
            
         <Route path="changelog" element={<ChangelogPage />} />
+
+        <Route path="/contact" element={<ContactPage />} />
 
       </Route>
     </Routes>

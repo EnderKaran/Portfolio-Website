@@ -13,7 +13,7 @@ const navlinks = [
     { title: "Hakkımda", path: "about", type: "scroll" },
     { title: "Projeler", path: "portfolio", type: "scroll" },
     { title: "Teknolojiler", path: "stack", type: "scroll" },
-    { title: "İletişim", path: "contact", type: "scroll" },
+    { title: "İletişim", path: "/contact", type: "route" },
     { title: "Yenilikler", path: "/changelog", type: "route" }, 
 ];
 
