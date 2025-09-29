@@ -7,6 +7,7 @@ import { CustomCursor } from './components/CustomCursor';
 import HomePage from './pages/Home'; 
 import ChangelogPage from './pages/Changelog'; 
 import ContactPage from './pages/ContactPage';
+import AboutPage from './pages/AboutPage';
 
 
 const Layout = () => {
@@ -34,6 +35,8 @@ function App() {
         <Route path="changelog" element={<ChangelogPage />} />
 
         <Route path="/contact" element={<ContactPage />} />
+
+        <Route path="/about" element={<AboutPage />} />
 
       </Route>
     </Routes>
