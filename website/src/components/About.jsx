@@ -7,7 +7,7 @@ export const About = () => {
     return (
         <section id="about" className="bg-background text-primary p-8 transition-colors duration-300">
             <h2 className="text-5xl md:text-6xl font-bold mb-12 text-center">
-                Hakkım<span className="text-accent">da</span>
+                Beni<span className="text-accent"> Tanıyın</span>
             </h2>
 
             {/* Üst Kartlar Grubu */}

@@ -40,7 +40,7 @@ export const Portfolio = () => {
         <section id="portfolio" className="bg-background text-primary py-24 md:py-48 transition-colors duration-300">
             <div className="container mx-auto px-4">
                 <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
-                    Proj<span className="text-accent">eler</span>
+                    Çalışmalarıma <span className="text-accent">Göz At</span>
                 </h2>
 
                 <div className="space-y-8">
