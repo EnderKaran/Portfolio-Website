@@ -10,7 +10,7 @@ import { ThemeToggle } from "./ThemeToggle";
 
 const navlinks = [
     { title: "Anasayfa", path: "home", type: "scroll" },
-    { title: "Hakkımda", path: "about", type: "scroll" },
+    { title: "Hakkımda", path: "/about", type: "route" },
     { title: "Projeler", path: "portfolio", type: "scroll" },
     { title: "Teknolojiler", path: "stack", type: "scroll" },
     { title: "İletişim", path: "/contact", type: "route" },

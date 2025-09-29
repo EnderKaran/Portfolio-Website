@@ -21,6 +21,15 @@ html.dark {
   --color-card-border: 255 255 255 / 0.2;
 }
 
+::selection{
+  background-color: rgb(var(--color-accent));
+  color: rgb(var(--color-background));
+}
+-moz::selection{
+  background-color: rgb(var(--color-accent));
+  color: rgb(var(--color-background));
+}
+
 body {
   font-family: "Poppins", sans-serif;
   overflow-x: hidden;

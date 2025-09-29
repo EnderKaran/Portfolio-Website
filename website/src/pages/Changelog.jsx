@@ -1,8 +1,37 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaPlus, FaWrench, FaRocket, FaPalette, FaCode, FaMobileAlt, FaArrowUp, FaMousePointer, FaColumns, FaBug } from 'react-icons/fa'; 
+import { FaPlus, FaWrench, FaRocket, FaPalette, FaMobileAlt, FaArrowUp, FaMousePointer, FaColumns, FaBug } from 'react-icons/fa'; 
 import { VscFileCode } from "react-icons/vsc";
+
 const changelogData = [
+    
+    {
+        version: "v1.3.0",
+        date: "29 Eylül 2025",
+        changes: [
+            { 
+                type: "Yeni Sayfa", 
+                description: "Formik ve Yup kullanılarak 'mailto' işlevselliğine sahip, modern ve doğrulamalı bir 'İletişim' sayfası eklendi.",
+                icon: <FaPlus /> 
+            },
+            { 
+                type: "Yeni Sayfa", 
+                description: "Kariyer ve eğitim geçmişini şık ve duyarlı bir zaman tüneli formatında sunan kapsamlı bir 'Hakkımda' sayfası oluşturuldu.",
+                icon: <FaPlus /> 
+            },
+            { 
+                type: "İyileştirme", 
+                description: "Site genelindeki metin seçimi (::selection) rengi, site kimliğiyle uyumlu hale getirilerek kullanıcı deneyimi zenginleştirildi.",
+                icon: <FaPalette /> 
+            },
+            { 
+                type: "Hata Düzeltme", 
+                description: "Açık modda yaşanan metin ve başlık okunabilirlik sorunları, tema ile tam uyumlu renkler kullanılarak tamamen giderildi.",
+                icon: <FaBug />
+            },
+        ]
+    },
+    // --- ESKİ SÜRÜM BİLGİLERİ ---
     {
         version: "v1.2.0",
         date: "15 Eylül 2025",
@@ -87,33 +116,38 @@ const ChangelogPage = () => {
     return (
         <div id="changelog" className="bg-background text-primary min-h-screen py-24 sm:py-32 transition-colors duration-300">
             <div className="container mx-auto px-4">
-                <h2 className="text-5xl md:text-6xl font-bold text-center mb-16">
-                    Geliştirme <span className="text-accent">Günlüğü</span>
-                </h2>
+                <motion.h2 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="text-5xl md:text-6xl font-bold text-center mb-16 text-slate-900 dark:text-white"
+                >
+                    <span className="text-emerald-500">Geliştirme Günlüğü</span>
+                </motion.h2>
 
-                <div className="relative border-l-2 border-card-border/50 ml-6 md:mx-auto md:max-w-3xl">
+                <div className="relative border-l-2 border-slate-200 dark:border-slate-700 ml-6 md:mx-auto md:max-w-3xl">
                     {changelogData.map((entry, index) => (
                         <motion.div
                             key={entry.version}
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.2 }}
+                            transition={{ duration: 0.5, delay: 0.1 }}
                             className="mb-12 pl-12 relative"
                         >
-                            <div className="absolute -left-[11px] top-1 w-5 h-5 bg-accent rounded-full border-4 border-background"></div>
+                            <div className="absolute -left-[11px] top-1 w-5 h-5 bg-emerald-500 rounded-full border-4 border-background transition-colors duration-300"></div>
 
-                            <p className="text-sm text-secondary mb-1">{entry.date}</p>
-                            <h3 className="text-3xl font-bold text-primary mb-4">{entry.version}</h3>
+                            <p className="text-sm text-slate-500 dark:text-slate-400 mb-1">{entry.date}</p>
+                            <h3 className="text-3xl font-bold text-emerald-500 mb-4">{entry.version}</h3>
                             
-                            <div className="bg-card-background border border-card-border rounded-lg p-6">
+                            <div className="bg-white dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-700 rounded-lg p-6 transition-colors duration-300">
                                 <ul className="space-y-4">
                                     {entry.changes.map((change, i) => (
                                         <li key={i} className="flex items-start gap-4">
-                                            <span className="text-accent mt-1">{change.icon}</span>
-                                            <div className="flex flex-col">
-                                                <p className="font-semibold text-primary/90">{change.type}</p>
-                                                <p className="text-secondary">{change.description}</p>
+                                            <span className="text-emerald-500 mt-1 text-lg">{change.icon}</span>
+                                            <div>
+                                                <p className="font-semibold text-slate-800 dark:text-slate-100">{change.type}</p>
+                                                <p className="text-slate-600 dark:text-slate-400">{change.description}</p>
                                             </div>
                                         </li>
                                     ))}
