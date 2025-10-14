@@ -8,6 +8,7 @@ import HomePage from './pages/Home';
 import ChangelogPage from './pages/Changelog'; 
 import ContactPage from './pages/ContactPage';
 import AboutPage from './pages/AboutPage';
+import { Technologies } from './pages/Technologies';
 
 
 const Layout = () => {
@@ -37,6 +38,8 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
 
         <Route path="/about" element={<AboutPage />} />
+
+        <Route path="/technologies" element={<Technologies />} />
 
       </Route>
     </Routes>
