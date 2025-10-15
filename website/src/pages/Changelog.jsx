@@ -5,6 +5,27 @@ import { VscFileCode } from "react-icons/vsc";
 
 const changelogData = [
     {
+        version: "v1.5.0",
+        date: "15 Ekim 2025",
+        changes: [
+            { 
+                type: "Yeni Sayfa", 
+                description: "GitHub API'si ile entegre, dinamik bir '/projects' sayfası oluşturuldu. Projeler, arama ve filtreleme özellikleriyle birlikte modern kartlar halinde sergileniyor.",
+                icon: <FaPlus />  
+            },
+            { 
+                type: "İyileştirme", 
+                description: "Proje kartlarındaki teknoloji etiketleri, artık GitHub repolarındaki 'topics' alanından dinamik olarak çekilerek daha doğru ve yönetimi kolay bir hale getirildi.",
+                icon: <FaWrench />
+            },
+            { 
+                type: "Hata Düzeltme", 
+                description: "Projeler sayfasının tasarımı, hem açık hem de koyu modda tasarımla tam uyumlu olacak şekilde düzeltildi ve iyileştirildi.",
+                icon: <FaPalette /> 
+            },
+        ]
+    },
+    {
         version: "v1.4.0",
         date: "14 Ekim 2025",
         changes: [
