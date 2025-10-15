@@ -9,6 +9,7 @@ import ChangelogPage from './pages/Changelog';
 import ContactPage from './pages/ContactPage';
 import AboutPage from './pages/AboutPage';
 import { Technologies } from './pages/Technologies';
+import ProjectsPage from './pages/ProjectsPage';
 
 
 const Layout = () => {
@@ -40,6 +41,8 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
 
         <Route path="/technologies" element={<Technologies />} />
+
+         <Route path="/projects" element={<ProjectsPage />} />
 
       </Route>
     </Routes>
