@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLink, FaStar, FaSearch } from 'react-icons/fa';
 
-// --- KENDİ BİLGİLERİNİZİ GİRİN ---
 const GITHUB_USERNAME = 'EnderKaran';
 
 const ProjectsPage = () => {
