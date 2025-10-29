@@ -8,14 +8,14 @@ import { FiArrowRight } from "react-icons/fi";
 const navlinks = [
     { title: "Beni Tanıyın", path: "about", type: "scroll" },
     { title: "Çalışmalarıma Göz At", path: "portfolio", type: "scroll" },
-    { title: "Kullandığım Teknolojiler", path: "/technologies", type: "route" },
+    { title: "Kullandığım Teknolojiler", path: "stack", type: "scroll" },
     { title: "İletişime Geçin", path: "contact", type: "scroll" },
 ];
 
 export const Hero = () => {
     const location = useLocation();
     const onHomePage = location.pathname === '/';
-    const roles = ["ön yüz geliştiricisiyim.", "yazılım geliştiricisiyim."];
+    const roles = ["Ön Yüz Geliştiricisiyim.", "Yazılım Geliştiricisiyim."];
     const [roleIndex, setRoleIndex] = useState(0);
 
     useEffect(() => {
@@ -80,21 +80,25 @@ export const Hero = () => {
                         <h1 className="mb-4 text-6xl font-bold tracking-tighter md:text-7xl">
                             Merhaba, Ben <br /> Ender <span className="text-accent">Karan</span>
                         </h1>
-                        <p className="flex items-center justify-center h-16 max-w-lg mx-auto mb-6 text-xl leading-relaxed text-center text-secondary">
-                            Ben, kullanıcılara deneyim sağlayan web siteleri oluşturmaya odaklanan bir&nbsp;
-                            <AnimatePresence mode="wait">
-                                <motion.span
-                                    key={roleIndex}
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -10 }}
-                                    transition={{ duration: 0.3 }}
-                                    className="ml-2 font-semibold text-accent"
-                                >
-                                    {roles[roleIndex]}
-                                </motion.span>
-                            </AnimatePresence>
-                        </p>
+                        <div className="max-w-lg mx-auto mb-6">
+                            <p className="text-xl leading-relaxed text-center text-secondary">
+                                Ben, kullanıcılara deneyim sağlayan web siteleri oluşturmaya odaklanan bir
+                            </p>
+                            <div className="flex items-center justify-center h-12 mt-2">
+                                <AnimatePresence mode="wait">
+                                    <motion.span
+                                        key={roleIndex}
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -10 }}
+                                        transition={{ duration: 0.3 }}
+                                        className="text-2xl font-bold text-accent"
+                                    >
+                                        {roles[roleIndex]}
+                                    </motion.span>
+                                </AnimatePresence>
+                            </div>
+                        </div>
                         
                         <div className="flex justify-center gap-4 mb-16">
                             <motion.a href="https://www.linkedin.com/in/ender-karan-52303b187" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block px-6 py-3 font-medium text-white transition-all duration-300 ease-in-out rounded-full shadow-lg bg-accent hover:bg-accent/80">
