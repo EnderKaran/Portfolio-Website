@@ -1,8 +1,8 @@
-import Abouts from '../components/Abouts';
+import  Abouts  from '../components/Abouts';
 const AboutPage = () => {
   return (
     
-    <div className="bg-background text-primary min-h-screen py-24 sm:py-32 transition-colors duration-300 ">
+    <div className="min-h-screen py-24 transition-colors duration-300 bg-background text-primary sm:py-32 ">
       <Abouts />
     </div>
   );

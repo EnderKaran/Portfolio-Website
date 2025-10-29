@@ -1,82 +1,85 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next'; // 1. Hook'u import et
 import { motion } from "framer-motion";
 import { 
     SiReact, SiJavascript, SiTailwindcss, SiFramer, SiVite, 
-    SiNodedotjs, SiDotnet, SiGit, SiGithub, 
+    SiNodedotjs, SiDotnet, SiGit, SiGithub, SiFigma, 
     SiBootstrap, SiVercel, SiHtml5, SiCss3, SiMysql,
     SiAdobe, SiAdobecreativecloud, SiStackoverflow, SiNotion, 
-    SiObsidian, SiGithubpages , SiMariadb
+    SiObsidian, SiGithubpages, SiMariadb
 } from "react-icons/si";
-import { TbBrandCSharp , TbBrandVisualStudio } from "react-icons/tb";
+import { TbBrandCSharp, TbBrandVisualStudio } from "react-icons/tb";
 import { DiMsqlServer, DiVisualstudio } from "react-icons/di";
 import { FaSass } from "react-icons/fa";
 
-
-const techCategories = [
-    {
-        title: "Frontend",
-        technologies: [
-            { name: "HTML5", icon: <SiHtml5 size={48} /> },
-            { name: "CSS3", icon: <SiCss3 size={48} /> },
-            { name: "JavaScript (ES6+)", icon: <SiJavascript size={48} /> },
-            { name: "React", icon: <SiReact size={48} /> },
-            { name: "Tailwind CSS", icon: <SiTailwindcss size={48} /> },
-            { name: "Framer Motion", icon: <SiFramer size={48} /> },
-            { name: "Bootstrap", icon: <SiBootstrap size={48} /> },
-            { name: "Sass", icon: <FaSass size={48} /> },
-        ]
-    },
-    {
-        title: "Backend",
-        technologies: [
-            { name: "Node.js", icon: <SiNodedotjs size={48} /> },
-            { name: "C#", icon: <TbBrandCSharp size={48} /> },
-            { name: ".NET (MVC)", icon: <SiDotnet size={48} /> },       
-        ]
-    },
-    {
-        title: "Database", 
-        technologies: [
-            { name: "SQL Server", icon: <DiMsqlServer size={48} /> },
-            { name: "MySQL", icon: <SiMysql size={48} /> },
-            { name: "MariaDB", icon: <SiMariadb size={48} /> },
-        ]
-    },
-    {
-        title: "Tools",
-        technologies: [
-            { name: "Adobe", icon: <SiAdobe size={48} /> },
-            { name: "Adobe Fonts", icon: <SiAdobecreativecloud size={48} /> },
-            { name: "Stack Overflow", icon: <SiStackoverflow size={48} /> },
-            { name: "Notion", icon: <SiNotion size={48} /> },
-            { name: "Obsidian", icon: <SiObsidian size={48} /> },
-            { name: "Git", icon: <SiGit size={48} /> },
-            { name: "GitHub", icon: <SiGithub size={48} /> },
-            { name: "VS Code", icon: <TbBrandVisualStudio size={48} /> },
-            { name: "Visual Studio", icon: <DiVisualstudio size={48} /> },
-            { name: "Vite", icon: <SiVite size={48} /> },
-        ]
-    },
-    {
-        title: "Platforms",
-        technologies: [
-            { name: "Vercel", icon: <SiVercel size={48} /> },
-            { name: "GitHub Pages", icon: <SiGithubpages size={48} /> },
-        ]
-    }
-];
-
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
-};
-
-const cardVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1 },
-};
-
 export const Technologies = () => {
+    const { t } = useTranslation(); // 2. t fonksiyonunu al
+
+    // 3. 'techCategories' dizisi, 't' fonksiyonunu kullanabilmek için bileşenin içine taşındı.
+    const techCategories = [
+        {
+            title: t('tech_category_frontend'),
+            technologies: [
+                { name: "HTML5", icon: <SiHtml5 size={48} /> },
+                { name: "CSS3", icon: <SiCss3 size={48} /> },
+                { name: "JavaScript (ES6+)", icon: <SiJavascript size={48} /> },
+                { name: "React", icon: <SiReact size={48} /> },
+                { name: "Tailwind CSS", icon: <SiTailwindcss size={48} /> },
+                { name: "Framer Motion", icon: <SiFramer size={48} /> },
+                { name: "Bootstrap", icon: <SiBootstrap size={48} /> },
+                { name: "Sass", icon: <FaSass size={48} /> },
+            ]
+        },
+        {
+            title: t('tech_category_backend'),
+            technologies: [
+                { name: "Node.js", icon: <SiNodedotjs size={48} /> },
+                { name: "C#", icon: <TbBrandCSharp size={48} /> },
+                { name: ".NET (MVC)", icon: <SiDotnet size={48} /> },
+            ]
+        },
+        {
+            title: t('tech_category_database'),
+            technologies: [
+                { name: "SQL Server", icon: <DiMsqlServer size={48} /> },
+                { name: "MySQL", icon: <SiMysql size={48} /> },
+                { name: "MariaDB", icon: <SiMariadb size={48} /> },
+            ]
+        },
+        {
+            title: t('tech_category_tools'),
+            technologies: [
+                { name: "Adobe", icon: <SiAdobe size={48} /> },
+                { name: "Adobe Fonts", icon: <SiAdobecreativecloud size={48} /> },
+                { name: "Stack Overflow", icon: <SiStackoverflow size={48} /> },
+                { name: "Notion", icon: <SiNotion size={48} /> },
+                { name: "Obsidian", icon: <SiObsidian size={48} /> },
+                { name: "Git", icon: <SiGit size={48} /> },
+                { name: "GitHub", icon: <SiGithub size={48} /> },
+                { name: "VS Code", icon: <TbBrandVisualStudio size={48} /> },
+                { name: "Visual Studio", icon: <DiVisualstudio size={48} /> },
+                { name: "Vite", icon: <SiVite size={48} /> },
+            ]
+        },
+        {
+            title: t('tech_category_platforms'),
+            technologies: [
+                { name: "Vercel", icon: <SiVercel size={48} /> },
+                { name: "GitHub Pages", icon: <SiGithubpages size={48} /> },
+            ]
+        }
+    ];
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
+    };
+
+    const cardVariants = {
+        hidden: { y: 20, opacity: 0 },
+        visible: { y: 0, opacity: 1 },
+    };
+
     return (
         <section
             id="technologies"
@@ -88,7 +91,7 @@ export const Technologies = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                     className="mb-16 text-5xl font-bold text-center md:text-7xl">
-                    Teknoloji <span className="text-accent">Yığınım</span>
+                    {t('tech_page_title_part1')} <span className="text-accent">{t('tech_page_title_part2')}</span>
                 </motion.h1>
 
                 <div className="space-y-16">
@@ -133,4 +136,4 @@ export const Technologies = () => {
     );
 };
 
-export default Technologies; 
+export default Technologies;

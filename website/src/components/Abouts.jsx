@@ -1,57 +1,7 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { FaBriefcase, FaGraduationCap, FaAward, FaGithub, FaCodepen } from 'react-icons/fa';
-
-// --- VERİLER ---
-const experiences = [
-    {
-        date: "Ocak 2023 - Halen",
-        title: "Yazılım Geliştirici",
-        company: "Stok Endüstriyel A.Ş.",
-        skills: ["JavaScript", "React", "HTML5", "CSS", "SASS & SCSS", "Ticimax", "CRM", "E-ticaret", "Sorun Çözme", "Bilgi İşlem", "Web Yönetimi"]
-    },
-    {
-        date: "Eyl 2022 - Eki 2022",
-        title: "Yazılım Geliştirici (Stajyer)",
-        company: "NBG Bilişim",
-        description: "Spsteks adlı uygulamanın önceki sürümünü iyileştirmek için çalıştım. Veritabanı entegrasyonu için MySQL (MariaDB) kullandım.",
-        skills: ["Git", "Delphi", "MySQL", "MariaDB", "SQL"]
-    },
-    {
-        date: "Şub 2022 - Haz 2022",
-        title: "Yazılım Geliştirici (Stajyer)",
-        company: "NBG Bilişim",
-        description: "RAD Studio FMX ve Delphi kullanarak Spsteks adlı bir uygulama için bir dizi sayfa geliştirdim. Ayrıca, veri yönetimi işlevselliğini etkinleştirmek için uygulamayı bir MySQL (MariaDB) veritabanıyla entegre ettim.",
-        skills: ["Delphi", "MySQL", "Microsoft SQL Server", "SQL"]
-    },
-    {
-        date: "Eyl 2019 - Haz 2020",
-        title: "Bilgisayar Teknisyeni (Stajyer)",
-        company: "Arbis Teknoloji",
-        description: "BT departmanında çeşitli sorumluluklar üstlenerek bilgi ve becerilerimi geliştirme fırsatı buldum. (Bilgisayar montajı, Windows kurulumu, sistem formatlama vb.)",
-        skills: ["Bilgisayar Donanımı"]
-    }
-];
-
-const educations = [
-    {
-        date: "Eyl 2022 - Ağu 2025",
-        degree: "Lisans Derecesi, Yönetim Bilişim Sistemleri",
-        school: "Anadolu Üniversitesi"
-    },
-    {
-        date: "Eyl 2020 - Kas 2022",
-        degree: "Önlisans, Bilgisayar Programlama",
-        school: "Bilecik Şeyh Edebali Üniversitesi",
-        details: "Not: 3.39 / 4"
-    },
-    {
-        date: "2016 - 2020",
-        degree: "Lise, Bilişim/Web Programlama",
-        school: "Demirtaşpaşa Mesleki ve Teknik Anadolu Lisesi",
-        details: "Diploma Puanı: 76.57"
-    }
-];
 
 const TimelineItem = ({ icon, date, title, company, description, skills, isLeft }) => {
     const cardVariants = {
@@ -69,19 +19,57 @@ const TimelineItem = ({ icon, date, title, company, description, skills, isLeft 
             variants={cardVariants}
             className={`mb-8 flex justify-center w-full items-start ${sideClasses}`}
         >
-            <div className="hidden md:block w-5/12"></div>
-            <div className="z-10 absolute left-6 md:left-1/2 -translate-x-1/2 flex items-center justify-center bg-emerald-500 shadow-xl w-12 h-12 rounded-full">
-                <span className="text-white text-2xl">{icon}</span>
+            <div className="hidden w-5/12 md:block"></div>
+            <div 
+                className="absolute z-10 flex items-center justify-center w-12 h-12 -translate-x-1/2 rounded-full shadow-xl left-6 md:left-1/2"
+                style={{ backgroundColor: 'rgb(var(--color-accent))' }}
+            >
+                <span className="text-2xl text-white">{icon}</span>
             </div>
-            <div className="bg-white dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg w-full md:w-5/12 px-6 py-5 ml-16 md:ml-0 transition-colors duration-300">
-                <p className="text-xs uppercase tracking-wider font-semibold text-slate-500 dark:text-slate-400 mb-2">{date}</p>
-                <h3 className="font-bold text-xl text-slate-900 dark:text-white">{title}</h3>
-                <p className="text-md font-semibold text-emerald-500 mb-3">{company}</p>
-                {description && <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">{description}</p>}
+            <div 
+                className="w-full px-6 py-5 ml-16 transition-colors duration-300 border rounded-lg shadow-lg backdrop-blur-sm md:w-5/12 md:ml-0"
+                style={{ 
+                    backgroundColor: 'rgb(var(--color-card-background))',
+                    borderColor: 'rgb(var(--color-card-border))'
+                }}
+            >
+                <p 
+                    className="mb-2 text-xs font-semibold tracking-wider uppercase"
+                    style={{ color: 'rgb(var(--color-text-secondary))' }}
+                >
+                    {date}
+                </p>
+                <h3 
+                    className="text-xl font-bold"
+                    style={{ color: 'rgb(var(--color-text-primary))' }}
+                >
+                    {title}
+                </h3>
+                <p 
+                    className="mb-3 font-semibold text-md"
+                    style={{ color: 'rgb(var(--color-accent))' }}
+                >
+                    {company}
+                </p>
+                {description && (
+                    <p 
+                        className="text-sm leading-relaxed"
+                        style={{ color: 'rgb(var(--color-text-secondary))' }}
+                    >
+                        {description}
+                    </p>
+                )}
                 {skills && (
                     <div className="flex flex-wrap gap-2 mt-4">
                         {skills.map((skill, index) => (
-                            <span key={index} className="text-xs font-semibold bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full dark:bg-emerald-900 dark:text-emerald-300">
+                            <span 
+                                key={index} 
+                                className="px-2 py-1 text-xs font-semibold rounded-full"
+                                style={{ 
+                                    backgroundColor: 'rgba(var(--color-accent), 0.15)',
+                                    color: 'rgb(var(--color-accent))'
+                                }}
+                            >
                                 {skill}
                             </span>
                         ))}
@@ -92,65 +80,225 @@ const TimelineItem = ({ icon, date, title, company, description, skills, isLeft 
     );
 };
 
-const Abouts = () => {
+export const Abouts = () => {
+    const { t } = useTranslation();
+
+    const experiences = [
+        {
+            date: "Ocak 2023 - Halen",
+            title: t('exp1_title'),
+            company: "Stok Endüstriyel A.Ş.",
+            skills: ["JavaScript", "React", "HTML5", "CSS", "SASS & SCSS", "Ticimax", "CRM", "E-ticaret", "Sorun Çözme", "Bilgi İşlem", "Web Yönetimi"]
+        },
+        {
+            date: "Eyl 2022 - Eki 2022",
+            title: t('exp2_title'),
+            company: "NBG Bilişim",
+            description: t('exp2_desc'),
+            skills: ["Git", "Delphi", "MySQL", "MariaDB", "SQL"]
+        },
+        {
+            date: "Şub 2022 - Haz 2022",
+            title: t('exp2_title'),
+            company: "NBG Bilişim",
+            description: t('exp3_desc'),
+            skills: ["Delphi", "MySQL", "Microsoft SQL Server", "SQL"]
+        },
+        {
+            date: "Eyl 2019 - Haz 2020",
+            title: t('exp4_title'),
+            company: "Arbis Teknoloji",
+            description: t('exp4_desc'),
+            skills: ["Bilgisayar Donanımı"]
+        }
+    ];
+
+    const educations = [
+        {
+            date: "Eyl 2022 - Ağu 2025",
+            degree: t('edu1_degree'),
+            school: "Anadolu Üniversitesi"
+        },
+        {
+            date: "Eyl 2020 - Kas 2022",
+            degree: t('edu2_degree'),
+            school: "Bilecik Şeyh Edebali Üniversitesi",
+            details: "Not: 3.39 / 4"
+        },
+        {
+            date: "2016 - 2020",
+            degree: t('edu3_degree'),
+            school: "Demirtaşpaşa Mesleki ve Teknik Anadolu Lisesi",
+            details: "Diploma Puanı: 76.57"
+        }
+    ];
+
     return (
-        <div className="bg-background text-primary min-h-screen py-24 sm:py-32 transition-colors duration-300">
-            {/* --- BÖLÜM 1: GİRİŞ --- */}
-            <section id="about-intro" className="container mx-auto px-4 pb-16 text-center">
+        <div 
+            className="min-h-screen pt-32 pb-24 transition-colors duration-300"
+            style={{ backgroundColor: 'rgb(var(--color-background))', color: 'rgb(var(--color-text-primary))' }}
+        >
+            <section id="about-intro" className="container px-4 pb-16 mx-auto text-center">
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-                    <h1 className="text-5xl md:text-6xl font-bold tracking-tighter mb-6 text-emerald-500">Hakkımda</h1>
-                    <div className="max-w-4xl mx-auto text-lg text-slate-700 dark:text-slate-300 space-y-6 leading-relaxed">
-                        <p>Türkiye'nin Bursa şehrinde yaşayan, tutkulu ve kullanıcı odaklı bir Frontend Geliştiriciyim. JavaScript, SCSS, Bootstrap ve jQuery gibi temel teknolojilerde güçlü bir altyapıya sahibim. Şu anda React, Tailwind CSS ve Material UI gibi modern kütüphane ve çerçevelerle deneyimimi ileriye taşıyorum.</p>
-                        <p>Sürekli öğrenme ve kendimi geliştirme prensibiyle, Next.js ile sunucu taraflı işleme (SSR/SSG) konusundaki uzmanlığımı derinleştiriyor ve TypeScript ile daha güvenli, ölçeklenebilir projeler geliştiriyorum. Bunun yanında masaüstü geliştirme (Delphi), temel arka uç geliştirme (ASP.NET) ve veritabanı yönetimi (MariaDB) konularında da deneyim sahibiyim. Hedefim, sadece arayüz geliştiren bir geliştirici olarak kalmayıp; ürünün tamamına hakim, uçtan uca çözümler üreten bir Fullstack Yazılım Geliştiricisi olmaktır.</p>
-                        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
-                            <a href="https://github.com/EnderKaran" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto group flex items-center justify-center gap-2 px-6 py-3 bg-slate-800 text-white font-bold rounded-full hover:bg-slate-900 transition-all duration-300"><FaGithub /> GitHub</a>
-                            <a href="https://codepen.io/EnderKrn1" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto group flex items-center justify-center gap-2 px-6 py-3 bg-slate-200 text-slate-800 font-bold rounded-full hover:bg-slate-300 transition-all duration-300"><FaCodepen /> CodePen</a>
+                    <h1 
+                        className="mb-6 text-5xl font-bold tracking-tighter md:text-6xl"
+                        style={{ color: 'rgb(var(--color-accent))' }}
+                    >
+                        {t('about_page_title')}
+                    </h1>
+                    <div 
+                        className="max-w-4xl mx-auto space-y-6 text-lg leading-relaxed"
+                        style={{ color: 'rgb(var(--color-text-secondary))' }}
+                    >
+                        <p>{t('about_intro_p1')}</p>
+                        <p>{t('about_intro_p2')}</p>
+                        <div className="flex flex-col items-center justify-center gap-4 pt-4 sm:flex-row">
+                            <a 
+                                href="https://github.com/EnderKaran" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="flex items-center justify-center w-full gap-2 px-6 py-3 font-bold text-white transition-all duration-300 rounded-full sm:w-auto group"
+                                style={{ backgroundColor: '#1f2937' }}
+                                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#111827'}
+                                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#1f2937'}
+                            >
+                                <FaGithub /> {t('about_github_button')}
+                            </a>
+                            <a 
+                                href="https://codepen.io/EnderKrn1" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="flex items-center justify-center w-full gap-2 px-6 py-3 font-bold transition-all duration-300 rounded-full sm:w-auto group"
+                                style={{ 
+                                    backgroundColor: 'rgb(var(--color-card-background))',
+                                    color: 'rgb(var(--color-text-primary))',
+                                    border: '2px solid rgb(var(--color-card-border))'
+                                }}
+                            >
+                                <FaCodepen /> {t('about_codepen_button')}
+                            </a>
                         </div>
                     </div>
                 </motion.div>
             </section>
 
-            {/* --- BÖLÜM 2: İŞ DENEYİMİ ZAMAN TÜNELİ --- */}
-            <section id="experience" className="container mx-auto px-4 py-16">
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-emerald-500">İş Deneyimi</h2>
-                    <p className="text-lg text-slate-600 dark:text-slate-400 mt-4">Kariyer yolculuğumda edindiğim tecrübeler.</p>
+            <section id="experience" className="container px-4 py-16 mx-auto">
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }} 
+                    whileInView={{ opacity: 1, y: 0 }} 
+                    transition={{ duration: 0.8 }} 
+                    viewport={{ once: true }} 
+                    className="mb-16 text-center"
+                >
+                    <h2 
+                        className="text-4xl font-bold tracking-tighter md:text-5xl"
+                        style={{ color: 'rgb(var(--color-accent))' }}
+                    >
+                        {t('experience_title')}
+                    </h2>
+                    <p 
+                        className="mt-4 text-lg"
+                        style={{ color: 'rgb(var(--color-text-secondary))' }}
+                    >
+                        {t('experience_subtitle')}
+                    </p>
                 </motion.div>
-                <div className="relative mx-auto max-w-5xl">
-                    <div className="absolute top-0 h-full w-1 bg-slate-200 dark:bg-slate-700 left-6 md:left-1/2 -translate-x-1/2 rounded-full"></div>
+                <div className="relative max-w-5xl mx-auto">
+                    <div 
+                        className="absolute top-0 w-1 h-full -translate-x-1/2 rounded-full left-6 md:left-1/2"
+                        style={{ backgroundColor: 'rgb(var(--color-card-border))' }}
+                    ></div>
                     {experiences.map((exp, index) => (
                          <TimelineItem key={index} icon={<FaBriefcase />} {...exp} isLeft={index % 2 !== 0} />
                     ))}
                 </div>
             </section>
             
-            {/* --- BÖLÜM 3: EĞİTİM ZAMAN TÜNELİ --- */}
-            <section id="education" className="py-16 bg-slate-50 dark:bg-slate-900/50 transition-colors duration-300">
-                <div className="container mx-auto px-4">
-                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="text-center mb-16">
-                        <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-emerald-500">Eğitim Hayatım</h2>
-                        <p className="text-lg text-slate-600 dark:text-slate-400 mt-4">Akademik geçmişim ve aldığım eğitimler.</p>
+            <section 
+                id="education" 
+                className="py-16 transition-colors duration-300"
+                style={{ backgroundColor: 'rgba(var(--color-text-secondary), 0.05)' }}
+            >
+                <div className="container px-4 mx-auto">
+                    <motion.div 
+                        initial={{ opacity: 0, y: 20 }} 
+                        whileInView={{ opacity: 1, y: 0 }} 
+                        transition={{ duration: 0.8 }} 
+                        viewport={{ once: true }} 
+                        className="mb-16 text-center"
+                    >
+                        <h2 
+                            className="text-4xl font-bold tracking-tighter md:text-5xl"
+                            style={{ color: 'rgb(var(--color-accent))' }}
+                        >
+                            {t('education_title')}
+                        </h2>
+                        <p 
+                            className="mt-4 text-lg"
+                            style={{ color: 'rgb(var(--color-text-secondary))' }}
+                        >
+                            {t('education_subtitle')}
+                        </p>
                     </motion.div>
-                    <div className="relative mx-auto max-w-5xl">
-                        <div className="absolute top-0 h-full w-1 bg-slate-200 dark:bg-slate-700 left-6 md:left-1/2 -translate-x-1/2 rounded-full"></div>
+                    <div className="relative max-w-5xl mx-auto">
+                        <div 
+                            className="absolute top-0 w-1 h-full -translate-x-1/2 rounded-full left-6 md:left-1/2"
+                            style={{ backgroundColor: 'rgb(var(--color-card-border))' }}
+                        ></div>
                          {educations.map((edu, index) => (
-                            <TimelineItem key={index} icon={<FaGraduationCap />} date={edu.date} title={edu.degree} company={edu.school} description={edu.details} isLeft={index % 2 !== 0} />
-                        ))}
+                             <TimelineItem 
+                                key={index} 
+                                icon={<FaGraduationCap />} 
+                                date={edu.date} 
+                                title={edu.degree} 
+                                company={edu.school} 
+                                description={edu.details} 
+                                isLeft={index % 2 !== 0} 
+                            />
+                         ))}
                     </div>
                 </div>
             </section>
             
-            {/* --- BÖLÜM 4: ONUR VE ÖDÜLLER --- */}
-            <section id="awards" className="container mx-auto px-4 py-16 text-center">
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="max-w-2xl mx-auto">
-                     <h2 className="text-4xl font-bold tracking-tighter mb-8 text-emerald-500">Onur ve Ödüller</h2>
-                     <div className="inline-flex items-center gap-4 p-6 bg-white dark:bg-slate-800 rounded-lg shadow-md transition-colors duration-300">
-                        <FaAward className="text-4xl text-emerald-500" />
+            <section id="awards" className="container px-4 py-16 mx-auto text-center">
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }} 
+                    whileInView={{ opacity: 1, y: 0 }} 
+                    transition={{ duration: 0.8 }} 
+                    viewport={{ once: true }} 
+                    className="max-w-2xl mx-auto"
+                >
+                    <h2 
+                        className="mb-8 text-4xl font-bold tracking-tighter"
+                        style={{ color: 'rgb(var(--color-accent))' }}
+                    >
+                        {t('awards_title')}
+                    </h2>
+                    <div 
+                        className="inline-flex items-center gap-4 p-6 transition-colors duration-300 border rounded-lg shadow-md"
+                        style={{ 
+                            backgroundColor: 'rgb(var(--color-card-background))',
+                            borderColor: 'rgb(var(--color-card-border))'
+                        }}
+                    >
+                        <FaAward 
+                            className="text-4xl"
+                            style={{ color: 'rgb(var(--color-accent))' }}
+                        />
                         <div>
-                            <h3 className="font-bold text-xl text-slate-900 dark:text-white">Onur Belgesi</h3>
-                            <p className="text-slate-600 dark:text-slate-400">Bilecik Şeyh Edebali Üniversitesi - Haz 2022</p>
+                            <h3 
+                                className="text-xl font-bold"
+                                style={{ color: 'rgb(var(--color-text-primary))' }}
+                            >
+                                {t('award1_title')}
+                            </h3>
+                            <p 
+                                style={{ color: 'rgb(var(--color-text-secondary))' }}
+                            >
+                                Bilecik Şeyh Edebali Üniversitesi - Haz 2022
+                            </p>
                         </div>
-                     </div>
+                    </div>
                 </motion.div>
             </section>
         </div>

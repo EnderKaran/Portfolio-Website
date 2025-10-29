@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next'; // 1. Hook'u import et
 import { motion } from 'framer-motion';
 import { FaGithub, FaLink, FaStar, FaSearch } from 'react-icons/fa';
 
 const GITHUB_USERNAME = 'EnderKaran';
 
 const ProjectsPage = () => {
+    const { t } = useTranslation(); // 2. t fonksiyonunu al
     const [repos, setRepos] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -46,36 +48,36 @@ const ProjectsPage = () => {
 
     if (loading) {
         return (
-            <div className="min-h-screen flex justify-center items-center" style={{ backgroundColor: 'rgb(var(--color-background))', color: 'rgb(var(--color-text-primary))' }}>
-                Yükleniyor...
+            <div className="flex items-center justify-center min-h-screen" style={{ backgroundColor: 'rgb(var(--color-background))', color: 'rgb(var(--color-text-primary))' }}>
+                {t('projects_loading')}
             </div>
         );
     }
     if (error) {
         return (
-            <div className="min-h-screen flex justify-center items-center" style={{ backgroundColor: 'rgb(var(--color-background))', color: 'rgb(var(--color-text-primary))' }}>
-                Hata: {error}
+            <div className="flex items-center justify-center min-h-screen" style={{ backgroundColor: 'rgb(var(--color-background))', color: 'rgb(var(--color-text-primary))' }}>
+                {t('projects_error')} {error}
             </div>
         );
     }
 
     return (
-        <div className="min-h-screen py-24 sm:py-32 transition-colors duration-300" style={{ backgroundColor: 'rgb(var(--color-background))', color: 'rgb(var(--color-text-primary))' }}>
-            <div className="container mx-auto px-4">
+        <div className="min-h-screen py-24 transition-colors duration-300 sm:py-32" style={{ backgroundColor: 'rgb(var(--color-background))', color: 'rgb(var(--color-text-primary))' }}>
+            <div className="container px-4 mx-auto">
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-                    <h1 className="text-5xl md:text-6xl font-bold tracking-tighter text-center mb-4" style={{ color: 'rgb(var(--color-text-primary))' }}>
-                        Projelerim
+                    <h1 className="mb-4 text-5xl font-bold tracking-tighter text-center md:text-6xl" style={{ color: 'rgb(var(--color-accent))' }}>
+                        {t('projects_title')}
                     </h1>
-                    <p className="text-lg text-center mb-12 max-w-2xl mx-auto" style={{ color: 'rgb(var(--color-text-secondary))' }}>
-                        GitHub profilimdeki herkese açık projelerim. Yeni şeyler keşfetmek için göz atın.
+                    <p className="max-w-2xl mx-auto mb-12 text-lg text-center" style={{ color: 'rgb(var(--color-text-secondary))' }}>
+                        {t('projects_subtitle')}
                     </p>
-                    <div className="max-w-md mx-auto relative mb-16">
+                    <div className="relative max-w-md mx-auto mb-16">
                         <input
                             type="text"
-                            placeholder="Proje Ara..."
+                            placeholder={t('projects_search')}
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full pl-10 pr-4 py-3 border-2 rounded-full focus:outline-none focus:ring-2 transition-all duration-300"
+                            className="w-full py-3 pl-10 pr-4 transition-all duration-300 border-2 rounded-full focus:outline-none focus:ring-2"
                             style={{ 
                                 backgroundColor: 'rgb(var(--color-card-background))', 
                                 borderColor: 'rgb(var(--color-card-border))',
@@ -83,7 +85,7 @@ const ProjectsPage = () => {
                                 '--tw-ring-color': 'rgb(var(--color-accent))'
                             }}
                         />
-                        <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: 'rgb(var(--color-text-secondary))' }} />
+                        <FaSearch className="absolute -translate-y-1/2 left-4 top-1/2" style={{ color: 'rgb(var(--color-text-secondary))' }} />
                     </div>
                 </motion.div>
 
@@ -91,30 +93,30 @@ const ProjectsPage = () => {
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
                 >
                     {filteredRepos.map(repo => (
                         <motion.div
                             key={repo.id}
                             variants={cardVariants}
-                            className="backdrop-blur-sm border rounded-2xl shadow-lg p-6 flex flex-col justify-between hover:-translate-y-2 transition-transform duration-300"
+                            className="flex flex-col justify-between p-6 transition-transform duration-300 border shadow-lg backdrop-blur-sm rounded-2xl hover:-translate-y-2"
                             style={{ 
                                 backgroundColor: 'rgb(var(--color-card-background))', 
                                 borderColor: 'rgb(var(--color-card-border))' 
                             }}
                         >
                             <div>
-                                <h3 className="text-xl font-bold mb-2" style={{ color: 'rgb(var(--color-accent))' }}>
+                                <h3 className="mb-2 text-xl font-bold" style={{ color: 'rgb(var(--color-accent))' }}>
                                     {repo.name}
                                 </h3>
-                                <p className="text-sm mb-4 h-20 overflow-hidden" style={{ color: 'rgb(var(--color-text-secondary))' }}>
-                                    {repo.description || 'Açıklama bulunmuyor.'}
+                                <p className="h-20 mb-4 overflow-hidden text-sm" style={{ color: 'rgb(var(--color-text-secondary))' }}>
+                                    {repo.description || t('projects_no_desc')}
                                 </p>
                                 <div className="flex flex-wrap items-center gap-2 mb-4">
                                     {repo.topics && repo.topics.map(topic => (
                                         <span 
                                             key={topic} 
-                                            className="text-xs font-semibold px-2 py-1 rounded-full capitalize"
+                                            className="px-2 py-1 text-xs font-semibold capitalize rounded-full"
                                             style={{ 
                                                 backgroundColor: 'rgba(var(--color-accent), 0.15)', 
                                                 color: 'rgb(var(--color-accent))' 
@@ -125,7 +127,7 @@ const ProjectsPage = () => {
                                     ))}
                                     {(!repo.topics || repo.topics.length === 0) && repo.language && (
                                         <span 
-                                            className="text-xs font-semibold px-2 py-1 rounded-full"
+                                            className="px-2 py-1 text-xs font-semibold rounded-full"
                                             style={{ 
                                                 backgroundColor: 'rgba(var(--color-accent), 0.15)', 
                                                 color: 'rgb(var(--color-accent))' 
@@ -135,7 +137,7 @@ const ProjectsPage = () => {
                                         </span>
                                     )}
                                     <span 
-                                        className="flex items-center gap-1 text-xs font-semibold px-2 py-1 rounded-full"
+                                        className="flex items-center gap-1 px-2 py-1 text-xs font-semibold rounded-full"
                                         style={{ 
                                             backgroundColor: 'rgba(var(--color-text-secondary), 0.15)', 
                                             color: 'rgb(var(--color-text-secondary))' 
@@ -145,7 +147,7 @@ const ProjectsPage = () => {
                                     </span>
                                 </div>
                             </div>
-                            <div className="flex items-center gap-4 mt-auto pt-4 border-t" style={{ borderColor: 'rgb(var(--color-card-border))' }}>
+                            <div className="flex items-center gap-4 pt-4 mt-auto border-t" style={{ borderColor: 'rgb(var(--color-card-border))' }}>
                                 <a 
                                     href={repo.html_url} 
                                     target="_blank" 
@@ -155,7 +157,7 @@ const ProjectsPage = () => {
                                     onMouseEnter={(e) => e.target.style.color = 'rgb(var(--color-accent))'}
                                     onMouseLeave={(e) => e.target.style.color = 'rgb(var(--color-text-primary))'}
                                 >
-                                    <FaGithub /> Kodu Görüntüle
+                                    <FaGithub /> {t('projects_view_code')}
                                 </a>
                                 {repo.homepage && (
                                     <a 
@@ -167,7 +169,7 @@ const ProjectsPage = () => {
                                         onMouseEnter={(e) => e.target.style.color = 'rgb(var(--color-accent))'}
                                         onMouseLeave={(e) => e.target.style.color = 'rgb(var(--color-text-primary))'}
                                     >
-                                        <FaLink /> Canlı Demo
+                                        <FaLink /> {t('projects_live_demo')}
                                     </a>
                                 )}
                             </div>
@@ -175,8 +177,8 @@ const ProjectsPage = () => {
                     ))}
                 </motion.div>
                 {filteredRepos.length === 0 && (
-                    <p className="text-center mt-16" style={{ color: 'rgb(var(--color-text-secondary))' }}>
-                        Arama kriterlerinize uygun proje bulunamadı.
+                    <p className="mt-16 text-center" style={{ color: 'rgb(var(--color-text-secondary))' }}>
+                        {t('projects_no_results')}
                     </p>
                 )}
             </div>

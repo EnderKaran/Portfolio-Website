@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next'; // 1. Hook'u import et
 import { motion } from "framer-motion";
 import { SiFramer, SiBootstrap, SiReact, SiNodedotjs, SiGit } from "react-icons/si";
 
@@ -10,8 +11,9 @@ const stackItems = [
     { id: 5, name: "Git", icon: <SiGit size={80} /> },
 ];
 
-// Ana Stack bileşeni
 export const Stack = () => {
+    const { t } = useTranslation(); // 2. t fonksiyonunu al
+
     const variants = {
         hidden: (index) => ({
             opacity: 0,
@@ -29,14 +31,14 @@ export const Stack = () => {
     return (
         <section
             id="stack"
-            className="bg-background text-primary py-24 md:py-48 transition-colors duration-300"
+            className="py-24 transition-colors duration-300 bg-background text-primary md:py-48"
         >
-            <div className="container mx-auto px-4">
-                <h2 className="text-5xl md:text-7xl text-center font-bold mb-20">
-                    Kullandığım <span className="text-accent">Teknolojiler</span>
+            <div className="container px-4 mx-auto">
+                <h2 className="mb-20 text-5xl font-bold text-center md:text-7xl">
+                    {t('stack_title_part1')} <span className="text-accent">{t('stack_title_part2')}</span>
                 </h2>
 
-                <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+                <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
                     {stackItems.map((item, index) => (
                         <motion.div
                             key={item.id}
@@ -45,14 +47,12 @@ export const Stack = () => {
                             whileInView="visible"
                             viewport={{ once: true }}
                             custom={index}
-                           
-                            className="aspect-square w-40 rounded-2xl bg-card-background border border-card-border p-4 shadow-lg backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-accent/20 flex flex-col items-center justify-center text-center md:w-48"
+                            className="flex flex-col items-center justify-center w-40 p-4 text-center transition-all duration-300 ease-in-out border shadow-lg aspect-square rounded-2xl bg-card-background border-card-border backdrop-blur-sm hover:scale-105 hover:shadow-accent/20 md:w-48"
                         >
-                            
                             <div className="mb-4 text-accent">
                                 {item.icon}
                             </div>
-                            <p className="text-secondary text-lg font-semibold">
+                            <p className="text-lg font-semibold text-secondary">
                                 {item.name}
                             </p>
                         </motion.div>
