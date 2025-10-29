@@ -4,18 +4,21 @@ import profileimg from "../assets/images/logo-profile.png";
 import { Link as ScrollLink } from "react-scroll";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 import { FiArrowRight } from "react-icons/fi";
+import { useTranslation } from 'react-i18next';
 
 const navlinks = [
     { title: "Beni Tanıyın", path: "about", type: "scroll" },
     { title: "Çalışmalarıma Göz At", path: "portfolio", type: "scroll" },
-    { title: "Kullandığım Teknolojiler", path: "stack", type: "scroll" },
+    { title: "Kullandığım Teknolojiler", path: "/technologies", type: "route" },
     { title: "İletişime Geçin", path: "contact", type: "scroll" },
 ];
 
 export const Hero = () => {
     const location = useLocation();
     const onHomePage = location.pathname === '/';
-    const roles = ["Ön Yüz Geliştiricisiyim.", "Yazılım Geliştiricisiyim."];
+    const { t } = useTranslation();
+    
+    const roles = [t('hero_role_frontend'), t('hero_role_software')];
     const [roleIndex, setRoleIndex] = useState(0);
 
     useEffect(() => {
@@ -24,16 +27,17 @@ export const Hero = () => {
         }, 4000);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [roles]);
 
+    
     const renderLink = (link) => {
-        const linkClasses = "group flex items-center gap-3 text-sm text-secondary hover:text-primary transition-colors duration-300 cursor-pointer";
+        const linkClasses = "group flex items-center gap-3 text-sm text-slate-400 hover:text-slate-200 transition-colors duration-300 cursor-pointer";
         const iconClasses = "transition-all duration-300 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0";
 
         if (link.type === 'scroll' && onHomePage) {
             return (
                 <ScrollLink to={link.path} spy={true} smooth={true} offset={-100} duration={500} className={linkClasses}>
-                    {link.title}
+                    {t(link.title)} 
                     <FiArrowRight className={iconClasses} />
                 </ScrollLink>
             );
@@ -42,21 +46,41 @@ export const Hero = () => {
         const toPath = link.type === 'scroll' ? `/#${link.path}` : link.path;
         return (
             <RouterLink to={toPath} className={linkClasses}>
-                {link.title}
+                {t(link.title)}
                 <FiArrowRight className={iconClasses} />
             </RouterLink>
         );
     };
 
     return (
-        <div className="relative min-h-screen overflow-hidden transition-colors duration-300 bg-background text-primary">
+        <div className="relative min-h-screen overflow-hidden transition-colors duration-500 bg-white dark:bg-black text-slate-800 dark:text-slate-200">
             
-            <div className="absolute inset-0 z-0 opacity-0 dark:opacity-100 transition-opacity duration-500 bg-[linear-gradient(to_bottom,#000,#071E18_35%,#208A65_67%,#35FB8E_85%)]" />
-            <motion.div
-                initial={{ y: 200, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
-                className="absolute w-[150vmax] h-[150vmax] md:w-[2400px] md:h-[1000px] rounded-[50%] left-1/2 -translate-x-1/2 top-[450px] z-10 bg-[radial-gradient(closest-side,white_75%,#a7f3d0)] opacity-75 dark:bg-black dark:bg-[radial-gradient(closest-side,#000_85%,#249974)] dark:opacity-100"
+            {/* Light mode backgrounds with animations */}
+            <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+                className="absolute inset-0 z-0 transition-opacity duration-500 opacity-100 dark:opacity-0 bg-gradient-to-b from-white to-emerald-50" 
+            />
+            <motion.div 
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+                className="absolute w-[200vmax] h-[200vmax] md:w-[2400px] md:h-[1000px] rounded-[50%] left-1/2 -translate-x-1/2 top-[450px] z-10 bg-white bg-[radial-gradient(closest-side,white_85%,#d1fae5)] opacity-100 dark:opacity-0 transition-opacity duration-500" 
+            />
+
+            {/* Dark mode backgrounds with animations */}
+            <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+                className="absolute inset-0 z-0 opacity-0 dark:opacity-100 transition-opacity duration-500 bg-[linear-gradient(to_bottom,#000,#071E18_35%,#208A65_67%,#35FB8E_85%)]" 
+            />
+            <motion.div 
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+                className="absolute w-[150vmax] h-[150vmax] md:w-[2400px] md:h-[1000px] rounded-[50%] left-1/2 -translate-x-1/2 top-[450px] z-10 bg-black bg-[radial-gradient(closest-side,#000_85%,#249974)] opacity-0 dark:opacity-100 transition-opacity duration-500" 
             />
 
             <div className="container relative z-20 px-4 pt-12 pb-24 mx-auto">
@@ -67,7 +91,7 @@ export const Hero = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="relative mt-24 mb-6"
                     >
-                        <div className="absolute inset-0 rounded-full bg-gradient-to-b from-accent/20 to-transparent blur-3xl"></div>
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-b from-emerald-500/20 to-transparent blur-3xl"></div>
                         <img src={profileimg} alt="Ender Karan" className="w-[250px] relative z-10" />
                     </motion.div>
 
@@ -77,35 +101,31 @@ export const Hero = () => {
                         transition={{ duration: 0.8, delay: 0.4 }}
                         className="max-w-2xl"
                     >
-                        <h1 className="mb-4 text-6xl font-bold tracking-tighter md:text-7xl">
-                            Merhaba, Ben <br /> Ender <span className="text-accent">Karan</span>
+                        <h1 className="mb-4 text-6xl font-bold tracking-tighter md:text-7xl text-slate-800 dark:text-white">
+                            {t('hero_greeting')} <br /> Ender <span className="text-emerald-600 dark:text-emerald-400">Karan</span>
                         </h1>
-                        <div className="max-w-lg mx-auto mb-6">
-                            <p className="text-xl leading-relaxed text-center text-secondary">
-                                Ben, kullanıcılara deneyim sağlayan web siteleri oluşturmaya odaklanan bir
-                            </p>
-                            <div className="flex items-center justify-center h-12 mt-2">
-                                <AnimatePresence mode="wait">
-                                    <motion.span
-                                        key={roleIndex}
-                                        initial={{ opacity: 0, y: 10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, y: -10 }}
-                                        transition={{ duration: 0.3 }}
-                                        className="text-2xl font-bold text-accent"
-                                    >
-                                        {roles[roleIndex]}
-                                    </motion.span>
-                                </AnimatePresence>
-                            </div>
-                        </div>
+                        <p className="flex items-center justify-center h-16 max-w-lg mx-auto mb-6 text-xl leading-relaxed text-center text-slate-600 dark:text-slate-400">
+                            {t('hero_intro')}&nbsp;
+                            <AnimatePresence mode="wait">
+                                <motion.span
+                                    key={roleIndex}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -10 }}
+                                    transition={{ duration: 0.3 }}
+                                    className="ml-2 font-semibold text-emerald-600 dark:text-emerald-400"
+                                >
+                                    {roles[roleIndex]}
+                                </motion.span>
+                            </AnimatePresence>
+                        </p>
                         
                         <div className="flex justify-center gap-4 mb-16">
-                            <motion.a href="https://www.linkedin.com/in/ender-karan-52303b187" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block px-6 py-3 font-medium text-white transition-all duration-300 ease-in-out rounded-full shadow-lg bg-accent hover:bg-accent/80">
-                                Bana Ulaşın
+                            <motion.a href="https://www.linkedin.com/in/ender-karan-52303b187" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block px-6 py-3 font-medium text-white transition-all duration-300 ease-in-out rounded-full shadow-lg bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600">
+                                {t('hero_button_contact')}
                             </motion.a>
-                            <motion.a href="https://github.com/EnderKaran" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block px-6 py-3 font-medium transition-all duration-300 ease-in-out border rounded-full text-primary border-primary/40 hover:bg-primary/10">
-                                Çalışmalarım
+                            <motion.a href="https://github.com/EnderKaran" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block px-6 py-3 font-medium transition-all duration-300 ease-in-out border rounded-full text-slate-800 border-slate-400 hover:bg-slate-100 dark:text-white dark:border-white/40 dark:hover:bg-white/10">
+                                {t('hero_button_work')}
                             </motion.a>
                         </div>
                         
@@ -113,7 +133,7 @@ export const Hero = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.6 }}
-                            className="w-full max-w-2xl p-4 mx-auto border rounded-2xl border-card-border bg-card-background/50 backdrop-blur-md"
+                            className="w-full max-w-2xl p-4 mx-auto border rounded-2xl bg-white/50 border-slate-200 dark:bg-black/30 dark:border-white/10 backdrop-blur-md"
                         >
                             <ul className="flex flex-col items-center justify-around md:flex-row gap-y-4 md:gap-y-0">
                                 {navlinks.map((link, index) => (

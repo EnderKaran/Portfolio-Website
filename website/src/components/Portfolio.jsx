@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from "framer-motion";
 import proj1 from "../assets/images/project-1.png";
 import proj2 from "../assets/images/project-2.png";
@@ -6,28 +7,29 @@ import { FaGithub } from "react-icons/fa";
 import { HiOutlineExternalLink } from "react-icons/hi";
 import { FiChevronDown } from "react-icons/fi";
 
-const projects = [
-    {
-        title: "Coffee-Website",
-        desc: "Bu proje, React, Vite ve Tailwind CSS kullanılarak geliştirilmiş, modern ve tamamen duyarlı (responsive) bir tek sayfalık kahve dükkanı web sitesidir. Proje, hem modern web geliştirme pratiklerini sergilemek hem de React'ın temel ve orta seviye konseptlerini (component yapısı, state yönetimi, hook'lar) uygulamak amacıyla oluşturulmuştur.",
-        devstack: " React-İcons, React, TailwindCss, Vite , Npm",
-        link: "https://enderkaran.github.io/Coffee-Website",
-        git: "https://github.com/EnderKaran/Coffee-Website",
-        src: proj1,
-        type: "frontend",
-    },
-    {
-        title: "SenOlé",
-        desc: "SenOlé markası için geliştirdiğim bu modern web arayüzü, estetik tasarımı ileri düzey işlevséellikle birleştirerek kullanıcı dostu ve akıcı bir deneyim sunuyor. React ekosisteminin güçlü araçlarıyla geliştirilen bu proje, marka kimliği, ürün tanıtımı ve iletişim süreçlerini merkezi bir yapıda yönetiyor.",
-        devstack: " React-İcons, React, React Router DOM, React Bootstrap , React Context API , Npm , Material UI (MUI) , Framer Motion , Swiper.js , React Helmet , Formik & Yup , React Leaflet, Leaflet.js",
-        link: "https://senole.vercel.app",
-        git: "https://github.com/EnderKaran/Senole",
-        src: proj2,
-        type: "frontend",
-    },
-];
-
 export const Portfolio = () => {
+    const { t } = useTranslation();
+    
+    const projects = [
+        {
+            title: t('portfolio_project1_title'),
+            desc: t('portfolio_project1_desc'),
+            devstack: t('portfolio_project1_devstack'),
+            link: "https://enderkaran.github.io/Coffee-Website",
+            git: "https://github.com/EnderKaran/Coffee-Website",
+            src: proj1,
+            type: t('portfolio_project1_type'),
+        },
+        {
+            title: t('portfolio_project2_title'),
+            desc: t('portfolio_project2_desc'),
+            devstack: t('portfolio_project2_devstack'),
+            link: "https://senole.vercel.app",
+            git: "https://github.com/EnderKaran/Senole",
+            src: proj2,
+            type: t('portfolio_project2_type'),
+        },
+    ];
     
     const [expandedIndex, setExpandedIndex] = useState(null);
 
@@ -36,31 +38,29 @@ export const Portfolio = () => {
     };
 
     return (
-        
-        <section id="portfolio" className="bg-background text-primary py-24 md:py-48 transition-colors duration-300">
-            <div className="container mx-auto px-4">
-                <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
-                    Çalışmalarıma <span className="text-accent">Göz At</span>
+        <section id="portfolio" className="py-24 transition-colors duration-300 bg-background text-primary md:py-48">
+            <div className="container px-4 mx-auto">
+                <h2 className="mb-12 text-5xl font-bold text-center md:text-6xl">
+                    {t('portfolio_title_part1')} <span className="text-accent">{t('portfolio_title_part2')}</span>
                 </h2>
 
                 <div className="space-y-8">
                     {projects.map((project, index) => (
                         <motion.div
-                            key={index}
+                            key={project.title}
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.2 }}
-                            
-                            className="bg-card-background border border-card-border rounded-lg overflow-hidden shadow-lg transition-shadow duration-300 hover:shadow-xl"
+                            className="overflow-hidden transition-shadow duration-300 border rounded-lg shadow-lg bg-card-background border-card-border hover:shadow-xl"
                         >
                             <div
-                                className="p-6 flex justify-between items-center cursor-pointer bg-primary/5 hover:bg-primary/10 transition-colors"
+                                className="flex items-center justify-between p-6 transition-colors cursor-pointer bg-primary/5 hover:bg-primary/10"
                                 onClick={() => toggleExpand(index)}
                             >
-                                <h3 className="text-2xl md:text-4xl font-semibold text-primary">{project.title}</h3>
+                                <h3 className="text-2xl font-semibold md:text-4xl text-primary">{project.title}</h3>
                                 <div className="flex items-center space-x-4">
-                                    <span className="text-xl md:text-3xl font-light text-accent">
+                                    <span className="text-xl font-light md:text-3xl text-accent">
                                         0{index + 1}
                                     </span>
                                     <FiChevronDown
@@ -77,29 +77,28 @@ export const Portfolio = () => {
                                         animate={{ height: "auto", opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
                                         transition={{ duration: 0.4, ease: "easeInOut" }}
-                                        
-                                        className="bg-black/5 dark:bg-black/20 border-t border-card-border"
+                                        className="border-t bg-black/5 dark:bg-black/20 border-card-border"
                                     >
-                                        <div className="p-6 flex flex-col md:flex-row gap-8">
+                                        <div className="flex flex-col gap-8 p-6 md:flex-row">
                                             <img
                                                 src={project.src}
                                                 alt={project.title}
-                                                className="w-full md:w-1/2 h-auto md:h-64 object-cover rounded-lg"
+                                                className="object-cover w-full h-auto rounded-lg md:w-1/2 md:h-64"
                                             />
                                             <div className="flex-1">
-                                                <p className="text-secondary mb-4 leading-relaxed">{project.desc}</p>
-                                                <p className="text-accent font-medium mb-2 text-sm">
-                                                    <span className="font-bold text-primary/80">Teknolojiler:</span> {project.devstack}
+                                                <p className="mb-4 leading-relaxed text-secondary">{project.desc}</p>
+                                                <p className="mb-2 text-sm font-medium text-accent">
+                                                    <span className="font-bold text-primary/80">{t('portfolio_label_tech')}</span> {project.devstack}
                                                 </p>
-                                                <p className="text-accent/70 font-medium mb-4 capitalize text-sm">
-                                                    <span className="font-bold text-primary/80">Tür:</span> {project.type}
+                                                <p className="mb-4 text-sm font-medium capitalize text-accent/70">
+                                                    <span className="font-bold text-primary/80">{t('portfolio_label_type')}</span> {project.type}
                                                 </p>
-                                                <div className="flex justify-start items-center space-x-6 text-3xl">
+                                                <div className="flex items-center justify-start space-x-6 text-3xl">
                                                     <a
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                         href={project.link}
-                                                        className="text-accent hover:text-accent/70 transition-colors"
+                                                        className="transition-colors text-accent hover:text-accent/70"
                                                     >
                                                         <HiOutlineExternalLink />
                                                     </a>
@@ -107,7 +106,7 @@ export const Portfolio = () => {
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                         href={project.git}
-                                                        className="text-accent hover:text-accent/70 transition-colors"
+                                                        className="transition-colors text-accent hover:text-accent/70"
                                                     >
                                                         <FaGithub />
                                                     </a>
