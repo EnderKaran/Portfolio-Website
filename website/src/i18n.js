@@ -176,6 +176,9 @@ const resources = {
       "changelog_v1_0_0_desc2": "Hero, Hakkımda, Projeler, Teknolojiler ve Footer gibi ana bölümlerin tasarımı ve kodlaması tamamlandı.",
       "changelog_v1_0_0_desc3": "Tüm bileşenler, mobil cihazlardan geniş ekranlara kadar farklı ekran boyutlarına uyumlu hale getirildi.",
           "changelog_v1_0_0_desc4": "X eksenindeki istenmeyen kaydırma çubuğu sorunu gibi çeşitli CSS ve responsive tasarım hataları giderildi.",
+      "changelog_v1_7_0_desc1": "Kullanıcılar var olmayan bir rotaya eriştiğinde gösterilen, fare takibi ve astronot animasyonu içeren özel bir '404 Sayfa Bulunamadı' sayfası eklendi.",
+      "changelog_v1_7_0_desc2": "Sayfalar arası geçişlerde 'native app' hissi yaratmak için Framer Motion kullanılarak pürüzsüz 'Sayfa Geçiş Animasyonları' (Page Transitions) entegre edildi.",
+      "changelog_v1_7_0_desc3": "'Hakkımda' sayfasındaki iş deneyimi bölümü, Stok Endüstriyel'deki görevlerin detaylı açıklamaları ve güncel teknoloji yetkinlikleri ile zenginleştirildi.",
       // --- Stack (Teknolojiler) Bölümü ---
       "stack_title_part1": "Kullandığım",
       "stack_title_part2": " Teknolojiler",
@@ -348,6 +351,9 @@ const resources = {
       "changelog_v1_0_0_desc2": "The design and coding of the main sections like Hero, About, Projects, Tech, and Footer were completed.",
       "changelog_v1_0_0_desc3": "All components were made responsive to fit various screen sizes, from mobile devices to wide screens.",
           "changelog_v1_0_0_desc4": "Various CSS and responsive design bugs, such as the unwanted horizontal scrollbar on the x-axis, were fixed.",
+      "changelog_v1_7_0_desc1": "Added a custom '404 Page Not Found' page featuring mouse tracking and astronaut animation, displayed when users access a non-existent route.",
+      "changelog_v1_7_0_desc2": "Integrated smooth 'Page Transition Animations' using Framer Motion to create a 'native app' feel when navigating between pages.",
+      "changelog_v1_7_0_desc3": "Enriched the work experience section on the 'About' page with detailed descriptions of tasks and current technical skills at Stok Endüstriyel.",
       // --- Stack (Technologies) Section ---
       "stack_title_part1": "Technologies",
       "stack_title_part2": " I Use",
