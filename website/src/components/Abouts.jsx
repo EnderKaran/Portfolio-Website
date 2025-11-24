@@ -85,10 +85,17 @@ export const Abouts = () => {
 
     const experiences = [
         {
-            date: "Ocak 2023 - Halen",
+            date: "Ocak 2023 - Halen", 
             title: t('exp1_title'),
             company: "Stok Endüstriyel A.Ş.",
-            skills: ["JavaScript", "React", "HTML5", "CSS", "SASS & SCSS", "Ticimax", "CRM", "E-ticaret", "Sorun Çözme", "Bilgi İşlem", "Web Yönetimi"]
+            description: [
+                t('exp1_desc_intro'),    
+                t('exp1_desc_software'), 
+                t('exp1_desc_web'),      
+                t('exp1_desc_it')        
+            ],
+            skills: ["JavaScript", "SQL", "GIMP",
+                "React", "PHP", "SQL", "HTML5", "CSS", "SASS&SCSS", "SEO", "API Entegrasyonu", "Sistem Yönetimi", "Veritabanı Yönetimi", "Ticimax", "Vtiger CRM", "Gimp", "Bilgi İşlem"] 
         },
         {
             date: "Eyl 2022 - Eki 2022",

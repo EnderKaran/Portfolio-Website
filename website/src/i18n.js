@@ -66,7 +66,15 @@ const resources = {
       "edu3_degree": "Lise, Bilişim/Web Programlama",
 
       "awards_title": "Onur ve Ödüller",
-          "award1_title": "Onur Belgesi",
+      "award1_title": "Onur Belgesi",
+          
+      
+        "exp1_title": "Frontend Developer & IT Sorumlusu", 
+        "exp1_desc_intro": "Stok Endüstriyel’de, şirketin dijital altyapısını modernize ederek operasyonel verimliliği artırmaya ve stratejik hedeflere teknolojik çözümlerle katkı sağlamaya odaklanıyorum. Görevlerim; yazılım geliştirme, web/e-ticaret yönetimi ve BT altyapısı olmak üzere üç ana başlıkta toplanıyor.",
+        "exp1_desc_software": "Yazılım Geliştirme: Binlerce satış verisini anlık raporlara dönüştüren React tabanlı bir iş zekası dashboard’u geliştirerek veri odaklı karar alma süreçlerini hızlandırdım. “Senole” markası için modern web arayüzleri tasarladım. CRM tarafında yeni kurulumlar ve PHP/SQL optimizasyonlarıyla sistem kararlılığını artırdım. Ayrıca şirket içi ihtiyaçlar için özel araçlar (Şifre Yönetim Aracı vb.) geliştiriyorum.",
+        "exp1_desc_web": "Web & E-Ticaret Yönetimi: Ticimax platformunun teknik ve operasyonel süreçlerini uçtan uca yönetiyorum. SEO, kargo entegrasyonları ve arayüz tasarımlarını yürütürken; “Markalar” sayfası gibi özel geliştirmeler ve Gimp/Upscayl ile görsel iyileştirmeler yaparak kullanıcı deneyimini üst seviyeye taşıdım.",
+        "exp1_desc_it": "BT Altyapısı: Şirket genelindeki donanım/yazılım ihtiyaçlarına destek sunuyor, sunucu yetkilendirmelerini yönetiyorum. Personel eğitimleri ve düzenli veritabanı yedekleme prosedürleriyle veri güvenliğini ve sistem sürekliliğini sağlıyorum.",
+      
       
           // --- Contact Sayfası ---
       "contact_title": "İletişime Geçin",
@@ -235,8 +243,13 @@ const resources = {
       "edu3_degree": "High School, IT/Web Programming",
 
       "awards_title": "Honors & Awards",
-          "award1_title": "Honor Certificate",
-      
+      "award1_title": "Honor Certificate",
+          
+      "exp1_title": "Frontend Developer & IT Specialist",
+  "exp1_desc_intro": "At Stok Endüstriyel, I focus on modernizing the company's digital infrastructure to enhance operational efficiency and support strategic goals through technological solutions. My responsibilities are concentrated in three main areas: Software Development, Web & E-Commerce Management, and IT Infrastructure.",
+  "exp1_desc_software": "Software Development: Accelerated data-driven decision-making processes by developing a React-based business intelligence dashboard that transforms thousands of sales records into real-time reports. Designed modern web interfaces for the “Senole” brand. Enhanced system stability through new CRM implementations and PHP/SQL optimizations. Additionally, I develop custom internal tools (such as a Password Management Tool) to meet corporate needs.",
+  "exp1_desc_web": "Web & E-Commerce Management: Managing the technical and operational processes of the Ticimax platform end-to-end. I handle SEO, shipping integrations, and interface designs, while elevating the user experience through custom developments like the “Brands” page and visual enhancements using Gimp and Upscayl.",
+  "exp1_desc_it": "IT Infrastructure: Providing support for hardware/software needs across the company and managing server authorizations. I ensure data security and system continuity through staff training and established regular database backup procedures.",      
         // --- Contact Page ---
       "contact_title": "Get in Touch",
       "contact_subtitle": "Have a project in mind? You can reach me by filling out the form below.",
