@@ -76,3 +76,114 @@ html {
   background-color: #6ee7b7;
 }
 
+/* --- 404 SAYFASI ÖZEL EFEKTLERİ --- */
+
+/* Uzay Arka Planı */
+.space-bg {
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+}
+
+/* Yıldız Katmanları */
+.stars-layer-1 {
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: 1744px 122px #FFF, 134px 1321px #FFF, 92px 859px #FFF, 453px 233px #FFF;
+  animation: starFloat 50s linear infinite;
+}
+
+.stars-layer-2 {
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: 122px 1744px #FFF, 1321px 134px #FFF, 859px 92px #FFF, 123px 543px #FFF;
+  animation: starFloat 100s linear infinite;
+}
+
+@keyframes starFloat {
+  from {
+    transform: translateY(0px);
+  }
+
+  to {
+    transform: translateY(-2000px);
+  }
+}
+
+/* Glitch (Bozukluk) Efekti */
+.glitch-text {
+  position: relative;
+  text-shadow: 2px 2px 0px #34d399, -2px -2px 0px #059669;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #090a0f;
+}
+
+.glitch-text::before {
+  left: 2px;
+  text-shadow: -1px 0 #34d399;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitchEffect 5s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+  left: -2px;
+  text-shadow: -1px 0 #059669;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitchEffect 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitchEffect {
+  0% {
+    clip: rect(31px, 9999px, 94px, 0);
+  }
+
+  4% {
+    clip: rect(70px, 9999px, 11px, 0);
+  }
+
+  8% {
+    clip: rect(27px, 9999px, 86px, 0);
+  }
+
+  12% {
+    clip: rect(6px, 9999px, 96px, 0);
+  }
+
+  16% {
+    clip: rect(56px, 9999px, 4px, 0);
+  }
+
+  20% {
+    clip: rect(82px, 9999px, 35px, 0);
+  }
+
+  100% {
+    clip: rect(2px, 9999px, 15px, 0);
+  }
+}
+
+/* Astronot Süzülme */
+.astronaut-float {
+  animation: astronautFloat 6s ease-in-out infinite;
+}
+
+@keyframes astronautFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
