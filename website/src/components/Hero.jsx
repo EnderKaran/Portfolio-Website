@@ -6,13 +6,6 @@ import { Link as RouterLink, useLocation } from "react-router-dom";
 import { FiArrowRight } from "react-icons/fi";
 import { useTranslation } from 'react-i18next';
 
-const navlinks = [
-    { title: "Beni Tanıyın", path: "about", type: "scroll" },
-    { title: "Çalışmalarıma Göz At", path: "portfolio", type: "scroll" },
-    { title: "Kullandığım Teknolojiler", path: "/technologies", type: "route" },
-    { title: "İletişime Geçin", path: "contact", type: "scroll" },
-];
-
 export const Hero = () => {
     const location = useLocation();
     const onHomePage = location.pathname === '/';
@@ -21,15 +14,21 @@ export const Hero = () => {
     const roles = [t('hero_role_frontend'), t('hero_role_software')];
     const [roleIndex, setRoleIndex] = useState(0);
 
+    const navlinks = [
+        { title: t('hero_nav_knowMe'), path: "about", type: "scroll" },
+        { title: t('hero_nav_seeWork'), path: "portfolio", type: "scroll" },
+        { title: t('hero_nav_technologies'), path: "/technologies", type: "route" },
+        { title: t('hero_nav_contact'), path: "contact", type: "scroll" },
+    ];
+
     useEffect(() => {
         const interval = setInterval(() => {
             setRoleIndex(prevIndex => (prevIndex + 1) % roles.length);
-        }, 4000);
+        }, 5000); 
 
         return () => clearInterval(interval);
     }, [roles]);
 
-    
     const renderLink = (link) => {
         const linkClasses = "group flex items-center gap-3 text-sm text-slate-400 hover:text-slate-200 transition-colors duration-300 cursor-pointer";
         const iconClasses = "transition-all duration-300 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0";
@@ -55,33 +54,11 @@ export const Hero = () => {
     return (
         <div className="relative min-h-screen overflow-hidden transition-colors duration-500 bg-white dark:bg-black text-slate-800 dark:text-slate-200">
             
-            {/* Light mode backgrounds with animations */}
-            <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1 }}
-                className="absolute inset-0 z-0 transition-opacity duration-500 opacity-100 dark:opacity-0 bg-gradient-to-b from-white to-emerald-50" 
-            />
-            <motion.div 
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
-                className="absolute w-[200vmax] h-[200vmax] md:w-[2400px] md:h-[1000px] rounded-[50%] left-1/2 -translate-x-1/2 top-[450px] z-10 bg-white bg-[radial-gradient(closest-side,white_85%,#d1fae5)] opacity-100 dark:opacity-0 transition-opacity duration-500" 
-            />
-
-            {/* Dark mode backgrounds with animations */}
-            <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1 }}
-                className="absolute inset-0 z-0 opacity-0 dark:opacity-100 transition-opacity duration-500 bg-[linear-gradient(to_bottom,#000,#071E18_35%,#208A65_67%,#35FB8E_85%)]" 
-            />
-            <motion.div 
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
-                className="absolute w-[150vmax] h-[150vmax] md:w-[2400px] md:h-[1000px] rounded-[50%] left-1/2 -translate-x-1/2 top-[450px] z-10 bg-black bg-[radial-gradient(closest-side,#000_85%,#249974)] opacity-0 dark:opacity-100 transition-opacity duration-500" 
-            />
+            {/* Arka Plan Katmanları */}
+            <div className="absolute inset-0 z-0 transition-opacity duration-500 opacity-100 dark:opacity-0 bg-gradient-to-b from-white to-emerald-50" />
+            <div className="absolute w-[200vmax] h-[200vmax] md:w-[2400px] md:h-[1000px] rounded-[50%] left-1/2 -translate-x-1/2 top-[450px] z-10 bg-white bg-[radial-gradient(closest-side,white_85%,#d1fae5)] opacity-100 dark:opacity-0 transition-opacity duration-500" />
+            <div className="absolute inset-0 z-0 opacity-0 dark:opacity-100 transition-opacity duration-500 bg-[linear-gradient(to_bottom,#000,#071E18_35%,#208A65_67%,#35FB8E_85%)]" />
+            <div className="absolute w-[150vmax] h-[150vmax] md:w-[2400px] md:h-[1000px] rounded-[50%] left-1/2 -translate-x-1/2 top-[450px] z-10 bg-black bg-[radial-gradient(closest-side,#000_85%,#249974)] opacity-0 dark:opacity-100 transition-opacity duration-500" />
 
             <div className="container relative z-20 px-4 pt-12 pb-24 mx-auto">
                 <div className="flex flex-col items-center justify-center h-full text-center">
@@ -104,16 +81,18 @@ export const Hero = () => {
                         <h1 className="mb-4 text-6xl font-bold tracking-tighter md:text-7xl text-slate-800 dark:text-white">
                             {t('hero_greeting')} <br /> Ender <span className="text-emerald-600 dark:text-emerald-400">Karan</span>
                         </h1>
+                        
                         <p className="flex items-center justify-center h-16 max-w-lg mx-auto mb-6 text-xl leading-relaxed text-center text-slate-600 dark:text-slate-400">
                             {t('hero_intro')}&nbsp;
                             <AnimatePresence mode="wait">
                                 <motion.span
                                     key={roleIndex}
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -10 }}
-                                    transition={{ duration: 0.3 }}
-                                    className="ml-2 font-semibold text-emerald-600 dark:text-emerald-400"
+                                    
+                                    initial={{ opacity: 0, y: 20, filter: "blur(10px)" }} // Aşağıdan ve bulanık başla
+                                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}   // Ortaya gel ve netleş
+                                    exit={{ opacity: 0, y: -20, filter: "blur(10px)" }}   // Yukarı git ve bulanıklaş
+                                    transition={{ duration: 0.8, ease: "easeInOut" }}     // 0.8 saniyelik yumuşak geçiş
+                                    className="inline-block ml-2 font-semibold text-emerald-600 dark:text-emerald-400"
                                 >
                                     {roles[roleIndex]}
                                 </motion.span>
