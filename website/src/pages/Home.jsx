@@ -4,6 +4,7 @@ import { About } from '../components/About';
 import { Portfolio } from '../components/Portfolio';
 import { Stack } from '../components/Stack';
 
+
 const HomePage = () => {
   return (
     <>
