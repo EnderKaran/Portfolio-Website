@@ -1,10 +1,11 @@
-// src/i18n.js
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 const resources = {
   tr: {
     translation: {
+      // ... Diğer çeviriler aynı kalacak ...
+      
       // Hero Bölümü
       "hero_greeting": "Merhaba, Ben",
       "hero_intro": "Ben, kullanıcılara deneyim sağlayan web siteleri oluşturmaya odaklanan bir",
@@ -17,7 +18,7 @@ const resources = {
       "hero_nav_knowMe": "Beni Tanıyın",
       "hero_nav_seeWork": "Çalışmalarıma Göz At",
       "hero_nav_technologies": "Kullandığım Teknolojiler",
-          "hero_nav_contact": "İletişime Geçin",
+      "hero_nav_contact": "İletişime Geçin",
       "nav_home": "Anasayfa",
       "nav_about": "Hakkımda",
       "nav_projects": "Projeler",
@@ -25,7 +26,7 @@ const resources = {
       "nav_contact": "İletişim",
       "nav_changelog": "Yenilikler",
       
-        // --- About Bölümü ---
+      // --- About Bölümü ---
       "about_title_part1": "Beni",
       "about_title_part2": " Tanıyın",
       "about_card1_title": "01. Arkaplan",
@@ -42,7 +43,8 @@ const resources = {
       "about_card4_skill2": "Backend (ASP.NET, C#)",
       "about_card4_skill3": "UI/UX Design (Figma)",
       "about_card5_title": "05. Hedefler",
-          "about_card5_p1": "Hedefim, React, Next.js ve TypeScript ekosisteminde uzmanlaşarak, sadece kod yazan değil, aynı zamanda ürün geliştiren bütünsel bir yazılım geliştirici olmaktır. Zorlu projelerle teknik sınırlarımı zorlarken, öğrendiklerimi teknoloji topluluğuyla paylaşarak kendimi ve çevremi sürekli geliştirmeyi amaçlıyorum.",
+      "about_card5_p1": "Hedefim, React, Next.js ve TypeScript ekosisteminde uzmanlaşarak, sadece kod yazan değil, aynı zamanda ürün geliştiren bütünsel bir yazılım geliştirici olmaktır. Zorlu projelerle teknik sınırlarımı zorlarken, öğrendiklerimi teknoloji topluluğuyla paylaşarak kendimi ve çevremi sürekli geliştirmeyi amaçlıyorum.",
+      
       // --- Abouts Sayfası ---
       "about_page_title": "Hakkımda",
       "about_intro_p1": "Türkiye'nin Bursa şehrinde yaşayan, tutkulu ve kullanıcı odaklı bir Frontend Geliştiriciyim. JavaScript, SCSS, Bootstrap ve jQuery gibi temel teknolojilerde güçlü bir altyapıya sahibim. Şu anda React, Tailwind CSS ve Material UI gibi modern kütüphane ve çerçevelerle deneyimimi ileriye taşıyorum.",
@@ -52,7 +54,11 @@ const resources = {
       
       "experience_title": "İş Deneyimi",
       "experience_subtitle": "Kariyer yolculuğumda edindiğim tecrübeler.",
-      "exp1_title": "Yazılım Geliştirici",
+      "exp1_title": "Frontend Developer & IT Sorumlusu", 
+      "exp1_desc_intro": "Stok Endüstriyel’de, şirketin dijital altyapısını modernize ederek operasyonel verimliliği artırmaya ve stratejik hedeflere teknolojik çözümlerle katkı sağlamaya odaklanıyorum. Görevlerim; yazılım geliştirme, web/e-ticaret yönetimi ve BT altyapısı olmak üzere üç ana başlıkta toplanıyor.",
+      "exp1_desc_software": "Yazılım Geliştirme: Binlerce satış verisini anlık raporlara dönüştüren React tabanlı bir iş zekası dashboard’u geliştirerek veri odaklı karar alma süreçlerini hızlandırdım. “Senole” markası için modern web arayüzleri tasarladım. CRM tarafında yeni kurulumlar ve PHP/SQL optimizasyonlarıyla sistem kararlılığını artırdım. Ayrıca şirket içi ihtiyaçlar için özel araçlar (Şifre Yönetim Aracı vb.) geliştiriyorum.",
+      "exp1_desc_web": "Web & E-Ticaret Yönetimi: Ticimax platformunun teknik ve operasyonel süreçlerini uçtan uca yönetiyorum. SEO, kargo entegrasyonları ve arayüz tasarımlarını yürütürken; “Markalar” sayfası gibi özel geliştirmeler ve Gimp/Upscayl ile görsel iyileştirmeler yaparak kullanıcı deneyimini üst seviyeye taşıdım.",
+      "exp1_desc_it": "BT Altyapısı: Şirket genelindeki donanım/yazılım ihtiyaçlarına destek sunuyor, sunucu yetkilendirmelerini yönetiyorum. Personel eğitimleri ve düzenli veritabanı yedekleme prosedürleriyle veri güvenliğini ve sistem sürekliliğini sağlıyorum.",
       "exp2_title": "Yazılım Geliştirici (Stajyer)",
       "exp2_desc": "Spsteks adlı uygulamanın önceki sürümünü iyileştirmek için çalıştım. Veritabanı entegrasyonu için MySQL (MariaDB) kullandım.",
       "exp3_desc": "RAD Studio FMX ve Delphi kullanarak Spsteks adlı bir uygulama için bir dizi sayfa geliştirdim. Ayrıca, veri yönetimi işlevselliğini etkinleştirmek için uygulamayı bir MySQL (MariaDB) veritabanıyla entegre ettim.",
@@ -67,16 +73,8 @@ const resources = {
 
       "awards_title": "Onur ve Ödüller",
       "award1_title": "Onur Belgesi",
-          
-      
-        "exp1_title": "Frontend Developer & IT Sorumlusu", 
-        "exp1_desc_intro": "Stok Endüstriyel’de, şirketin dijital altyapısını modernize ederek operasyonel verimliliği artırmaya ve stratejik hedeflere teknolojik çözümlerle katkı sağlamaya odaklanıyorum. Görevlerim; yazılım geliştirme, web/e-ticaret yönetimi ve BT altyapısı olmak üzere üç ana başlıkta toplanıyor.",
-        "exp1_desc_software": "Yazılım Geliştirme: Binlerce satış verisini anlık raporlara dönüştüren React tabanlı bir iş zekası dashboard’u geliştirerek veri odaklı karar alma süreçlerini hızlandırdım. “Senole” markası için modern web arayüzleri tasarladım. CRM tarafında yeni kurulumlar ve PHP/SQL optimizasyonlarıyla sistem kararlılığını artırdım. Ayrıca şirket içi ihtiyaçlar için özel araçlar (Şifre Yönetim Aracı vb.) geliştiriyorum.",
-        "exp1_desc_web": "Web & E-Ticaret Yönetimi: Ticimax platformunun teknik ve operasyonel süreçlerini uçtan uca yönetiyorum. SEO, kargo entegrasyonları ve arayüz tasarımlarını yürütürken; “Markalar” sayfası gibi özel geliştirmeler ve Gimp/Upscayl ile görsel iyileştirmeler yaparak kullanıcı deneyimini üst seviyeye taşıdım.",
-        "exp1_desc_it": "BT Altyapısı: Şirket genelindeki donanım/yazılım ihtiyaçlarına destek sunuyor, sunucu yetkilendirmelerini yönetiyorum. Personel eğitimleri ve düzenli veritabanı yedekleme prosedürleriyle veri güvenliğini ve sistem sürekliliğini sağlıyorum.",
-      
-      
-          // --- Contact Sayfası ---
+
+      // --- Contact Sayfası ---
       "contact_title": "İletişime Geçin",
       "contact_subtitle": "Aklınızda bir proje mi var? Aşağıdaki formu doldurarak bana ulaşabilirsiniz.",
       "contact_form_name": "Ad Soyad",
@@ -94,14 +92,16 @@ const resources = {
       "mailto_subject": "Portfolyo Sitesinden Mesaj:",
       "mailto_sender": "Gönderen:",
       "mailto_email": "E-posta:",
-          "mailto_message": "Mesaj:",
+      "mailto_message": "Mesaj:",
+      
       // --- Footer Bölümü ---
       "footer_contact_part1": "İletişime",
       "footer_contact_part2": " Geçin",
       "footer_city": "Bursa",
       "footer_country": "Türkiye",
       "footer_copyright": "Tüm hakları saklıdır.",
-          "footer_aria_scrollToTop": "Sayfanın başına dön",
+      "footer_aria_scrollToTop": "Sayfanın başına dön",
+      
       // --- Portfolio Bölümü ---
       "portfolio_title_part1": "Çalışmalarıma",
       "portfolio_title_part2": " Göz At",
@@ -116,7 +116,8 @@ const resources = {
       "portfolio_project2_type": "frontend",
 
       "portfolio_label_tech": "Teknolojiler:",
-          "portfolio_label_type": "Tür:",
+      "portfolio_label_type": "Tür:",
+      
       // --- Projects (GitHub) Sayfası ---
       "projects_loading": "Yükleniyor...",
       "projects_error": "Hata:",
@@ -126,7 +127,8 @@ const resources = {
       "projects_no_desc": "Açıklama bulunmuyor.",
       "projects_view_code": "Kodu Görüntüle",
       "projects_live_demo": "Canlı Demo",
-          "projects_no_results": "Arama kriterlerinize uygun proje bulunamadı.",
+      "projects_no_results": "Arama kriterlerinize uygun proje bulunamadı.",
+      
       // --- Technologies Sayfası ---
       "tech_page_title_part1": "Teknoloji",
       "tech_page_title_part2": " Yığınım",
@@ -134,7 +136,8 @@ const resources = {
       "tech_category_backend": "Backend",
       "tech_category_database": "Database",
       "tech_category_tools": "Tools",
-          "tech_category_platforms": "Platforms",
+      "tech_category_platforms": "Platforms",
+      
       // --- Changelog Sayfası ---
       "changelog_title": "Geliştirme Günlüğü",
       
@@ -146,7 +149,18 @@ const resources = {
       "changelog_type_launch": "Lansman",
       "changelog_type_structure": "Temel Yapı",
       "changelog_type_responsive": "Responsive Tasarım",
+      
+      // --- YENİ EKLENEN v1.8.0 ---
+      "changelog_v1_8_0_desc1": "Hero bölümündeki arka plan gezegen efektinin Açık/Koyu mod geçişlerinde senkronizasyon sorunu, CSS değişkenleri kullanılarak giderildi.",
+      "changelog_v1_8_0_desc2": "Hero ve Footer bölümlerindeki metinlerin okunabilirlik sorunları, temaya duyarlı renk değişkenleri entegre edilerek çözüldü.",
+      "changelog_v1_8_0_desc3": "Mobildeki başlık ve metin çakışmaları (Responsive hataları) giderildi ve font boyutları optimize edildi.",
+      "changelog_v1_8_0_desc4": "Tüm renk sistemi, daha iyi yönetim için Tailwind CSS v4 uyumlu CSS değişkenlerine (var(--color...)) taşındı.",
 
+      // v1.7.0
+      "changelog_v1_7_0_desc1": "Kullanıcılar var olmayan bir rotaya eriştiğinde gösterilen, fare takibi ve astronot animasyonu içeren özel bir '404 Sayfa Bulunamadı' sayfası eklendi.",
+      "changelog_v1_7_0_desc2": "Sayfalar arası geçişlerde 'native app' hissi yaratmak için Framer Motion kullanılarak pürüzsüz 'Sayfa Geçiş Animasyonları' (Page Transitions) entegre edildi.",
+      "changelog_v1_7_0_desc3": "'Hakkımda' sayfasındaki iş deneyimi bölümü, Stok Endüstriyel'deki görevlerin detaylı açıklamaları ve güncel teknoloji yetkinlikleri ile zenginleştirildi.",
+      
       // v1.6.0
       "changelog_v1_6_0_desc1": "Hero bölümüne, 'ön yüz geliştiricisi' ve 'yazılım geliştiricisi' gibi rolleri dinamik olarak değiştiren animasyonlu bir metin döngüsü eklendi.",
       "changelog_v1_6_0_desc2": "Tüm siteye, i18next kütüphanesi kullanılarak çoklu dil (TR/EN) desteği entegre edildi.",
@@ -175,10 +189,8 @@ const resources = {
       "changelog_v1_0_0_desc1": "Kişisel portfolyo sitesinin ilk versiyonu (React, Vite, Tailwind CSS) temel bileşenleriyle birlikte oluşturuldu ve yayınlandı.",
       "changelog_v1_0_0_desc2": "Hero, Hakkımda, Projeler, Teknolojiler ve Footer gibi ana bölümlerin tasarımı ve kodlaması tamamlandı.",
       "changelog_v1_0_0_desc3": "Tüm bileşenler, mobil cihazlardan geniş ekranlara kadar farklı ekran boyutlarına uyumlu hale getirildi.",
-          "changelog_v1_0_0_desc4": "X eksenindeki istenmeyen kaydırma çubuğu sorunu gibi çeşitli CSS ve responsive tasarım hataları giderildi.",
-      "changelog_v1_7_0_desc1": "Kullanıcılar var olmayan bir rotaya eriştiğinde gösterilen, fare takibi ve astronot animasyonu içeren özel bir '404 Sayfa Bulunamadı' sayfası eklendi.",
-      "changelog_v1_7_0_desc2": "Sayfalar arası geçişlerde 'native app' hissi yaratmak için Framer Motion kullanılarak pürüzsüz 'Sayfa Geçiş Animasyonları' (Page Transitions) entegre edildi.",
-      "changelog_v1_7_0_desc3": "'Hakkımda' sayfasındaki iş deneyimi bölümü, Stok Endüstriyel'deki görevlerin detaylı açıklamaları ve güncel teknoloji yetkinlikleri ile zenginleştirildi.",
+      "changelog_v1_0_0_desc4": "X eksenindeki istenmeyen kaydırma çubuğu sorunu gibi çeşitli CSS ve responsive tasarım hataları giderildi.",
+
       // --- Stack (Teknolojiler) Bölümü ---
       "stack_title_part1": "Kullandığım",
       "stack_title_part2": " Teknolojiler",
@@ -198,14 +210,15 @@ const resources = {
       "hero_nav_knowMe": "Get to Know Me",
       "hero_nav_seeWork": "Browse My Work",
       "hero_nav_technologies": "Technologies I Use",
-          "hero_nav_contact": "Get in Touch",
+      "hero_nav_contact": "Get in Touch",
       "nav_home": "Home",
       "nav_about": "About",
       "nav_projects": "Projects",
       "nav_technologies": "Technologies",
       "nav_contact": "Contact",
-          "nav_changelog": "Changelog",
-          // --- About Section ---
+      "nav_changelog": "Changelog",
+      
+      // --- About Section ---
       "about_title_part1": "About",
       "about_title_part2": " Me",
       "about_card1_title": "01. Background",
@@ -222,7 +235,8 @@ const resources = {
       "about_card4_skill2": "Backend (ASP.NET, C#)",
       "about_card4_skill3": "UI/UX Design (Figma)",
       "about_card5_title": "05. Goals",
-          "about_card5_p1": "My goal is to specialize in the React, Next.js, and TypeScript ecosystem to become a holistic software developer who not only writes code but also develops products. While pushing my technical limits with challenging projects, I aim to continuously improve myself and my community by sharing what I learn.",
+      "about_card5_p1": "My goal is to specialize in the React, Next.js, and TypeScript ecosystem to become a holistic software developer who not only writes code but also develops products. While pushing my technical limits with challenging projects, I aim to continuously improve myself and my community by sharing what I learn.",
+      
       // --- Abouts Page ---
       "about_page_title": "About Me",
       "about_intro_p1": "I am a passionate and user-centric Frontend Developer based in Bursa, Turkey. I have a strong foundation in core technologies like JavaScript, SCSS, Bootstrap, and jQuery. I am currently advancing my experience with modern libraries and frameworks such as React, Tailwind CSS, and Material UI.",
@@ -232,7 +246,11 @@ const resources = {
       
       "experience_title": "Work Experience",
       "experience_subtitle": "My professional journey and experiences.",
-      "exp1_title": "Software Developer",
+      "exp1_title": "Frontend Developer & IT Specialist",
+      "exp1_desc_intro": "At Stok Endüstriyel, I focus on modernizing the company's digital infrastructure to enhance operational efficiency and support strategic goals through technological solutions. My responsibilities are concentrated in three main areas: Software Development, Web & E-Commerce Management, and IT Infrastructure.",
+      "exp1_desc_software": "Software Development: Accelerated data-driven decision-making processes by developing a React-based business intelligence dashboard that transforms thousands of sales records into real-time reports. Designed modern web interfaces for the “Senole” brand. Enhanced system stability through new CRM implementations and PHP/SQL optimizations. Additionally, I develop custom internal tools (such as a Password Management Tool) to meet corporate needs.",
+      "exp1_desc_web": "Web & E-Commerce Management: Managing the technical and operational processes of the Ticimax platform end-to-end. I handle SEO, shipping integrations, and interface designs, while elevating the user experience through custom developments like the “Brands” page and visual enhancements using Gimp and Upscayl.",
+      "exp1_desc_it": "IT Infrastructure: Providing support for hardware/software needs across the company and managing server authorizations. I ensure data security and system continuity through staff training and established regular database backup procedures.",
       "exp2_title": "Software Developer (Intern)",
       "exp2_desc": "I worked on improving the previous version of an application called Spsteks. I used MySQL (MariaDB) for database integration.",
       "exp3_desc": "Using RAD Studio FMX and Delphi, I developed a series of pages for an application called Spsteks. I also integrated the application with a MySQL (MariaDB) database to enable data management functionality.",
@@ -248,12 +266,7 @@ const resources = {
       "awards_title": "Honors & Awards",
       "award1_title": "Honor Certificate",
           
-      "exp1_title": "Frontend Developer & IT Specialist",
-  "exp1_desc_intro": "At Stok Endüstriyel, I focus on modernizing the company's digital infrastructure to enhance operational efficiency and support strategic goals through technological solutions. My responsibilities are concentrated in three main areas: Software Development, Web & E-Commerce Management, and IT Infrastructure.",
-  "exp1_desc_software": "Software Development: Accelerated data-driven decision-making processes by developing a React-based business intelligence dashboard that transforms thousands of sales records into real-time reports. Designed modern web interfaces for the “Senole” brand. Enhanced system stability through new CRM implementations and PHP/SQL optimizations. Additionally, I develop custom internal tools (such as a Password Management Tool) to meet corporate needs.",
-  "exp1_desc_web": "Web & E-Commerce Management: Managing the technical and operational processes of the Ticimax platform end-to-end. I handle SEO, shipping integrations, and interface designs, while elevating the user experience through custom developments like the “Brands” page and visual enhancements using Gimp and Upscayl.",
-  "exp1_desc_it": "IT Infrastructure: Providing support for hardware/software needs across the company and managing server authorizations. I ensure data security and system continuity through staff training and established regular database backup procedures.",      
-        // --- Contact Page ---
+      // --- Contact Page ---
       "contact_title": "Get in Touch",
       "contact_subtitle": "Have a project in mind? You can reach me by filling out the form below.",
       "contact_form_name": "Full Name",
@@ -271,14 +284,16 @@ const resources = {
       "mailto_subject": "Message from Portfolio Site:",
       "mailto_sender": "Sender:",
       "mailto_email": "Email:",
-          "mailto_message": "Message:",
+      "mailto_message": "Message:",
+      
       // --- Footer Section ---
       "footer_contact_part1": "Get in",
       "footer_contact_part2": " Touch",
       "footer_city": "Bursa",
       "footer_country": "Turkey",
       "footer_copyright": "All rights reserved.",
-          "footer_aria_scrollToTop": "Scroll to top",
+      "footer_aria_scrollToTop": "Scroll to top",
+      
       // --- Portfolio Section ---
       "portfolio_title_part1": "Browse",
       "portfolio_title_part2": " My Work",
@@ -293,7 +308,7 @@ const resources = {
       "portfolio_project2_type": "frontend",
 
       "portfolio_label_tech": "Technologies:",
-          "portfolio_label_type": "Type:",
+      "portfolio_label_type": "Type:",
       "projects_loading": "Loading...",
       "projects_error": "Error:",
       "projects_title": "My Projects",
@@ -302,7 +317,8 @@ const resources = {
       "projects_no_desc": "No description available.",
       "projects_view_code": "View Code",
       "projects_live_demo": "Live Demo",
-          "projects_no_results": "No projects found matching your search.",
+      "projects_no_results": "No projects found matching your search.",
+      
       // --- Technologies Page ---
       "tech_page_title_part1": "My Tech",
       "tech_page_title_part2": " Stack",
@@ -310,7 +326,8 @@ const resources = {
       "tech_category_backend": "Backend",
       "tech_category_database": "Database",
       "tech_category_tools": "Tools",
-          "tech_category_platforms": "Platforms",
+      "tech_category_platforms": "Platforms",
+      
       // --- Changelog Page ---
       "changelog_title": "Changelog",
 
@@ -321,6 +338,17 @@ const resources = {
       "changelog_type_launch": "Launch",
       "changelog_type_structure": "Initial Structure",
       "changelog_type_responsive": "Responsive Design",
+      
+      // --- NEW v1.8.0 ---
+      "changelog_v1_8_0_desc1": "Fixed synchronization issues with the background planet effect in the Hero section during Light/Dark mode transitions using CSS variables.",
+      "changelog_v1_8_0_desc2": "Resolved text readability issues in Hero and Footer sections by integrating theme-aware color variables.",
+      "changelog_v1_8_0_desc3": "Fixed responsive layout issues (text overlapping) on mobile devices and optimized font sizes.",
+      "changelog_v1_8_0_desc4": "Migrated the entire color system to Tailwind CSS v4 compatible CSS variables (var(--color...)) for better management.",
+
+      // v1.7.0
+      "changelog_v1_7_0_desc1": "Added a custom '404 Page Not Found' page featuring mouse tracking and astronaut animation, displayed when users access a non-existent route.",
+      "changelog_v1_7_0_desc2": "Integrated smooth 'Page Transition Animations' using Framer Motion to create a 'native app' feel when navigating between pages.",
+      "changelog_v1_7_0_desc3": "Enriched the work experience section on the 'About' page with detailed descriptions of tasks and current technical skills at Stok Endüstriyel.",
 
       // v1.6.0
       "changelog_v1_6_0_desc1": "Added an animated text loop to the Hero section that dynamically cycles through roles like 'front-end developer' and 'software developer'.",
@@ -350,7 +378,7 @@ const resources = {
       "changelog_v1_0_0_desc1": "The first version of the personal portfolio site was created and published with its core components (React, Vite, Tailwind CSS).",
       "changelog_v1_0_0_desc2": "The design and coding of the main sections like Hero, About, Projects, Tech, and Footer were completed.",
       "changelog_v1_0_0_desc3": "All components were made responsive to fit various screen sizes, from mobile devices to wide screens.",
-          "changelog_v1_0_0_desc4": "Various CSS and responsive design bugs, such as the unwanted horizontal scrollbar on the x-axis, were fixed.",
+      "changelog_v1_0_0_desc4": "Various CSS and responsive design bugs, such as the unwanted horizontal scrollbar on the x-axis, were fixed.",
       "changelog_v1_7_0_desc1": "Added a custom '404 Page Not Found' page featuring mouse tracking and astronaut animation, displayed when users access a non-existent route.",
       "changelog_v1_7_0_desc2": "Integrated smooth 'Page Transition Animations' using Framer Motion to create a 'native app' feel when navigating between pages.",
       "changelog_v1_7_0_desc3": "Enriched the work experience section on the 'About' page with detailed descriptions of tasks and current technical skills at Stok Endüstriyel.",

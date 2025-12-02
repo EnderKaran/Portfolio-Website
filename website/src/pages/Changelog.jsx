@@ -9,6 +9,32 @@ export const ChangelogPage = () => {
 
     const changelogData = [
         {
+            version: "v1.8.0",
+            date: "02 Aralık 2025",
+            changes: [
+                { 
+                    type: t('changelog_type_bugfix'), 
+                    description: t('changelog_v1_8_0_desc1'), 
+                    icon: <FaPalette /> 
+                },
+                { 
+                    type: t('changelog_type_improvement'), 
+                    description: t('changelog_v1_8_0_desc2'), 
+                    icon: <FaWrench /> 
+                },
+                { 
+                    type: t('changelog_type_responsive'), 
+                    description: t('changelog_v1_8_0_desc3'), 
+                    icon: <FaMobileAlt /> 
+                },
+                { 
+                    type: t('changelog_type_archchange'), 
+                    description: t('changelog_v1_8_0_desc4'), 
+                    icon: <VscFileCode /> 
+                },
+            ]
+        },
+        {
             version: "v1.7.0",
             date: "25 Kasım 2025", 
             changes: [
