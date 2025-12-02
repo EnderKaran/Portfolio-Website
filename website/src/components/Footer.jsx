@@ -55,10 +55,12 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="relative py-12 mt-8 text-center">
+        <div className="relative w-full py-12 mt-8 overflow-hidden text-center select-none">
             <h1
                 aria-hidden="true"
-                className="absolute inset-0 z-0 flex items-center justify-center text-[20vw] lg:text-[12rem] font-bold text-primary/5 pointer-events-none"
+                // text-[20vw] yerine text-[12vw] veya text-[13vw] yapıldı
+                // Ayrıca mobilde taşmayı önlemek için w-full eklendi
+                className="absolute inset-0 z-0 flex items-center justify-center text-[13vw] lg:text-[12rem] font-bold text-primary/5 pointer-events-none"
             >
                 EnderKaran
             </h1>
