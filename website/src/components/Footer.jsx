@@ -31,23 +31,26 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="py-8 transition-colors duration-300 bg-background text-primary" id="contact">
+    <footer 
+      className="py-8 transition-colors duration-300 bg-white dark:bg-black text-black dark:text-white" 
+      id="contact"
+    >
       <div className="max-w-[1200px] mx-auto px-4">
         <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
           
           <div>
-            <h2 className="mb-6 text-3xl font-bold md:text-5xl">
-              {t('footer_contact_part1')} <span className="text-accent">{t('footer_contact_part2')}</span>
+            <h2 className="mb-6 text-3xl font-bold md:text-5xl text-black dark:text-white">
+              {t('footer_contact_part1')} <span className="text-emerald-500 dark:text-emerald-400">{t('footer_contact_part2')}</span>
             </h2>
             <a
-              className="text-xl font-semibold underline break-all transition-all duration-300 md:text-3xl decoration-secondary/50 decoration-2 underline-offset-4 hover:text-accent hover:decoration-accent/80"
+              className="text-xl font-semibold underline break-all transition-all duration-300 md:text-3xl text-black dark:text-white decoration-gray-400 decoration-2 underline-offset-4 hover:text-emerald-500 hover:decoration-emerald-500"
               href="mailto:ender.karan14@gmail.com"
             >
               ender.karan14@gmail.com
             </a>
           </div>
           
-          <div className="mt-12 text-left text-secondary md:text-right">
+          <div className="mt-12 text-left text-gray-600 dark:text-gray-400 md:text-right">
             <div className="text-lg">
               <p>{t('footer_city')}</p>
               <p>{t('footer_country')}</p>
@@ -55,19 +58,19 @@ export const Footer = () => {
           </div>
         </div>
 
+        
         <div className="relative w-full py-12 mt-8 overflow-hidden text-center select-none">
             <h1
                 aria-hidden="true"
-                // text-[20vw] yerine text-[12vw] veya text-[13vw] yapıldı
-                // Ayrıca mobilde taşmayı önlemek için w-full eklendi
-                className="absolute inset-0 z-0 flex items-center justify-center text-[13vw] lg:text-[12rem] font-bold text-primary/5 pointer-events-none"
+                className="absolute inset-0 z-0 flex items-center justify-center text-[13vw] lg:text-[12rem] font-bold pointer-events-none text-black dark:text-white/90"
             >
                 EnderKaran
             </h1>
         </div>
 
-        <div className="container relative flex items-center justify-center gap-10 pt-8 mt-12 border-t sm:justify-between max-sm:flex-col border-card-border">
-          <p className="text-base text-secondary">
+        {/* ALT KISIM & İKONLAR */}
+        <div className="container relative flex items-center justify-center gap-10 pt-8 mt-12 border-t sm:justify-between max-sm:flex-col border-gray-300 dark:border-gray-800">
+          <p className="text-base text-gray-600 dark:text-gray-400">
             © {new Date().getFullYear()} Ender Karan. {t('footer_copyright')}
           </p>
           <ul className="flex flex-wrap gap-5">
@@ -77,7 +80,8 @@ export const Footer = () => {
                 aria-label="GitHub"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-10 h-10 transition-colors rounded-full text-secondary bg-primary/5 hover:bg-primary/10 hover:text-accent"
+                // İkonlar: Light modda siyah, Dark modda beyaz
+                className="flex items-center justify-center w-10 h-10 transition-colors rounded-full bg-gray-100 dark:bg-gray-800 text-black dark:text-white hover:text-emerald-500 dark:hover:text-emerald-400"
               >
                 <AiFillGithub size={24} />
               </a>
@@ -88,7 +92,7 @@ export const Footer = () => {
                 aria-label="LinkedIn"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-10 h-10 transition-colors rounded-full text-secondary bg-primary/5 hover:bg-primary/10 hover:text-accent"
+                className="flex items-center justify-center w-10 h-10 transition-colors rounded-full bg-gray-100 dark:bg-gray-800 text-black dark:text-white hover:text-emerald-500 dark:hover:text-emerald-400"
               >
                 <AiFillLinkedin size={24} />
               </a>

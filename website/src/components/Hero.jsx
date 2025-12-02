@@ -30,7 +30,7 @@ export const Hero = () => {
     }, [roles]);
 
     const renderLink = (link) => {
-        const linkClasses = "group flex items-center gap-3 text-sm text-slate-400 hover:text-slate-200 transition-colors duration-300 cursor-pointer";
+        const linkClasses = "group flex items-center gap-3 text-sm font-medium text-[rgb(var(--color-text-primary))] hover:text-[rgb(var(--color-accent))] transition-colors duration-300 cursor-pointer";
         const iconClasses = "transition-all duration-300 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0";
 
         if (link.type === 'scroll' && onHomePage) {
@@ -52,58 +52,93 @@ export const Hero = () => {
     };
 
     return (
-        <div className="relative min-h-screen overflow-hidden transition-colors duration-500 bg-white dark:bg-black text-slate-800 dark:text-slate-200">
+        <div className="relative min-h-screen overflow-hidden transition-colors duration-700 bg-[rgb(var(--color-background))] text-[rgb(var(--color-text-primary))]">
             
-            {/* Arka Plan Katmanları */}
-            <div className="absolute inset-0 z-0 transition-opacity duration-500 opacity-100 dark:opacity-0 bg-gradient-to-b from-white to-emerald-50" />
-            <div className="absolute w-[200vmax] h-[200vmax] md:w-[2400px] md:h-[1000px] rounded-[50%] left-1/2 -translate-x-1/2 top-[450px] z-10 bg-white bg-[radial-gradient(closest-side,white_85%,#d1fae5)] opacity-100 dark:opacity-0 transition-opacity duration-500" />
-            <div className="absolute inset-0 z-0 opacity-0 dark:opacity-100 transition-opacity duration-500 bg-[linear-gradient(to_bottom,#000,#071E18_35%,#208A65_67%,#35FB8E_85%)]" />
-            <div className="absolute w-[150vmax] h-[150vmax] md:w-[2400px] md:h-[1000px] rounded-[50%] left-1/2 -translate-x-1/2 top-[450px] z-10 bg-black bg-[radial-gradient(closest-side,#000_85%,#249974)] opacity-0 dark:opacity-100 transition-opacity duration-500" />
+            {/* --- ARKA PLAN VE GEZEGEN --- */}
+            
+            {/* 1. Arka Plan Gradienti */}
+            <div className="absolute inset-0 z-0 transition-all duration-700 
+                bg-gradient-to-b from-transparent to-emerald-50/50 
+                dark:to-emerald-900/10" 
+            />
 
+            {/* 2. AY / GEZEGEN (Light: Yeşil Çerçeveli Beyaz, Dark: Siyah) */}
+            <div className="
+                absolute z-10 rounded-[50%] 
+                left-1/2 -translate-x-1/2 top-[450px]
+                transition-all duration-700 ease-in-out
+                
+                /* LIGHT MOD */
+                w-[200vmax] h-[200vmax] md:w-[2400px] md:h-[1000px]
+                bg-[radial-gradient(closest-side,white_60%,#d1fae5)]
+                shadow-[0_0_50px_rgba(5,150,105,0.1)]
+                
+                /* DARK MOD */
+                dark:w-[150vmax] dark:h-[150vmax] dark:md:w-[2400px] dark:md:h-[1000px]
+                dark:shadow-none
+                dark:bg-[radial-gradient(closest-side,#000_85%,rgb(var(--color-accent)))]
+            "/>
+
+            {/* --- İÇERİK --- */}
             <div className="container relative z-20 px-4 pt-12 pb-24 mx-auto">
                 <div className="flex flex-col items-center justify-center h-full text-center">
+                    
                     <motion.div
                         initial={{ opacity: 0, scale: 0.5 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="relative mt-24 mb-6"
+                        className="relative mt-16 mb-6 md:mt-24"
                     >
-                        <div className="absolute inset-0 rounded-full bg-gradient-to-b from-emerald-500/20 to-transparent blur-3xl"></div>
-                        <img src={profileimg} alt="Ender Karan" className="w-[250px] relative z-10" />
+                        <div className="absolute inset-0 rounded-full bg-[rgb(var(--color-accent))] opacity-20 blur-3xl animate-pulse"></div>
+                        <img src={profileimg} alt="Ender Karan" className="w-40 md:w-[250px] relative z-10 drop-shadow-2xl" />
                     </motion.div>
 
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="max-w-2xl"
+                        className="max-w-3xl"
                     >
-                        <h1 className="mb-4 text-6xl font-bold tracking-tighter md:text-7xl text-slate-800 dark:text-white">
-                            {t('hero_greeting')} <br /> Ender <span className="text-emerald-600 dark:text-emerald-400">Karan</span>
+                        <h1 className="mb-4 text-4xl font-bold tracking-tighter md:text-7xl text-[rgb(var(--color-text-primary))]">
+                            {t('hero_greeting')} <br /> Ender <span className="text-[rgb(var(--color-accent))]">Karan</span>
                         </h1>
                         
-                        <p className="flex items-center justify-center h-16 max-w-lg mx-auto mb-6 text-xl leading-relaxed text-center text-slate-600 dark:text-slate-400">
-                            {t('hero_intro')}&nbsp;
+                        <p className="flex flex-col items-center justify-center max-w-lg mx-auto mb-8 text-lg font-medium leading-relaxed text-center md:flex-row md:mb-10 md:text-xl text-[rgb(var(--color-text-primary))]">
+                            <span>{t('hero_intro')}</span>&nbsp;
                             <AnimatePresence mode="wait">
                                 <motion.span
                                     key={roleIndex}
-                                    
-                                    initial={{ opacity: 0, y: 20, filter: "blur(10px)" }} // Aşağıdan ve bulanık başla
-                                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}   // Ortaya gel ve netleş
-                                    exit={{ opacity: 0, y: -20, filter: "blur(10px)" }}   // Yukarı git ve bulanıklaş
-                                    transition={{ duration: 0.8, ease: "easeInOut" }}     // 0.8 saniyelik yumuşak geçiş
-                                    className="inline-block ml-2 font-semibold text-emerald-600 dark:text-emerald-400"
+                                    initial={{ opacity: 0, y: 20, filter: "blur(10px)" }} 
+                                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}   
+                                    exit={{ opacity: 0, y: -20, filter: "blur(10px)" }}   
+                                    transition={{ duration: 0.8, ease: "easeInOut" }}     
+                                    className="inline-block font-semibold text-[rgb(var(--color-accent))]"
                                 >
                                     {roles[roleIndex]}
                                 </motion.span>
                             </AnimatePresence>
                         </p>
                         
-                        <div className="flex justify-center gap-4 mb-16">
-                            <motion.a href="https://www.linkedin.com/in/ender-karan-52303b187" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block px-6 py-3 font-medium text-white transition-all duration-300 ease-in-out rounded-full shadow-lg bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600">
+                        <div className="flex flex-col justify-center gap-4 mb-16 sm:flex-row">
+                            <motion.a 
+                                href="https://www.linkedin.com/in/ender-karan-52303b187" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                whileHover={{ scale: 1.05 }} 
+                                whileTap={{ scale: 0.95 }} 
+                                className="inline-block px-6 py-3 font-medium text-white transition-all duration-300 ease-in-out rounded-full shadow-lg bg-[rgb(var(--color-accent))] hover:brightness-110"
+                            >
                                 {t('hero_button_contact')}
                             </motion.a>
-                            <motion.a href="https://github.com/EnderKaran" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block px-6 py-3 font-medium transition-all duration-300 ease-in-out border rounded-full text-slate-800 border-slate-400 hover:bg-slate-100 dark:text-white dark:border-white/40 dark:hover:bg-white/10">
+
+                            <motion.a 
+                                href="https://github.com/EnderKaran" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                whileHover={{ scale: 1.05 }} 
+                                whileTap={{ scale: 0.95 }} 
+                                className="inline-block px-6 py-3 font-medium transition-all duration-300 ease-in-out border-2 rounded-full text-[rgb(var(--color-text-primary))] border-[rgb(var(--color-text-primary))] hover:bg-[rgb(var(--color-text-primary))] hover:text-[rgb(var(--color-background))]"
+                            >
                                 {t('hero_button_work')}
                             </motion.a>
                         </div>
@@ -112,7 +147,7 @@ export const Hero = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.6 }}
-                            className="w-full max-w-2xl p-4 mx-auto border rounded-2xl bg-white/50 border-slate-200 dark:bg-black/30 dark:border-white/10 backdrop-blur-md"
+                            className="w-full max-w-2xl p-4 mx-auto border rounded-2xl bg-[rgba(var(--color-card-background),0.5)] border-[rgb(var(--color-card-border))] backdrop-blur-md"
                         >
                             <ul className="flex flex-col items-center justify-around md:flex-row gap-y-4 md:gap-y-0">
                                 {navlinks.map((link, index) => (

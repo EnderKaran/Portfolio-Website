@@ -1,9 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  
+  --color-primary: rgb(var(--color-text-primary));
+  --color-secondary: rgb(var(--color-text-secondary));
+  --color-bg: rgb(var(--color-background));
+  --color-accent: rgb(var(--color-accent));
+}
+
 :root {
-  /* Açık Mod Renkleri */
-  --color-background: 243 244 246;
+  --color-background: 255 255 255; 
   --color-text-primary: 31 41 55;
   --color-text-secondary: 75 85 99;
   --color-accent: 5 150 105;
@@ -21,6 +30,16 @@ html.dark {
   --color-card-border: 255 255 255 / 0.2;
 }
 
+.dark {
+  
+  --color-background: 3 7 18; 
+  --color-text-primary: 243 244 246;
+  --color-text-secondary: 156 163 175;
+  --color-accent: 52 211 153;
+  --color-card-background: 17 24 39; 
+  --color-card-border: 55 65 81;
+}
+
 ::selection{
   background-color: rgb(var(--color-accent));
   color: rgb(var(--color-background));
@@ -32,10 +51,9 @@ html.dark {
 
 body {
   font-family: "Poppins", sans-serif;
-  overflow-x: hidden;
   background-color: rgb(var(--color-background));
   color: rgb(var(--color-text-primary));
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  transition: background-color 0.5s ease, color 0.5s ease; 
 }
 
 body,
