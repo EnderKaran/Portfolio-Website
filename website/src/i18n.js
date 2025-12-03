@@ -149,6 +149,10 @@ const resources = {
       "changelog_type_launch": "Lansman",
       "changelog_type_structure": "Temel Yapı",
       "changelog_type_responsive": "Responsive Tasarım",
+
+      // --- NEW v1.9.0 ---
+      "changelog_v1_9_0_desc1": "Hero bölümüne React Three Fiber ile oluşturulan, sürekli dönen 3D küp animasyonu eklendi.",
+      "changelog_v1_9_0_desc2": "Tüm sayfalara (Ana sayfa, Hakkımda, Projeler vb.) react-helmet-async ile dinamik SEO başlıkları ve açıklamaları entegre edildi.",
       
       // --- YENİ EKLENEN v1.8.0 ---
       "changelog_v1_8_0_desc1": "Hero bölümündeki arka plan gezegen efektinin Açık/Koyu mod geçişlerinde senkronizasyon sorunu, CSS değişkenleri kullanılarak giderildi.",
@@ -351,8 +355,12 @@ const resources = {
       "changelog_type_launch": "Launch",
       "changelog_type_structure": "Initial Structure",
       "changelog_type_responsive": "Responsive Design",
+
+      // --- NEW v1.9.0 ---
+      "changelog_v1_9_0_desc1": "Added a continuously rotating 3D cube animation created with React Three Fiber to the Hero section.",
+      "changelog_v1_9_0_desc2": "Integrated dynamic SEO titles and descriptions with react-helmet-async on all pages (Home, About, Projects, etc.).",
       
-      // --- NEW v1.8.0 ---
+      // --- v1.8.0 ---
       "changelog_v1_8_0_desc1": "Fixed synchronization issues with the background planet effect in the Hero section during Light/Dark mode transitions using CSS variables.",
       "changelog_v1_8_0_desc2": "Resolved text readability issues in Hero and Footer sections by integrating theme-aware color variables.",
       "changelog_v1_8_0_desc3": "Fixed responsive layout issues (text overlapping) on mobile devices and optimized font sizes.",
