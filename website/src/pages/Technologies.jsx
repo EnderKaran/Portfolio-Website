@@ -1,5 +1,6 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next'; // 1. Hook'u import et
+import { useTranslation } from 'react-i18next'; // 1. i18n hook'u
+import SEO from '../components/SEO'; // 2. SEO bileşeni import edildi
 import { motion } from "framer-motion";
 import { 
     SiReact, SiJavascript, SiTailwindcss, SiFramer, SiVite, 
@@ -13,12 +14,11 @@ import { DiMsqlServer, DiVisualstudio } from "react-icons/di";
 import { FaSass } from "react-icons/fa";
 
 export const Technologies = () => {
-    const { t } = useTranslation(); // 2. t fonksiyonunu al
+    const { t } = useTranslation(); // 3. Çeviri fonksiyonunu al
 
-    // 3. 'techCategories' dizisi, 't' fonksiyonunu kullanabilmek için bileşenin içine taşındı.
     const techCategories = [
         {
-            title: t('tech_category_frontend'),
+            title: t('tech_category_frontend'), // 4. Kategori başlıkları çevrildi
             technologies: [
                 { name: "HTML5", icon: <SiHtml5 size={48} /> },
                 { name: "CSS3", icon: <SiCss3 size={48} /> },
@@ -81,58 +81,67 @@ export const Technologies = () => {
     };
 
     return (
-        <section
-            id="technologies"
-            className="min-h-screen pt-32 pb-24 transition-colors duration-300 bg-background text-primary"
-        >
-            <div className="container px-4 mx-auto">
-                <motion.h1 
-                    initial={{ opacity: 0, y: -50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="mb-16 text-5xl font-bold text-center md:text-7xl">
-                    {t('tech_page_title_part1')} <span className="text-accent">{t('tech_page_title_part2')}</span>
-                </motion.h1>
+        <>
+            <SEO 
+                title={t('meta_tech_title')} 
+                description={t('meta_tech_desc')}
+                name="Ender Karan"
+                type="website"
+            />
 
-                <div className="space-y-16">
-                    {techCategories.map((category) => (
-                        <motion.div 
-                            key={category.title}
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: 0.2 }}
-                        >
-                            <h3 className="mb-8 text-3xl font-semibold text-primary">{category.title}</h3>
-                            <motion.div
-                                className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6"
-                                variants={containerVariants}
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true, amount: 0.2 }}
+            <section
+                id="technologies"
+                className="min-h-screen pt-32 pb-24 transition-colors duration-300 bg-background text-primary"
+            >
+                <div className="container px-4 mx-auto">
+                    <motion.h1 
+                        initial={{ opacity: 0, y: -50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="mb-16 text-5xl font-bold text-center md:text-7xl">
+                        {t('tech_page_title_part1')} <span className="text-accent">{t('tech_page_title_part2')}</span>
+                    </motion.h1>
+
+                    <div className="space-y-16">
+                        {techCategories.map((category) => (
+                            <motion.div 
+                                key={category.title}
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: 0.2 }}
                             >
-                                {category.technologies.map((tech) => (
-                                    <motion.div
-                                        key={tech.name}
-                                        variants={cardVariants}
-                                        whileHover={{ scale: 1.05, y: -5 }}
-                                        transition={{ type: "spring", stiffness: 300 }}
-                                        className="flex flex-col items-center justify-center gap-4 p-4 text-center border cursor-pointer group bg-card-background border-card-border rounded-xl aspect-square"
-                                    >
-                                        <div className="text-6xl transition-colors duration-300 text-secondary group-hover:text-accent">
-                                            {tech.icon}
-                                        </div>
-                                        <p className="text-sm font-semibold transition-colors duration-300 text-secondary md:text-base group-hover:text-primary">
-                                            {tech.name}
-                                        </p>
-                                    </motion.div>
-                                ))}
+                                <h3 className="mb-8 text-3xl font-semibold text-primary">{category.title}</h3>
+                                <motion.div
+                                    className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6"
+                                    variants={containerVariants}
+                                    initial="hidden"
+                                    whileInView="visible"
+                                    viewport={{ once: true, amount: 0.2 }}
+                                >
+                                    {category.technologies.map((tech) => (
+                                        <motion.div
+                                            key={tech.name}
+                                            variants={cardVariants}
+                                            whileHover={{ scale: 1.05, y: -5 }}
+                                            transition={{ type: "spring", stiffness: 300 }}
+                                            className="flex flex-col items-center justify-center gap-4 p-4 text-center border cursor-pointer group bg-card-background border-card-border rounded-xl aspect-square"
+                                        >
+                                            <div className="text-6xl transition-colors duration-300 text-secondary group-hover:text-accent">
+                                                {tech.icon}
+                                            </div>
+                                            <p className="text-sm font-semibold transition-colors duration-300 text-secondary md:text-base group-hover:text-primary">
+                                                {tech.name}
+                                            </p>
+                                        </motion.div>
+                                    ))}
+                                </motion.div>
                             </motion.div>
-                        </motion.div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
     );
 };
 

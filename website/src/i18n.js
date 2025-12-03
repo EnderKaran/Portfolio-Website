@@ -194,6 +194,19 @@ const resources = {
       // --- Stack (Teknolojiler) Bölümü ---
       "stack_title_part1": "Kullandığım",
       "stack_title_part2": " Teknolojiler",
+      // --- SEO ÇEVİRİLERİ ---
+      "meta_tech_title": "Teknolojiler | Ender Karan",
+      "meta_tech_desc": "Projelerimde kullandığım güncel teknoloji yığını: React, Next.js, Node.js, Tailwind CSS ve daha fazlası.",
+      "meta_projects_title": "Projeler | Ender Karan",
+      "meta_projects_desc": "GitHub üzerindeki açık kaynaklı projelerim, React, Tailwind CSS ve modern web teknolojileri ile geliştirdiğim çalışmaların listesi.",
+      "meta_home_title": "Ender Karan | Frontend Geliştirici",
+      "meta_home_desc": "Modern web teknolojileri ile kullanıcı dostu arayüzler geliştiren Frontend Geliştirici. React, Tailwind CSS ve TypeScript projelerimi inceleyin.",
+      "meta_contact_title": "İletişim | Ender Karan",
+      "meta_contact_desc": "Projeleriniz veya iş birlikleri için benimle iletişime geçin. Web geliştirme süreçleri ve freelance teklifleriniz için mesajınızı bekliyorum.",
+      "meta_changelog_title": "Sürüm Notları | Ender Karan",
+      "meta_changelog_desc": "Web sitemin ve projelerimin gelişim süreci. Eklenen yeni özellikler, yapılan iyileştirmeler ve hata düzeltmelerinin detaylı geçmişi.",
+      "meta_about_title": "Hakkımda | Ender Karan",
+      "meta_about_desc": "Kariyer yolculuğum, yetkinliklerim ve yazılım geliştirme tutkum hakkında detaylı bilgi. Profesyonel geçmişim ve vizyonum.",
     }
   },
   en: {
@@ -385,6 +398,19 @@ const resources = {
       // --- Stack (Technologies) Section ---
       "stack_title_part1": "Technologies",
       "stack_title_part2": " I Use",
+      // --- SEO TRANSLATIONS ---
+      "meta_tech_title": "Technologies | Ender Karan",
+      "meta_tech_desc": "The modern tech stack I use in my projects: React, Next.js, Node.js, Tailwind CSS, and more.",
+      "meta_projects_title": "Projects | Ender Karan",
+      "meta_projects_desc": "My open-source projects on GitHub; a list of works developed using React, Tailwind CSS, and modern web technologies.",
+      "meta_home_title": "Ender Karan | Frontend Developer",
+      "meta_home_desc": "Frontend Developer building user-friendly interfaces with modern web technologies. Explore my React, Tailwind CSS, and TypeScript projects.",
+      "meta_contact_title": "Contact | Ender Karan",
+      "meta_contact_desc": "Get in touch with me for your projects or collaborations. I look forward to your messages regarding web development processes and freelance offers.",
+      "meta_changelog_title": "Changelog | Ender Karan",
+      "meta_changelog_desc": "Development history of my website and projects. Detailed log of new features, improvements, and bug fixes.",
+      "meta_about_title": "About Me | Ender Karan",
+      "meta_about_desc": "Detailed information about my career journey, skills, and passion for software development. My professional background and vision.",
     }
   }
 };
