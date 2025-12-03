@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { FaPlus, FaWrench, FaRocket, FaPalette, FaMobileAlt, FaArrowUp, FaMousePointer, FaColumns, FaBug, FaBullseye , FaMagic, FaExclamationTriangle } from 'react-icons/fa'; 
+import { FaPlus, FaWrench, FaRocket, FaCube , FaPalette, FaMobileAlt, FaArrowUp, FaMousePointer, FaColumns, FaBug, FaBullseye , FaMagic, FaExclamationTriangle } from 'react-icons/fa'; 
 import { VscFileCode } from "react-icons/vsc";
 import SEO from '../components/SEO';
 
@@ -9,6 +9,22 @@ export const ChangelogPage = () => {
     const { t } = useTranslation();
 
     const changelogData = [
+        {
+            version: "v1.9.0", 
+            date: "03 Aralık 2025", 
+            changes: [
+                 { 
+                    type: t('changelog_type_archchange'), 
+                    description: t('changelog_v1_9_0_desc1'),
+                    icon: <FaCube /> 
+                },
+                { 
+                    type: t('changelog_type_improvement'), 
+                    description: t('changelog_v1_9_0_desc2'), // "SEO iyileştirmeleri..."
+                    icon: <FaWrench /> 
+                },
+            ]
+        },
         {
             version: "v1.8.0",
             date: "02 Aralık 2025",
