@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import "./globals.css"; // CSS dosyan
+import "./globals.css";
 import { Navbar } from "@/src/components/Navbar";
 import { Footer } from "@/src/components/Footer";
 import { CustomCursor } from "@/src/components/CustomCursor";
@@ -13,12 +13,11 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
-// SEO Metadata (Eski react-helmet yerine)
 export const metadata: Metadata = {
   title: "Ender Karan | Frontend Developer",
   description: "Web developer focused on creating user-centric web experiences.",
   icons: {
-    icon: '/favicon.ico', // favicon.ico dosyanın public klasöründe olduğunu varsayıyoruz
+    icon: '/favicon.ico',
   }
 };
 
@@ -31,7 +30,6 @@ export default function RootLayout({
     <html lang="en" className={poppins.variable} suppressHydrationWarning>
       <body className="font-poppins bg-white dark:bg-black text-gray-900 dark:text-gray-100 transition-colors duration-500 antialiased selection:bg-emerald-500 selection:text-white">
         
-        {/* Tema yanıp sönmesini engelleyen script */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -54,7 +52,7 @@ export default function RootLayout({
             <CustomCursor />
             <Navbar />
             
-            {/* Sayfa İçerikleri Buraya Gelecek */}
+            {/* Sayfa İçerikleri */}
             <main className="min-h-screen">
                {children}
             </main>
