@@ -11,6 +11,32 @@ export default function ChangelogPage() {
 
     const changelogData = [
             {
+            version: "v2.0.0",
+            date: "15 Ocak 2026",
+            changes: [
+                { 
+                    type: t('changelog_type_archchange'), 
+                    description: t('changelog_v2_0_0_desc1'), 
+                    icon: <FaRocket /> 
+                },
+                { 
+                    type: t('changelog_type_structure'), 
+                    description: t('changelog_v2_0_0_desc2'), 
+                    icon: <VscFileCode /> 
+                },
+                { 
+                    type: t('changelog_type_improvement'), 
+                    description: t('changelog_v2_0_0_desc3'), 
+                    icon: <FaPalette /> 
+                },
+                { 
+                    type: t('changelog_type_bugfix'), 
+                    description: t('changelog_v2_0_0_desc4'), 
+                    icon: <FaBug /> 
+                },
+            ]
+             },
+            {
                 version: "v1.9.0", 
                 date: "03 Aralık 2025", 
                 changes: [

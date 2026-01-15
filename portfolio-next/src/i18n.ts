@@ -194,6 +194,10 @@ const resources = {
       "changelog_v1_0_0_desc2": "Hero, Hakkımda, Projeler, Teknolojiler ve Footer gibi ana bölümlerin tasarımı ve kodlaması tamamlandı.",
       "changelog_v1_0_0_desc3": "Tüm bileşenler, mobil cihazlardan geniş ekranlara kadar farklı ekran boyutlarına uyumlu hale getirildi.",
       "changelog_v1_0_0_desc4": "X eksenindeki istenmeyen kaydırma çubuğu sorunu gibi çeşitli CSS ve responsive tasarım hataları giderildi.",
+      "changelog_v2_0_0_desc1": "Proje altyapısı Vite/React'ten Next.js 15 (App Router) mimarisine taşındı ve Server Side Rendering (SSR) ile performans maksimize edildi.",
+      "changelog_v2_0_0_desc2": "Tüm kod tabanı JavaScript'ten TypeScript'e (.tsx) dönüştürülerek tip güvenliği ve kod kalitesi artırıldı.",
+      "changelog_v2_0_0_desc3": "Stil motoru Tailwind CSS v4'e yükseltildi ve resim optimizasyonu için 'next/image' bileşeni entegre edildi.",
+      "changelog_v2_0_0_desc4": "Dark Mode hidrasyon (hydration mismatch) sorunları giderildi ve SEO yönetimi 'react-helmet' yerine Next.js Metadata API'ye taşındı.",
 
       // --- Stack (Teknolojiler) Bölümü ---
       "stack_title_part1": "Kullandığım",
@@ -355,6 +359,11 @@ const resources = {
       "changelog_type_launch": "Launch",
       "changelog_type_structure": "Initial Structure",
       "changelog_type_responsive": "Responsive Design",
+
+      "changelog_v2_0_0_desc1": "Migrated project infrastructure from Vite/React to Next.js 15 (App Router) architecture and maximized performance with Server Side Rendering (SSR).",
+      "changelog_v2_0_0_desc2": "Converted the entire codebase from JavaScript to TypeScript (.tsx), enhancing type safety and code quality.",
+      "changelog_v2_0_0_desc3": "Upgraded styling engine to Tailwind CSS v4 and integrated 'next/image' component for advanced image optimization.",
+      "changelog_v2_0_0_desc4": "Fixed Dark Mode hydration mismatch issues and migrated SEO management from 'react-helmet' to Next.js Metadata API.",
 
       // --- NEW v1.9.0 ---
       "changelog_v1_9_0_desc1": "Added a continuously rotating 3D cube animation created with React Three Fiber to the Hero section.",
