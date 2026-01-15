@@ -1,44 +1,65 @@
 # Ender Karan - Kişisel Geliştirici Portfolyosu
 
-Modern web teknolojileri kullanılarak sıfırdan oluşturulmuş, canlı ve tamamen interaktif bir kişisel portfolyo web sitesi. Bu proje, sadece mevcut yeteneklerimi sergilemekle kalmıyor, aynı zamanda sürekli öğrenme ve gelişme yolculuğumun dinamik bir yansıması olarak hizmet ediyor.
+Modern web standartlarının en güncel araçları (Next.js 15, TypeScript, Tailwind v4) kullanılarak geliştirilmiş; performans, erişilebilirlik ve kullanıcı deneyimi odaklı kişisel portfolyo web sitesi.
+
+Bu proje, sadece bir vitrin değil; Server Side Rendering (SSR), Tip Güvenliği, 3D Animasyonlar ve Uluslararasılaştırma (i18n) gibi ileri seviye web geliştirme konseptlerinin uygulandığı canlı bir laboratuvardır.
 
 **[Canlı Demoyu Görüntüle](https://EnderKaran.github.io/Portfolio-Website/)** ---
 
 ### ✨ Projenin Felsefesi
 
-Bu portfolyoyu tasarlarken ve kodlarken iki ana prensibi hedefledim:
+Bu proje, standart bir React uygulamasından modern bir Next.js mimarisine evrilmiştir. Bu dönüşümdeki temel hedefler:
 
-#### 1. 🚀 Sürekli Gelişen Bir Platform
-Bu site, tamamlanmış ve bir kenara bırakılmış statik bir proje değildir. Aksine, öğrendiğim yeni teknolojileri denediğim, tamamladığım yeni projeleri eklediğim ve mevcut özellikleri sürekli olarak iyileştirdiğim yaşayan bir platformdur. **Bu portfolyo her hafta yeni özellikler, iyileştirmeler ve projelerle güncellenmeye devam edecektir.** Bu, hem benim gelişimimi canlı olarak yansıtacak hem de siteyi ziyaret edenler için dinamik bir deneyim sunacaktır.
+#### 1. 🚀 Performans ve SEO Odaklı Mimari (Next.js & SSR)
+Vite tabanlı SPA yapısından, Next.js'in App Router mimarisine geçiş yapılarak SEO (Arama Motoru Optimizasyonu) ve ilk yükleme hızı (LCP) maksimize edildi. Statik içerikler sunucu tarafında (Server Components) oluşturulurken, interaktif öğeler (Client Components) dinamik olarak yönetildi.
 
-#### 2. 💡 Modern ve Bilinçli Teknoloji Seçimleri
-Kullandığım her aracın bir amacı var. Bu proje, "doğru iş için doğru araç" felsefesini yansıtır:
+#### 2. 💡 Tip Güvenliği ve Ölçeklenebilirlik (TypeScript)
+Projenin tamamı JavaScript'ten TypeScript'e taşındı. Bu sayede veri akışı (Props, State, API yanıtları) katı tip kontrolleriyle güvence altına alındı, hatalar derleme aşamasında yakalanarak kod kalitesi artırıldı.
 
-* **Vite:** Geliştirme sürecindeki inanılmaz hızı ve modern JavaScript modüllerine dayalı yapısı sayesinde verimli bir çalışma ortamı sağladı.
-* **React:** Bileşen tabanlı mimarisi, projenin her bir parçasını (`Hero`, `About`, `Portfolio` vb.) bağımsız ve yönetilebilir modüller halinde geliştirmemi kolaylaştırdı.
-* **Tailwind CSS:** "Utility-first" yaklaşımı ile HTML'den ayrılmadan, tamamen özel ve duyarlı (responsive) tasarımlar yapmamı sağladı. Projedeki "glassmorphism" (camsı) efektler ve tutarlı tasarım dili, Tailwind'in esnekliği sayesinde mümkün oldu.
-* **Framer Motion:** Kullanıcı deneyimini bir üst seviyeye taşımak için tercih edildi. Sayfa kaydırma animasyonları, akordiyon menüler ve teknoloji ikonlarının sahneye girişi gibi detaylar, sadece estetik birer dokunuş değil, aynı zamanda kullanıcıya geri bildirim veren ve akılda kalıcı bir deneyim sunan işlevsel animasyonlardır.
+#### 3. 💡 Geleceğin CSS Mimarisi (Tailwind CSS v4)
+Henüz çok yeni olan Tailwind CSS v4 motoruna geçiş yapıldı. CSS değişkenleri (@theme) ve modern yapılandırma ile performanslı, karanlık mod (Dark Mode) destekli ve bakımı kolay bir stil yapısı kuruldu.
 
 ---
 
 ### 🌟 Öne Çıkan Özellikler
 
-* **Tamamen Duyarlı (Fully Responsive):** Mobil, tablet ve masaüstü cihazlarda kusursuz bir deneyim sunar.
-* **Akıcı Animasyonlar:** Framer Motion ile oluşturulmuş, sayfa yüklenişinden elemanların ekrana girişine kadar pürüzsüz ve anlamlı geçişler.
-* **İnteraktif Proje Bölümü:** Tıklandığında açılıp kapanan (akordiyon) proje kartları ile detaylı bilgi sunumu.
-* **Dinamik Teknoloji Yığını:** Ekrana girildiğinde farklı yönlerden gelen animasyonlu teknoloji ikonları.
-* **Modern Tasarım:** "Glassmorphism" efektleri, yarı şeffaf katmanlar ve profesyonel bir renk paleti.
-* **Sayfa İçi Yumuşak Kaydırma (Smooth Scrolling):** Navigasyon menüsü ile bölümler arasında akıcı geçişler.
+* **Next.js 15 & App Router:** Dosya tabanlı yönlendirme ve React 19 özellikleri.
+* **Dark / Light Mod:** Kullanıcının sistem tercihine duyarlı ve manuel değiştirilebilir, localStorage destekli tema yönetimi.
+* **Çoklu Dil Desteği (i18n):** i18next altyapısı ile Türkçe ve İngilizce dil seçenekleri.
+* **3D Deneyim:** React Three Fiber ile oluşturulmuş, performansı optimize edilmiş 3D geometrik animasyonlar.
+* **GitHub API Entegrasyonu:** "Projeler sayfasında GitHub verileri (repo adı, yıldız sayısı, açıklamalar) Server Side olarak anlık çekilir.
+* **Akıcı Animasyonlar:** Framer Motion ile sayfa geçişleri, scroll animasyonları ve özel imleç (custom cursor) efektleri.
+* **Tam Duyarlılık:** Mobil öncelikli (Mobile-First) tasarım anlayışı.
+* **Görüntü Optimizasyonu:** next/image bileşeni ile format dönüşümü (WebP/AVIF) ve lazy loading.
 
 ---
 
-### 🛠️ Kullanılan Teknolojiler
+### 🛠️ Teknoloji Yığını
 
-* **Frontend:** React, Vite, JavaScript (ES6+)
-* **Styling:** Tailwind CSS
-* **Animasyon:** Framer Motion
+* **Framework:** Next.js 15 (App Router), React 19
+* **Dil:** TypeScript
+* **Stil:** Tailwind CSS v4, PostCSS
+* **Animasyon:** Framer Motion, React Three Fiber (@react-three/drei)
+* **Form & Validasyon:** Formik, Yup
+* **Dil Yönetimi:** i18next, react-i18next
 * **İkonlar:** React Icons
-* **Deployment:** GitHub Pages
+
+---
+### Klasör Yapısı
+
+```
+src/
+├── app/                 # App Router (Sayfalar ve Layout)
+│   ├── layout.tsx       # Ana iskelet (Navbar, Footer, Fontlar)
+│   ├── page.tsx         # Anasayfa (Hero, About, Stack)
+│   ├── projects/        # Projeler Sayfası
+│   └── ...
+├── components/          # Yeniden kullanılabilir bileşenler (Hero, Navbar vb.)
+├── hooks/               # Özel Hook'lar (useTheme vb.)
+└── i18n.ts             # Dil konfigürasyonu
+public/
+└── assets/              # Görseller ve statik dosyalar
+```
 
 ---
 
@@ -62,7 +83,7 @@ Projeyi kendi bilgisayarınızda denemek isterseniz aşağıdaki adımları izle
     ```bash
     npm run dev
     ```
-    Artık projeyi `http://localhost:5173` (veya terminalde belirtilen port) adresinde görüntüleyebilirsiniz.
+    Artık projeyi `http://localhost:3000` (veya terminalde belirtilen port) adresinde görüntüleyebilirsiniz.
 
 ---
 
@@ -70,3 +91,5 @@ Projeyi kendi bilgisayarınızda denemek isterseniz aşağıdaki adımları izle
 
 - **LinkedIn:** [linkedin.com/in/ender-karan-52303b187](https://www.linkedin.com/in/ender-karan-52303b187)
 - **GitHub:** [@EnderKaran](https://github.com/EnderKaran)
+
+© 2026 Ender Karan. Tüm hakları saklıdır.
