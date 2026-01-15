@@ -4,7 +4,7 @@ Modern web standartlarının en güncel araçları (Next.js 15, TypeScript, Tail
 
 Bu proje, sadece bir vitrin değil; Server Side Rendering (SSR), Tip Güvenliği, 3D Animasyonlar ve Uluslararasılaştırma (i18n) gibi ileri seviye web geliştirme konseptlerinin uygulandığı canlı bir laboratuvardır.
 
-**[Canlı Demoyu Görüntüle](https://EnderKaran.github.io/Portfolio-Website/)** ---
+**[Canlı Demoyu Görüntüle](https://portfolio-website-nine-gilt-86.vercel.app/)** ---
 
 ### ✨ Projenin Felsefesi
 
