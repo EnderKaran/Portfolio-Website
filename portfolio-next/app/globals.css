@@ -1,11 +1,6 @@
 @import "tailwindcss";
 
-@theme {
-  --color-primary: rgb(var(--color-text-primary));
-  --color-secondary: rgb(var(--color-text-secondary));
-  --color-bg: rgb(var(--color-background));
-  --color-accent: rgb(var(--color-accent));
-}
+/* Removed invalid @theme block; use CSS variables directly in :root or other selectors */
 
 :root {
   --color-background: 255 255 255; 
