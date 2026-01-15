@@ -1,12 +1,21 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import useTheme from '../hooks/useTheme';
+import useTheme from '../../hooks/useTheme';
 import { FiSun, FiMoon } from 'react-icons/fi';
 
 export const ThemeToggle = () => {
   const [theme, toggleTheme] = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <div className="w-9 h-9" />; 
+  }
 
   return (
     <div className="flex items-center justify-center">
