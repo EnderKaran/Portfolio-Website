@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
-/* Removed invalid @theme block; use CSS variables directly in :root or other selectors */
+@custom-variant dark (&:where(.dark, .dark *));
+
 
 :root {
   --color-background: 255 255 255; 
@@ -11,7 +12,6 @@
   --color-card-border: 229 231 235;
 }
 
-/* Koyu Mod sınıfı HTML'e eklenince çalışacak */
 :root.dark {
   --color-background: 3 7 18; 
   --color-text-primary: 243 244 246;
@@ -26,7 +26,6 @@
   color: rgb(var(--color-background));
 }
 
-/* Next.js body font ayarı layout.tsx'den gelecek ama buraya temel stilleri ekleyelim */
 body {
   background-color: rgb(var(--color-background));
   color: rgb(var(--color-text-primary));

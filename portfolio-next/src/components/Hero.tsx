@@ -90,8 +90,9 @@ export const Hero = () => {
                             alt="Ender Karan" 
                             width={250} 
                             height={250}
-                            className="relative z-10 w-[250px] h-auto"
-                            priority // LCP için önemli
+                            className="relative z-10 w-[250px] h-auto" 
+                            style={{ width: 'auto', height: 'auto' }}
+                            priority 
                         />
                     </motion.div>
 

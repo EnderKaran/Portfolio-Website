@@ -86,6 +86,7 @@ export const Portfolio = () => {
                                                     alt={project.title}
                                                     fill
                                                     className="object-cover"
+                                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
                                                 />
                                             </div>
                                             <div className="flex-1">

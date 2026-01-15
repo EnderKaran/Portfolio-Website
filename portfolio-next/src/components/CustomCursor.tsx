@@ -36,16 +36,16 @@ export const CustomCursor = () => {
     default: {
       height: 16,
       width: 16,
-      backgroundColor: "transparent",
-      borderWidth: '2px',
+      backgroundColor: "rgba(16, 185, 129, 0)", 
+      borderWidth: '2px',   
+      borderColor: "rgba(16, 185, 129, 1)", 
     },
     hover: {
       height: 64,
       width: 64,
-      backgroundColor: 'rgb(var(--color-accent))',
-      borderColor: 'transparent',
+      backgroundColor: "rgba(16, 185, 129, 0.5)", 
       borderWidth: '0px',
-      opacity: 0.5
+      borderColor: "rgba(16, 185, 129, 0)",
     },
   };
 
