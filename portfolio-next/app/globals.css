@@ -1,26 +1,117 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: rgb(var(--color-text-primary));
+  --color-secondary: rgb(var(--color-text-secondary));
+  --color-bg: rgb(var(--color-background));
+  --color-accent: rgb(var(--color-accent));
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-background: 255 255 255; 
+  --color-text-primary: 31 41 55;
+  --color-text-secondary: 75 85 99;
+  --color-accent: 5 150 105;
+  --color-card-background: 255 255 255;
+  --color-card-border: 229 231 235;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Koyu Mod sınıfı HTML'e eklenince çalışacak */
+:root.dark {
+  --color-background: 3 7 18; 
+  --color-text-primary: 243 244 246;
+  --color-text-secondary: 156 163 175;
+  --color-accent: 52 211 153;
+  --color-card-background: 17 24 39; 
+  --color-card-border: 55 65 81;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+::selection{
+  background-color: rgb(var(--color-accent));
+  color: rgb(var(--color-background));
 }
 
+/* Next.js body font ayarı layout.tsx'den gelecek ama buraya temel stilleri ekleyelim */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-text-primary));
+  transition: background-color 0.5s ease, color 0.5s ease; 
+  cursor: none; /* Custom cursor için */
+}
+
+a, button {
+  cursor: none;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #34d399 #1f2937;
+}
+
+.active-link {
+  color: rgb(var(--color-accent));
+  transform: scale(1.1);
+  font-weight: 600;
+}
+
+/* Webkit scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #111827;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #34d399;
+  border-radius: 10px;
+  border: 2px solid #111827;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #6ee7b7;
+}
+
+/* --- 404 SAYFASI EFEKTLERİ --- */
+.space-bg {
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+}
+.stars-layer-1 {
+  width: 1px; height: 1px; background: transparent;
+  box-shadow: 1744px 122px #FFF, 134px 1321px #FFF, 92px 859px #FFF, 453px 233px #FFF;
+  animation: starFloat 50s linear infinite;
+}
+.stars-layer-2 {
+  width: 2px; height: 2px; background: transparent;
+  box-shadow: 122px 1744px #FFF, 1321px 134px #FFF, 859px 92px #FFF, 123px 543px #FFF;
+  animation: starFloat 100s linear infinite;
+}
+@keyframes starFloat {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-2000px); }
+}
+.glitch-text {
+  position: relative;
+  text-shadow: 2px 2px 0px #34d399, -2px -2px 0px #059669;
+}
+.glitch-text::before, .glitch-text::after {
+  content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #090a0f;
+}
+.glitch-text::before {
+  left: 2px; text-shadow: -1px 0 #34d399; clip: rect(44px, 450px, 56px, 0);
+  animation: glitchEffect 5s infinite linear alternate-reverse;
+}
+.glitch-text::after {
+  left: -2px; text-shadow: -1px 0 #059669; clip: rect(44px, 450px, 56px, 0);
+  animation: glitchEffect 2s infinite linear alternate-reverse;
+}
+@keyframes glitchEffect {
+  0% { clip: rect(31px, 9999px, 94px, 0); }
+  20% { clip: rect(82px, 9999px, 35px, 0); }
+  100% { clip: rect(2px, 9999px, 15px, 0); }
+}
+.astronaut-float { animation: astronautFloat 6s ease-in-out infinite; }
+@keyframes astronautFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
 }
