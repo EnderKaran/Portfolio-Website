@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={poppins.variable} suppressHydrationWarning>
+    <html lang="en" className={poppins.variable} suppressHydrationWarning style={{ scrollBehavior: 'smooth' }}>
       <body className="font-poppins bg-white dark:bg-black text-gray-900 dark:text-gray-100 transition-colors duration-500 antialiased selection:bg-emerald-500 selection:text-white">
         
         <script
