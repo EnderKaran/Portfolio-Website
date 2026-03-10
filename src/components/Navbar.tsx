@@ -23,6 +23,7 @@ export const Navbar = () => {
         { title: t('nav_technologies'), path: "/technologies", type: "route" },
         { title: t('nav_contact'), path: "/contact", type: "route" },
         { title: t('nav_changelog'), path: "/changelog", type: "route" },
+        { title: t('nav_blog'), path: "/blog", type: "route" },
     ];
 
     const { scrollYProgress } = useScroll();

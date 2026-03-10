@@ -4,7 +4,6 @@ import { initReactI18next } from 'react-i18next';
 const resources = {
   tr: {
     translation: {
-      // ... Diğer çeviriler aynı kalacak ...
       
       // Hero Bölümü
       "hero_greeting": "Merhaba, Ben",
@@ -215,12 +214,14 @@ const resources = {
       "meta_changelog_desc": "Web sitemin ve projelerimin gelişim süreci. Eklenen yeni özellikler, yapılan iyileştirmeler ve hata düzeltmelerinin detaylı geçmişi.",
       "meta_about_title": "Hakkımda | Ender Karan",
       "meta_about_desc": "Kariyer yolculuğum, yetkinliklerim ve yazılım geliştirme tutkum hakkında detaylı bilgi. Profesyonel geçmişim ve vizyonum.",
+      "nav_blog": "Blog"
     }
   },
   en: {
     translation: {
       // Hero Section
       "hero_greeting": "Hello, I am",
+      "nav_blog": "Blog",
       "hero_intro": "I'm a developer focused on creating user-centric web experiences as a",
       "hero_role_frontend": "front-end developer.",
       "hero_role_software": "software developer.",
