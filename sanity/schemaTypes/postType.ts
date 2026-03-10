@@ -1,65 +1,65 @@
-import {DocumentTextIcon} from '@sanity/icons'
-import {defineArrayMember, defineField, defineType} from 'sanity'
+import { defineField, defineType } from 'sanity'
 
 export const postType = defineType({
   name: 'post',
-  title: 'Post',
+  title: 'Blog Yazısı',
   type: 'document',
-  icon: DocumentTextIcon,
   fields: [
     defineField({
       name: 'title',
+      title: 'Başlık',
       type: 'string',
+      validation: (Rule) => Rule.required().error('Başlık zorunludur!'),
     }),
     defineField({
       name: 'slug',
+      title: 'URL Uzantısı (Slug)',
+      description: 'Örn: benim-ilk-yazim (Generate butonuna basarak otomatikleştirebilirsin)',
       type: 'slug',
       options: {
         source: 'title',
+        maxLength: 96,
       },
-    }),
-    defineField({
-      name: 'author',
-      type: 'reference',
-      to: {type: 'author'},
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'mainImage',
+      title: 'Kapak Resmi',
       type: 'image',
       options: {
-        hotspot: true,
+        hotspot: true, // Resmin neresinin odak noktası olacağını seçmeni sağlar
       },
       fields: [
-        defineField({
+        {
           name: 'alt',
           type: 'string',
-          title: 'Alternative text',
-        })
+          title: 'Alternatif Metin (SEO için resmi açıklayın)',
+        }
       ]
     }),
     defineField({
-      name: 'categories',
-      type: 'array',
-      of: [defineArrayMember({type: 'reference', to: {type: 'category'}})],
-    }),
-    defineField({
       name: 'publishedAt',
+      title: 'Yayınlanma Tarihi',
       type: 'datetime',
     }),
     defineField({
+      name: 'excerpt',
+      title: 'Kısa Özet',
+      description: 'Blog listesi sayfasında görünecek kısa açıklama (1-2 cümle)',
+      type: 'text',
+      rows: 3,
+    }),
+    defineField({
       name: 'body',
-      type: 'blockContent',
+      title: 'Yazı İçeriği',
+      type: 'blockContent', // Zengin metin editörü (Kalın, italik, link, resim eklenebilir)
     }),
   ],
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
       media: 'mainImage',
-    },
-    prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
+      subtitle: 'publishedAt',
     },
   },
 })

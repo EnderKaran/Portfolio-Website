@@ -1,27 +1,27 @@
 'use client'
 
 /**
- * This configuration is used to for the Sanity Studio that’s mounted on the `\app\studio\[[...tool]]\page.tsx` route
+ * Bu yapılandırma, `\app\studio\[[...tool]]\page.tsx` rotasında çalışan Sanity Studio içindir.
  */
 
 import {visionTool} from '@sanity/vision'
 import {defineConfig} from 'sanity'
-import {structureTool} from 'sanity/structure'
+import {structureTool} from 'sanity/structure' // DİKKAT: @ işareti yok, doğrusu bu şekildedir.
 
-// Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
+// API versiyonlama, dataset ve projectId ayarlarını içeri aktarıyoruz
 import {apiVersion, dataset, projectId} from './sanity/env'
 import {schema} from './sanity/schemaTypes'
-import {structure} from './sanity/structure'
+import {structure} from './sanity/deskStructure'
 
 export default defineConfig({
   basePath: '/studio',
   projectId,
   dataset,
-  // Add and edit the content schema in the './sanity/schemaTypes' folder
+  // İçerik şemalarımız './sanity/schemaTypes' klasöründen gelir
   schema,
   plugins: [
     structureTool({structure}),
-    // Vision is for querying with GROQ from inside the Studio
+    // Vision eklentisi, Studio içinden GROQ sorguları yapabilmeni sağlar
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({defaultApiVersion: apiVersion}),
   ],
