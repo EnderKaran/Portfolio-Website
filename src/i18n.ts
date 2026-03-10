@@ -214,7 +214,12 @@ const resources = {
       "meta_changelog_desc": "Web sitemin ve projelerimin gelişim süreci. Eklenen yeni özellikler, yapılan iyileştirmeler ve hata düzeltmelerinin detaylı geçmişi.",
       "meta_about_title": "Hakkımda | Ender Karan",
       "meta_about_desc": "Kariyer yolculuğum, yetkinliklerim ve yazılım geliştirme tutkum hakkında detaylı bilgi. Profesyonel geçmişim ve vizyonum.",
-      "nav_blog": "Blog"
+      "nav_blog": "Blog",
+      // Blog
+      "changelog_v2_1_0_desc1": "Dinamik Blog modülü eklendi ve tüm arayüz kodlamaları tamamlandı.",
+      "changelog_v2_1_0_desc2": "Sanity.io Headless CMS entegrasyonu sağlandı ve bulut tabanlı içerik yönetimine geçildi.",
+      "changelog_v2_1_0_desc3": "Next.js Image optimizasyonu Sanity CDN için yapılandırıldı ve görseller optimize edildi.",
+      "changelog_v2_1_0_desc4": "Dinamik route yapısı (Slug) ve PortableText zengin metin desteği sisteme dahil edildi.",
     }
   },
   en: {
@@ -426,6 +431,11 @@ const resources = {
       "meta_changelog_desc": "Development history of my website and projects. Detailed log of new features, improvements, and bug fixes.",
       "meta_about_title": "About Me | Ender Karan",
       "meta_about_desc": "Detailed information about my career journey, skills, and passion for software development. My professional background and vision.",
+      //Blog
+      "changelog_v2_1_0_desc1": "Dynamic Blog module added and all interface coding completed.",
+      "changelog_v2_1_0_desc2": "Sanity.io Headless CMS integration established and switched to cloud-based content management.",
+      "changelog_v2_1_0_desc3": "Next.js Image optimization configured for Sanity CDN and images optimized.",
+      "changelog_v2_1_0_desc4": "Dynamic routing (Slug) and PortableText rich text support included in the system.",
     }
   }
 };
