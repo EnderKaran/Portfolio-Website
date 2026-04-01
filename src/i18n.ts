@@ -200,6 +200,10 @@ const resources = {
       "changelog_v2_0_0_desc3": "Stil motoru Tailwind CSS v4'e yükseltildi ve resim optimizasyonu için 'next/image' bileşeni entegre edildi.",
       "changelog_v2_0_0_desc4": "Dark Mode hidrasyon (hydration mismatch) sorunları giderildi ve SEO yönetimi 'react-helmet' yerine Next.js Metadata API'ye taşındı.",
 
+      "changelog_v2_2_0_desc1": "Tüm site genelinde Apple ve Bento Grid tasarım diline geçiş yapılarak modern, Premium bir görünüme ulaşıldı.",
+"changelog_v2_2_0_desc2": "Renk paleti güncellendi; glassmorphism (cam efekti) ve soft glow efektleri ile derinlik hissi artırıldı.",
+"changelog_v2_2_0_desc3": "Tipografi modernize edildi. Başlıklar ve metinler yüksek kontrastlı ve sıkışık (tracking-tighter) ağırlıklarla yeniden yapılandırıldı.",
+"changelog_v2_2_0_desc4": "Bileşenler (Navbar, Footer, Hero, İletişim vb.) tam yuvarlatılmış hatlar ve daha akıcı Framer animasyonları ile revize edildi.",
       // --- Stack (Teknolojiler) Bölümü ---
       "stack_title_part1": "Kullandığım",
       "stack_title_part2": " Teknolojiler",
@@ -361,6 +365,10 @@ const resources = {
       
       // --- Changelog Page ---
       "changelog_title": "Changelog",
+      "changelog_v2_2_0_desc1": "Transitioned to an Apple and Bento Grid design language across the site, achieving a modern, Premium look.",
+"changelog_v2_2_0_desc2": "Updated color palette; enhanced depth with glassmorphism and soft glow effects.",
+"changelog_v2_2_0_desc3": "Modernized typography. Headings and texts were restructured with high-contrast, tracking-tighter font weights.",
+"changelog_v2_2_0_desc4": "Components (Navbar, Footer, Hero, Contact, etc.) revised with fully rounded borders and smoother Framer animations.",
 
       "changelog_type_newpage": "New Page",
       "changelog_type_improvement": "Improvement",

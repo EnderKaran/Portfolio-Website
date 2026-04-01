@@ -2,16 +2,16 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, Variants } from 'framer-motion';
-import { Search, Star, GitBranch, Link, Code } from 'lucide-react';
+import { FaSearch, FaStar, FaGithub, FaLink, FaCode } from 'react-icons/fa';
 
 
 // --- MOCK BİLEŞENLER VE İKONLAR ---
 const Icons = {
-  Search: () => <Search size={20} />,
-  Star: () => <Star size={16} />,
-  Github: () => <GitBranch size={20} />,
-  Link: () => <Link size={20} />,
-  Code: () => <Code size={16} />
+  Search: () => <FaSearch />,
+  Star: () => <FaStar />,
+  Github: () => <FaGithub />,
+  Link: () => <FaLink />,
+  Code: () => <FaCode />
 };
 
 const t = (key: string) => {
