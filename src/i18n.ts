@@ -24,6 +24,7 @@ const resources = {
       "nav_technologies": "Teknolojiler",
       "nav_contact": "İletişim",
       "nav_changelog": "Yenilikler",
+      "hero_role_fullstack": "full stack geliştiricisiyim.",
       
       // --- About Bölümü ---
       "about_title_part1": "Beni",
@@ -46,8 +47,9 @@ const resources = {
       
       // --- Abouts Sayfası ---
       "about_page_title": "Hakkımda",
-      "about_intro_p1": "Türkiye'nin Bursa şehrinde yaşayan, tutkulu ve kullanıcı odaklı bir Frontend Geliştiriciyim. JavaScript, SCSS, Bootstrap ve jQuery gibi temel teknolojilerde güçlü bir altyapıya sahibim. Şu anda React, Tailwind CSS ve Material UI gibi modern kütüphane ve çerçevelerle deneyimimi ileriye taşıyorum.",
-      "about_intro_p2": "Sürekli öğrenme ve kendimi geliştirme prensibiyle, Next.js ile sunucu taraflı işleme (SSR/SSG) konusundaki uzmanlığımı derinleştiriyor ve TypeScript ile daha güvenli, ölçeklenebilir projeler geliştiriyorum. Bunun yanında masaüstü geliştirme (Delphi), temel arka uç geliştirme (ASP.NET) ve veritabanı yönetimi (MariaDB) konularında da deneyim sahibiyim. Hedefim, sadece arayüz geliştiren bir geliştirici olarak kalmayıp; ürünün tamamına hakim, uçtan uca çözümler üreten bir Fullstack Yazılım Geliştiricisi olmaktır.",
+      "about_intro_p1": "Bursa merkezli, ölçeklenebilir ve yüksek performanslı web uygulamaları geliştirmeye odaklanmış bir Yazılım Geliştiriciyim.",
+  "about_intro_p2": "Kod yazmayı sadece arayüz oluşturmak olarak değil, sürdürülebilir yazılım mimarileri kurmak olarak görüyorum. Modern Frontend ekosisteminin merkezinde; React ve Next.js (SSR/SSG) teknolojilerini kullanarak, TypeScript güvencesiyle tip güvenliğine sahip, SEO dostu ve hızlı ürünler geliştiriyorum.",
+  "about_intro_p3": "Teknik yetkinliklerimi sadece Frontend ile sınırlı tutmuyor; veritabanı yönetimi (MariaDB/PostgreSQL) ve backend süreçlerine (Node.js/ASP.NET) olan hakimiyetimle, bir projeyi uçtan uca (End-to-End) yönetebilecek Fullstack vizyonuyla hareket ediyorum.",
       "about_github_button": "GitHub",
       "about_codepen_button": "CodePen",
       
@@ -232,6 +234,7 @@ const resources = {
       "hero_role_software": "software developer.",
       "hero_button_contact": "Contact Me",
       "hero_button_work": "My Work",
+      "hero_role_fullstack": "full stack developer.",
 
       // Hero Navigation Links
       "hero_nav_knowMe": "Get to Know Me",
@@ -266,8 +269,9 @@ const resources = {
       
       // --- Abouts Page ---
       "about_page_title": "About Me",
-      "about_intro_p1": "I am a passionate and user-centric Frontend Developer based in Bursa, Turkey. I have a strong foundation in core technologies like JavaScript, SCSS, Bootstrap, and jQuery. I am currently advancing my experience with modern libraries and frameworks such as React, Tailwind CSS, and Material UI.",
-      "about_intro_p2": "With a principle of continuous learning and self-improvement, I am deepening my expertise in server-side rendering (SSR/SSG) with Next.js and developing safer, scalable projects with TypeScript. Additionally, I have experience in desktop development (Delphi), basic backend development (ASP.NET), and database management (MariaDB). My goal is not just to be a developer who builds interfaces, but to become a Fullstack Software Developer who has a comprehensive command of the entire product and produces end-to-end solutions.",
+      "about_intro_p1": "I am a Software Developer based in Bursa, focused on building scalable and high-performance web applications.",
+"about_intro_p2": "I view coding not just as building interfaces, but as establishing sustainable software architectures. At the core of the modern Frontend ecosystem, I develop SEO-friendly, fast products with type safety, utilizing React, Next.js (SSR/SSG), and TypeScript.",
+"about_intro_p3": "I do not limit my technical skills to the Frontend; with my command of database management (MariaDB/PostgreSQL) and backend processes (Node.js/ASP.NET), I operate with a Fullstack vision capable of managing a project End-to-End.",
       "about_github_button": "GitHub",
       "about_codepen_button": "CodePen",
       

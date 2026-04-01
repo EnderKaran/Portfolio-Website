@@ -15,7 +15,12 @@ export const Hero = () => {
     const onHomePage = pathname === '/';
     const { t } = useTranslation();
     
-    const roles = [t('hero_role_frontend'), t('hero_role_software')];
+    // YENİ ROL EKLENDİ
+    const roles = [
+        t('hero_role_frontend'), 
+        t('hero_role_software'), 
+        t('hero_role_fullstack') // "Full Stack Developer"
+    ];
     const [roleIndex, setRoleIndex] = useState(0);
 
     const navlinks = [
@@ -79,7 +84,9 @@ export const Hero = () => {
                         
                         <div className="flex flex-col items-center justify-center mb-12 text-xl font-medium text-gray-600 md:text-2xl dark:text-gray-300 md:flex-row md:gap-3">
                             <span>{t('hero_intro')}</span>
-                            <div className="relative inline-flex items-center justify-center h-10 min-w-[260px] overflow-hidden bg-gray-100 dark:bg-white/5 rounded-xl px-4 mt-4 md:mt-0">
+                            
+                            {/* KUTU GENİŞLİĞİ ARTIRILDI (Full Stack sığsın diye) */}
+                            <div className="relative inline-flex items-center justify-center h-10 min-w-[300px] overflow-hidden bg-gray-100 dark:bg-white/5 rounded-xl px-4 mt-4 md:mt-0">
                                 <AnimatePresence mode="wait">
                                     <motion.span
                                         key={roleIndex}
