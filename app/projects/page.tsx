@@ -1,13 +1,42 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { motion, Variants } from 'framer-motion';
-import { FaGithub, FaLink, FaStar, FaSearch } from 'react-icons/fa';
+
+/**
+ * NOT: Önizleme (Canvas) ortamında hata almamak için react-icons yerine
+ * Inline SVG (Icons objesi) ve mock çeviri (t) kullanılmıştır.
+ * Yerel projenize aktarırken kendi 'useTranslation' ve 'react-icons/fa'
+ * import'larınızı (FaGithub, FaLink vb.) kullanmaya devam edebilirsiniz.
+ */
+
+// --- MOCK BİLEŞENLER VE İKONLAR ---
+const Icons = {
+  Search: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>,
+  Star: () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>,
+  Github: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>,
+  Link: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>,
+  Code: () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+};
+
+const t = (key: string) => {
+    const translations: Record<string, string> = {
+        'projects_title': 'Açık Kaynak Projeler',
+        'projects_subtitle': 'GitHub profilimdeki çalışmalarım. Temiz kod, inovasyon ve sürekli öğrenme tutkumu keşfedin.',
+        'projects_search': 'Proje adı ile ara...',
+        'projects_loading': 'Projeler uzaydan getiriliyor...',
+        'projects_error': 'Hata:',
+        'projects_no_desc': 'Bu proje için henüz bir açıklama girilmemiş.',
+        'projects_view_code': 'Kodu İncele',
+        'projects_live_demo': 'Canlı Demo',
+        'projects_no_results': 'Arama kriterlerinize uygun proje bulunamadı.'
+    };
+    return translations[key] || key;
+};
+// ------------------------------------
 
 const GITHUB_USERNAME = 'EnderKaran';
 
-// GitHub Repo Tipi
 interface Repo {
     id: number;
     name: string;
@@ -21,7 +50,6 @@ interface Repo {
 }
 
 export default function ProjectsPage() {
-    const { t } = useTranslation();
     const [repos, setRepos] = useState<Repo[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -56,96 +84,149 @@ export default function ProjectsPage() {
             transition: { staggerChildren: 0.1 }
         }
     };
+
     const cardVariants: Variants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 }
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 15 } }
     };
 
     if (loading) {
         return (
-            <div className="flex items-center justify-center min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white">
-                {t('projects_loading')}
+            <div className="flex flex-col items-center justify-center min-h-screen transition-colors duration-500 bg-white dark:bg-[#030303] text-gray-900 dark:text-white">
+                <div className="w-16 h-16 border-4 border-t-emerald-500 border-emerald-500/20 rounded-full animate-spin mb-6"></div>
+                <p className="text-xl font-bold tracking-widest text-emerald-500 uppercase animate-pulse">{t('projects_loading')}</p>
             </div>
         );
     }
+
     if (error) {
         return (
-            <div className="flex items-center justify-center min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white">
-                {t('projects_error')} {error}
+            <div className="flex items-center justify-center min-h-screen transition-colors duration-500 bg-white dark:bg-[#030303] text-gray-900 dark:text-white">
+                <div className="p-8 text-center border shadow-2xl rounded-3xl border-red-500/20 bg-red-500/5 backdrop-blur-xl">
+                    <p className="mb-2 text-2xl font-black text-red-500">{t('projects_error')}</p>
+                    <p className="text-gray-400">{error}</p>
+                </div>
             </div>
         );
     }
 
     return (
-        <div className="min-h-screen py-24 transition-colors duration-300 sm:py-32 bg-white dark:bg-black text-gray-900 dark:text-white">
-            <div className="container px-4 mx-auto">
-                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-                    <h1 className="mb-4 text-5xl font-bold tracking-tighter text-center md:text-6xl text-emerald-500 dark:text-emerald-400">
-                        {t('projects_title')}
+        <div className="relative min-h-screen pt-32 pb-24 overflow-hidden transition-colors duration-500 bg-white dark:bg-[#030303] text-gray-900 dark:text-white">
+            
+            {/* Arka Plan Soft Glow */}
+            <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-30 dark:opacity-40 -z-10">
+                <div className="absolute top-[-10%] right-[10%] w-[40vw] h-[40vw] bg-emerald-500 blur-[150px] rounded-full mix-blend-multiply opacity-30 animate-pulse"></div>
+                <div className="absolute bottom-[20%] left-[-10%] w-[30vw] h-[30vw] bg-blue-500 blur-[130px] rounded-full mix-blend-multiply opacity-20"></div>
+            </div>
+
+            <div className="container relative z-10 px-4 mx-auto max-w-[1200px]">
+                {/* --- BAŞLIK BÖLÜMÜ --- */}
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="mb-20 text-center">
+                    <h1 className="mb-6 text-6xl font-black tracking-tighter md:text-8xl text-gray-900 dark:text-white">
+                        <span className="text-emerald-500">Açık Kaynak</span> <br className="hidden md:block"/>Projeler.
                     </h1>
-                    <p className="max-w-2xl mx-auto mb-12 text-lg text-center text-gray-600 dark:text-gray-400">
+                    <p className="max-w-2xl mx-auto text-lg font-medium leading-relaxed text-gray-500 md:text-xl dark:text-gray-400">
                         {t('projects_subtitle')}
                     </p>
-                    <div className="relative max-w-md mx-auto mb-16">
-                        <input
-                            type="text"
-                            placeholder={t('projects_search')}
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full py-3 pl-10 pr-4 transition-all duration-300 border-2 rounded-full focus:outline-none focus:ring-2 bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white"
-                            style={{ '--tw-ring-color': 'rgb(16 185 129)' } as React.CSSProperties}
-                        />
-                        <FaSearch className="absolute -translate-y-1/2 left-4 top-1/2 text-gray-400" />
+                    
+                    {/* Modern Arama Çubuğu */}
+                    <div className="relative max-w-xl mx-auto mt-12 group">
+                        <div className="absolute inset-0 transition-all duration-300 rounded-full bg-emerald-500/20 blur-xl group-hover:bg-emerald-500/30"></div>
+                        <div className="relative flex items-center p-2 transition-colors border shadow-lg bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl rounded-full border-gray-200 dark:border-white/10 group-hover:border-emerald-500/50">
+                            <span className="pl-4 text-emerald-500"><Icons.Search /></span>
+                            <input
+                                type="text"
+                                placeholder={t('projects_search')}
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                className="w-full px-4 py-3 text-lg font-medium text-gray-900 bg-transparent outline-none dark:text-white placeholder:text-gray-400"
+                            />
+                        </div>
                     </div>
                 </motion.div>
 
-                <motion.div variants={containerVariants} initial="hidden" animate="visible" className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {/* --- PROJE KARTLARI (BENTO GRID) --- */}
+                <motion.div 
+                    variants={containerVariants} 
+                    initial="hidden" 
+                    animate="visible" 
+                    className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+                >
                     {filteredRepos.map(repo => (
                         <motion.div
                             key={repo.id}
                             variants={cardVariants}
-                            className="flex flex-col justify-between p-6 transition-transform duration-300 border shadow-lg backdrop-blur-sm rounded-2xl hover:-translate-y-2 bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800"
+                            whileHover={{ y: -10 }}
+                            className="flex flex-col justify-between p-8 transition-all duration-500 shadow-sm rounded-[2.5rem] bg-white dark:bg-[#0a0a0a] border border-gray-100 dark:border-white/5 hover:shadow-2xl hover:shadow-emerald-500/10 hover:border-emerald-500/30 group"
                         >
                             <div>
-                                <h3 className="mb-2 text-xl font-bold text-emerald-500 dark:text-emerald-400">
+                                {/* Üst Bar: İkon ve Yıldız */}
+                                <div className="flex items-center justify-between mb-6">
+                                    <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-emerald-50 dark:bg-emerald-500/10 text-emerald-500">
+                                        <Icons.Github />
+                                    </div>
+                                    <div className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-black tracking-widest text-amber-500 bg-amber-50 dark:bg-amber-500/10 rounded-xl">
+                                        <Icons.Star /> {repo.stargazers_count}
+                                    </div>
+                                </div>
+
+                                <h3 className="mb-3 text-2xl font-black tracking-tight text-gray-900 dark:text-white line-clamp-1 group-hover:text-emerald-500 transition-colors">
                                     {repo.name}
                                 </h3>
-                                <p className="h-20 mb-4 overflow-hidden text-sm text-gray-600 dark:text-gray-400">
+                                <p className="h-20 mb-6 text-base leading-relaxed text-gray-600 dark:text-gray-400 line-clamp-3">
                                     {repo.description || t('projects_no_desc')}
                                 </p>
-                                <div className="flex flex-wrap items-center gap-2 mb-4">
-                                    {repo.topics && repo.topics.map(topic => (
-                                        <span key={topic} className="px-2 py-1 text-xs font-semibold capitalize rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+
+                                {/* Teknolojiler (Topics & Language) */}
+                                <div className="flex flex-wrap gap-2 mb-6">
+                                    {repo.topics && repo.topics.slice(0, 4).map(topic => (
+                                        <span key={topic} className="px-3 py-1.5 text-[10px] font-black tracking-widest uppercase rounded-xl bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-white/5">
                                             {topic.replace(/-/g, ' ')}
                                         </span>
                                     ))}
                                     {(!repo.topics || repo.topics.length === 0) && repo.language && (
-                                        <span className="px-2 py-1 text-xs font-semibold rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
-                                            {repo.language}
+                                        <span className="flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-black tracking-widest uppercase rounded-xl bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-500/20">
+                                            <Icons.Code /> {repo.language}
                                         </span>
                                     )}
-                                    <span className="flex items-center gap-1 px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400">
-                                        <FaStar /> {repo.stargazers_count}
-                                    </span>
                                 </div>
                             </div>
-                            <div className="flex items-center gap-4 pt-4 mt-auto border-t border-gray-200 dark:border-gray-800">
-                                <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-semibold transition-colors duration-300 text-gray-900 dark:text-white hover:text-emerald-500 dark:hover:text-emerald-400">
-                                    <FaGithub /> {t('projects_view_code')}
+
+                            {/* Alt Bar: Linkler */}
+                            <div className="flex items-center gap-3 pt-6 mt-auto border-t border-gray-100 dark:border-white/5">
+                                <a 
+                                    href={repo.html_url} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="flex items-center justify-center flex-1 gap-2 py-3 text-sm font-bold text-white transition-transform duration-300 bg-gray-900 dark:bg-white dark:text-black rounded-xl hover:scale-105 shadow-md"
+                                >
+                                    <Icons.Github /> Kodu İncele
                                 </a>
                                 {repo.homepage && (
-                                    <a href={repo.homepage} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-semibold transition-colors duration-300 text-gray-900 dark:text-white hover:text-emerald-500 dark:hover:text-emerald-400">
-                                        <FaLink /> {t('projects_live_demo')}
+                                    <a 
+                                        href={repo.homepage} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer" 
+                                        className="flex items-center justify-center w-12 h-12 text-emerald-600 transition-colors bg-emerald-50 border border-emerald-200 dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-400 rounded-xl hover:bg-emerald-500 hover:text-white dark:hover:bg-emerald-500 dark:hover:text-white"
+                                        title={t('projects_live_demo')}
+                                    >
+                                        <Icons.Link />
                                     </a>
                                 )}
                             </div>
                         </motion.div>
                     ))}
                 </motion.div>
-                {filteredRepos.length === 0 && (
-                    <p className="mt-16 text-center text-gray-500">
-                        {t('projects_no_results')}
-                    </p>
+
+                {/* --- SONUÇ BULUNAMADI DURUMU --- */}
+                {filteredRepos.length === 0 && !loading && (
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="py-20 text-center">
+                        <div className="inline-flex items-center justify-center w-24 h-24 mb-6 rounded-full bg-gray-100 dark:bg-white/5 text-gray-400">
+                            <Icons.Search />
+                        </div>
+                        <p className="text-2xl font-black tracking-tight text-gray-900 dark:text-white">Sonuç Bulunamadı</p>
+                        <p className="mt-2 text-gray-500">{t('projects_no_results')}</p>
+                    </motion.div>
                 )}
             </div>
         </div>
