@@ -33,62 +33,86 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="py-8 transition-colors duration-300 bg-white dark:bg-black text-black dark:text-white" id="contact">
-      <div className="max-w-[1200px] mx-auto px-4">
-        <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
+    <footer className="relative pt-24 pb-12 overflow-hidden transition-colors duration-500 bg-white dark:bg-[#030303]" id="contact">
+      
+      {/* Arka Plan Hafif Zümrüt Parıltısı */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-emerald-500/5 blur-[120px] pointer-events-none z-0"></div>
+
+      <div className="container relative z-10 px-4 mx-auto max-w-[1200px]">
+        
+        {/* Üst Kısım: İletişim & Konum */}
+        <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end mb-14">
           <div>
-            <h2 className="mb-6 text-3xl font-bold md:text-5xl text-black dark:text-white">
-              {t('footer_contact_part1')} <span className="text-emerald-500 dark:text-emerald-400">{t('footer_contact_part2')}</span>
+            <h2 className="mb-6 text-5xl font-black tracking-tighter md:text-7xl text-gray-900 dark:text-white">
+              {t('footer_contact_part1')} <span className="text-emerald-500">{t('footer_contact_part2')}</span>
             </h2>
-            <a className="text-xl font-semibold underline break-all transition-all duration-300 md:text-3xl text-black dark:text-white decoration-gray-400 decoration-2 underline-offset-4 hover:text-emerald-500 hover:decoration-emerald-500" href="mailto:ender.karan14@gmail.com">
+            <a 
+              href="mailto:ender.karan14@gmail.com" 
+              className="text-2xl font-bold transition-all duration-300 md:text-4xl text-gray-600 dark:text-gray-300 decoration-gray-300 dark:decoration-gray-800 decoration-4 underline-offset-8 hover:text-emerald-500 hover:decoration-emerald-500 underline"
+            >
               ender.karan14@gmail.com
             </a>
           </div>
-          <div className="mt-12 text-left text-gray-600 dark:text-gray-400 md:text-right">
-            <div className="text-lg">
+          
+          <div className="text-left md:text-right">
+            <div className="text-lg font-bold tracking-widest text-gray-400 uppercase">
               <p>{t('footer_city')}</p>
               <p>{t('footer_country')}</p>
             </div>
           </div>
         </div>
 
-        <div className="relative w-full py-12 mt-8 overflow-hidden text-center select-none">
-            <h1 aria-hidden="true" className="absolute inset-0 z-0 flex items-center justify-center text-[13vw] lg:text-[12rem] font-bold pointer-events-none text-black dark:text-white/90">
+        {/* Devasa İsim Vurgusu (Referans Görseldeki Gibi) */}
+        <div className="flex justify-center w-full py-8 pointer-events-none select-none">
+            <h1 aria-hidden="true" className="text-[14vw] leading-none font-black uppercase tracking-tighter text-gray-900/5 dark:text-white/5">
                 EnderKaran
             </h1>
         </div>
 
-        <div className="container relative flex items-center justify-center gap-10 pt-8 mt-12 border-t sm:justify-between max-sm:flex-col border-gray-300 dark:border-gray-800">
-          <p className="text-base text-gray-600 dark:text-gray-400">
-            © {new Date().getFullYear()} Ender Karan. {t('footer_copyright')}
+        {/* Alt Bar: Telif Hakkı & Sosyal Medya */}
+        <div className="flex flex-col items-center justify-between gap-6 pt-8 border-t sm:flex-row border-gray-200 dark:border-white/10">
+          <p className="text-sm font-bold tracking-widest text-gray-500 uppercase">
+            © {new Date().getFullYear()} ENDER KARAN. {t('footer_copyright')}
           </p>
-          <ul className="flex flex-wrap gap-5">
+          
+          <ul className="flex flex-wrap gap-4">
             <li>
-              <a href="https://github.com/EnderKaran" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 transition-colors rounded-full bg-gray-100 dark:bg-gray-800 text-black dark:text-white hover:text-emerald-500 dark:hover:text-emerald-400">
-                <AiFillGithub size={24} />
+              <a 
+                href="https://github.com/EnderKaran" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center justify-center transition-all duration-300 border w-14 h-14 rounded-2xl bg-gray-50 border-gray-200 text-gray-900 dark:bg-white/5 dark:border-white/10 dark:text-white hover:bg-emerald-500 hover:border-emerald-500 hover:text-white dark:hover:bg-emerald-500 hover:scale-105 hover:-translate-y-1 shadow-lg"
+              >
+                <AiFillGithub size={26} />
               </a>
             </li>
             <li>
-              <a href="https://www.linkedin.com/in/ender-karan-52303b187" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 transition-colors rounded-full bg-gray-100 dark:bg-gray-800 text-black dark:text-white hover:text-emerald-500 dark:hover:text-emerald-400">
-                <AiFillLinkedin size={24} />
+              <a 
+                href="https://www.linkedin.com/in/ender-karan-52303b187" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center justify-center transition-all duration-300 border w-14 h-14 rounded-2xl bg-gray-50 border-gray-200 text-gray-900 dark:bg-white/5 dark:border-white/10 dark:text-white hover:bg-emerald-500 hover:border-emerald-500 hover:text-white dark:hover:bg-emerald-500 hover:scale-105 hover:-translate-y-1 shadow-lg"
+              >
+                <AiFillLinkedin size={26} />
               </a>
             </li>
           </ul>
         </div>
       </div>
 
+      {/* Yukarı Çık Butonu (Modernize Edildi) */}
       <AnimatePresence>
         {isVisible && (
           <motion.button
             onClick={scrollToTop}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, scale: 0.5, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.5, y: 20 }}
             transition={{ duration: 0.3 }}
-            className="fixed z-50 p-3 text-white transition-colors rounded-full shadow-lg bottom-8 right-8 bg-emerald-500 hover:bg-emerald-600 focus:outline-none"
+            className="fixed z-50 flex items-center justify-center text-white transition-all shadow-2xl w-14 h-14 rounded-2xl bottom-8 right-8 bg-emerald-500 hover:bg-emerald-600 focus:outline-none hover:-translate-y-2 shadow-emerald-500/30"
             aria-label={t('footer_aria_scrollToTop')}
           >
-            <FaArrowUp size={20} />
+            <FaArrowUp size={22} />
           </motion.button>
         )}
       </AnimatePresence>
