@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Poppins, Geist } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/src/components/Navbar";
 import { Footer } from "@/src/components/Footer";
 import { CustomCursor } from "@/src/components/CustomCursor";
 import Providers from "@/src/components/Providers";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+
 
 // Font Ayarları
 const poppins = Poppins({
@@ -27,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={poppins.variable} suppressHydrationWarning style={{ scrollBehavior: 'smooth' }}>
+    <html lang="en" className={cn("font-sans", geist.variable)} suppressHydrationWarning style={{ scrollBehavior: 'smooth' }}>
       <body className="font-poppins bg-white dark:bg-black text-gray-900 dark:text-gray-100 transition-colors duration-500 antialiased selection:bg-emerald-500 selection:text-white">
         
         <script
