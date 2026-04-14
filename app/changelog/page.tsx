@@ -2,22 +2,24 @@
 
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
-import { FaPlus, FaDatabase, FaMagic, FaCode, FaRocket, FaPalette, FaBug, FaCube, FaWrench, FaMobileAlt } from 'react-icons/fa';
 
-
-// --- İKONLAR ---
-const Icons = {
-  Plus: () => <FaPlus />,
-  Database: () => <FaDatabase />,
-  Magic: () => <FaMagic />,
-  Code: () => <FaCode />,
-  Rocket: () => <FaRocket />,
-  Palette: () => <FaPalette />,
-  Bug: () => <FaBug />,
-  Cube: () => <FaCube />,
-  Wrench: () => <FaWrench />,
-  Mobile: () => <FaMobileAlt />
-};
+// --- REACT ICONS İÇE AKTARIMLARI ---
+import { 
+    FiPlus, 
+    FiDatabase, 
+    FiCode, 
+    FiBox, 
+    FiTool, 
+    FiSmartphone 
+} from 'react-icons/fi';
+import { 
+    FaMagic, 
+    FaRocket, 
+    FaPalette, 
+    FaBug, 
+    FaBrain, 
+    FaRegBuilding 
+} from 'react-icons/fa';
 
 const useTranslation = () => ({
     t: (key: string) => {
@@ -30,6 +32,12 @@ const useTranslation = () => ({
             'changelog_type_launch': 'Lansman',
             'changelog_type_structure': 'Temel Yapı',
             'changelog_type_responsive': 'Responsive Tasarım',
+            'changelog_type_newfeature': 'Yeni Özellik',
+            // --- v2.3.0 (BUGÜN YAPILANLAR) ---
+            'changelog_v2_3_0_desc1': 'Projeler sayfasına Google Gemini 2.5 Flash Yapay Zeka (AI) entegrasyonu yapıldı.',
+            'changelog_v2_3_0_desc2': 'GitHub repoları artık AI tarafından otonom analiz edilerek 4 aşamalı (Sorun, Mimari, Çözüm, İş Etkisi) profesyonel vaka çalışmalarına (Case Study) dönüştürülüyor.',
+            'changelog_v2_3_0_desc3': 'Anasayfaya "Kurumsal Projeler" (İş Deneyimi) modülü eklendi. Yatay kaydırılabilir (Carousel) Bento kartları ile kurumsal iş geçmişi sisteme dahil edildi.',
+            'changelog_v2_3_0_desc4': 'Vaka çalışmaları ve kurumsal projeler için arkası bulanık (Glassmorphism), akıcı Framer Motion animasyonlarına sahip detay modalları (Dialog) geliştirildi.',
             // --- v2.2.0 ---
             'changelog_v2_2_0_desc1': 'Tüm site genelinde Apple ve Bento Grid tasarım diline geçiş yapılarak Premium bir görünüme ulaşıldı.',
             'changelog_v2_2_0_desc2': 'Renk paleti güncellendi; glassmorphism (cam efekti) ve soft glow efektleri ile derinlik hissi artırıldı.',
@@ -65,63 +73,73 @@ const useTranslation = () => ({
 export default function ChangelogPage() {
     const { t } = useTranslation();
 
-    const changelogData = [
+    const changelogData =[
+        {
+            version: "v2.3.0",
+            date: "14 Nisan 2026",
+            changes:[
+                { type: t('changelog_type_archchange'), description: t('changelog_v2_3_0_desc1'), icon: <FaBrain size={20} /> },
+                { type: t('changelog_type_newfeature'), description: t('changelog_v2_3_0_desc2'), icon: <FaMagic size={20} /> },
+                { type: t('changelog_type_newfeature'), description: t('changelog_v2_3_0_desc3'), icon: <FaRegBuilding size={20} /> },
+                { type: t('changelog_type_improvement'), description: t('changelog_v2_3_0_desc4'), icon: <FiBox size={20} /> },
+            ]
+        },
         {
             version: "v2.2.0",
             date: "01 Nisan 2026",
-            changes: [
-                { type: t('changelog_type_archchange'), description: t('changelog_v2_2_0_desc1'), icon: <Icons.Palette /> },
-                { type: t('changelog_type_improvement'), description: t('changelog_v2_2_0_desc2'), icon: <Icons.Magic /> },
-                { type: t('changelog_type_improvement'), description: t('changelog_v2_2_0_desc3'), icon: <Icons.Wrench /> },
-                { type: t('changelog_type_improvement'), description: t('changelog_v2_2_0_desc4'), icon: <Icons.Cube /> },
+            changes:[
+                { type: t('changelog_type_archchange'), description: t('changelog_v2_2_0_desc1'), icon: <FaPalette size={20} /> },
+                { type: t('changelog_type_improvement'), description: t('changelog_v2_2_0_desc2'), icon: <FaMagic size={20} /> },
+                { type: t('changelog_type_improvement'), description: t('changelog_v2_2_0_desc3'), icon: <FiTool size={20} /> },
+                { type: t('changelog_type_improvement'), description: t('changelog_v2_2_0_desc4'), icon: <FiBox size={20} /> },
             ]
         },
         {
             version: "v2.1.0",
             date: "10 Mart 2026",
-            changes: [
-                { type: t('changelog_type_newpage'), description: t('changelog_v2_1_0_desc1'), icon: <Icons.Plus /> },
-                { type: t('changelog_type_archchange'), description: t('changelog_v2_1_0_desc2'), icon: <Icons.Database /> },
-                { type: t('changelog_type_improvement'), description: t('changelog_v2_1_0_desc3'), icon: <Icons.Magic /> },
-                { type: t('changelog_type_structure'), description: t('changelog_v2_1_0_desc4'), icon: <Icons.Code /> },
+            changes:[
+                { type: t('changelog_type_newpage'), description: t('changelog_v2_1_0_desc1'), icon: <FiPlus size={20} /> },
+                { type: t('changelog_type_archchange'), description: t('changelog_v2_1_0_desc2'), icon: <FiDatabase size={20} /> },
+                { type: t('changelog_type_improvement'), description: t('changelog_v2_1_0_desc3'), icon: <FaMagic size={20} /> },
+                { type: t('changelog_type_structure'), description: t('changelog_v2_1_0_desc4'), icon: <FiCode size={20} /> },
             ]
         },
         {
             version: "v2.0.0",
             date: "15 Ocak 2026",
-            changes: [
-                { type: t('changelog_type_archchange'), description: t('changelog_v2_0_0_desc1'), icon: <Icons.Rocket /> },
-                { type: t('changelog_type_structure'), description: t('changelog_v2_0_0_desc2'), icon: <Icons.Code /> },
-                { type: t('changelog_type_improvement'), description: t('changelog_v2_0_0_desc3'), icon: <Icons.Palette /> },
-                { type: t('changelog_type_bugfix'), description: t('changelog_v2_0_0_desc4'), icon: <Icons.Bug /> },
+            changes:[
+                { type: t('changelog_type_archchange'), description: t('changelog_v2_0_0_desc1'), icon: <FaRocket size={20} /> },
+                { type: t('changelog_type_structure'), description: t('changelog_v2_0_0_desc2'), icon: <FiCode size={20} /> },
+                { type: t('changelog_type_improvement'), description: t('changelog_v2_0_0_desc3'), icon: <FaPalette size={20} /> },
+                { type: t('changelog_type_bugfix'), description: t('changelog_v2_0_0_desc4'), icon: <FaBug size={20} /> },
             ]
         },
         {
             version: "v1.9.0", 
             date: "03 Aralık 2025", 
-            changes: [
-                 { type: t('changelog_type_archchange'), description: t('changelog_v1_9_0_desc1'), icon: <Icons.Cube /> },
-                { type: t('changelog_type_improvement'), description: t('changelog_v1_9_0_desc2'), icon: <Icons.Wrench /> },
+            changes:[
+                 { type: t('changelog_type_archchange'), description: t('changelog_v1_9_0_desc1'), icon: <FiBox size={20} /> },
+                { type: t('changelog_type_improvement'), description: t('changelog_v1_9_0_desc2'), icon: <FiTool size={20} /> },
             ]
         },
         {
             version: "v1.8.0",
             date: "02 Aralık 2025",
-            changes: [
-                { type: t('changelog_type_bugfix'), description: t('changelog_v1_8_0_desc1'), icon: <Icons.Palette /> },
-                { type: t('changelog_type_improvement'), description: t('changelog_v1_8_0_desc2'), icon: <Icons.Wrench /> },
-                { type: t('changelog_type_responsive'), description: t('changelog_v1_8_0_desc3'), icon: <Icons.Mobile /> },
-                { type: t('changelog_type_archchange'), description: t('changelog_v1_8_0_desc4'), icon: <Icons.Code /> },
+            changes:[
+                { type: t('changelog_type_bugfix'), description: t('changelog_v1_8_0_desc1'), icon: <FaPalette size={20} /> },
+                { type: t('changelog_type_improvement'), description: t('changelog_v1_8_0_desc2'), icon: <FiTool size={20} /> },
+                { type: t('changelog_type_responsive'), description: t('changelog_v1_8_0_desc3'), icon: <FiSmartphone size={20} /> },
+                { type: t('changelog_type_archchange'), description: t('changelog_v1_8_0_desc4'), icon: <FiCode size={20} /> },
             ]
         },
         {
             version: "v1.0.0",
             date: "Ağustos 2025",
-            changes: [
-                { type: t('changelog_type_launch'), description: t('changelog_v1_0_0_desc1'), icon: <Icons.Rocket /> },
-                { type: t('changelog_type_structure'), description: t('changelog_v1_0_0_desc2'), icon: <Icons.Code /> },
-                { type: t('changelog_type_responsive'), description: t('changelog_v1_0_0_desc3'), icon: <Icons.Mobile /> },
-                { type: t('changelog_type_bugfix'), description: t('changelog_v1_0_0_desc4'), icon: <Icons.Bug /> }
+            changes:[
+                { type: t('changelog_type_launch'), description: t('changelog_v1_0_0_desc1'), icon: <FaRocket size={20} /> },
+                { type: t('changelog_type_structure'), description: t('changelog_v1_0_0_desc2'), icon: <FiCode size={20} /> },
+                { type: t('changelog_type_responsive'), description: t('changelog_v1_0_0_desc3'), icon: <FiSmartphone size={20} /> },
+                { type: t('changelog_type_bugfix'), description: t('changelog_v1_0_0_desc4'), icon: <FaBug size={20} /> }
             ]
         },
     ];
@@ -147,7 +165,7 @@ export default function ChangelogPage() {
 
             <div className="container relative z-10 px-4 mx-auto max-w-[900px]">
                 
-                {/* --- BAŞLIK BÖLÜMÜ --- */}
+                {/* --- BAŞLIK BÖLÜM --- */}
                 <motion.div 
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
