@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Geist } from "next/font/google";
-import "./globals.css";
+import "@/app/globals.css";
+import React from "react";
 import { Navbar } from "@/src/components/Navbar";
 import { Footer } from "@/src/components/Footer";
 import { CustomCursor } from "@/src/components/CustomCursor";

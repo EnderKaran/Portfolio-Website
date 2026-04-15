@@ -14,13 +14,10 @@
     "jsx": "react-jsx",
     "incremental": true,
     "ignoreDeprecations": "6.0",
-
-    
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
     },
-
     "plugins": [
       {
         "name": "next"
@@ -29,6 +26,7 @@
   },
   "include": [
     "next-env.d.ts",
+    "global.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
