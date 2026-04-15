@@ -51,7 +51,7 @@ const workProjects =[
     },
     {
         id: 2,
-        title: "Stok RandevuQR - ERM System",
+        title: "Stok RandevuQR",
         date: "Mar 2026 – Mar 2026",
         company: "Stok Endüstriyel A.Ş.",
         shortDesc: "Toplantı odası trafiğini disipline eden, akıllı iş kuralları ve 'Take-over' mekanizmasına sahip Kurumsal Kaynak Yönetimi sistemi.",
