@@ -60,7 +60,7 @@ KURALLAR (KESİNLİKLE UYULACAK):
 SADECE JSON döndür ve tüm alanları EKSİKSİZ doldur.`;
 
     const model = genAI.getGenerativeModel({
-        model: "gemini-2.5-flash", // Eğer 503 hatası hiç düzelmezse burayı geçici olarak "gemini-2.0-flash" yapabilirsiniz.
+        model: "gemini-2.5-flash",
         systemInstruction: systemPrompt,
         generationConfig: {
             responseMimeType: "application/json",
@@ -72,15 +72,13 @@ SADECE JSON döndür ve tüm alanları EKSİKSİZ doldur.`;
                     solution: { type: SchemaType.STRING, description: "3. Çözüm & Geliştirme: Kodun özellikleri ve çalışma mantığı." },
                     impact: { type: SchemaType.STRING, description: "4. İş Etkisi (Result): Kazanımlar ve net sonuçlar." }
                 },
-                // DİKKAT: Eksik gelen alanlar için "required" eklendi. Yapay zeka artık bu 4 alanı göndermek ZORUNDA.
-                required: ["problem", "approach", "solution", "impact"]
+                required:["problem", "approach", "solution", "impact"]
             }
         }
     });
 
     const userPrompt = `Proje: ${repo.name}\nAçıklama: ${repo.description || 'Yok'}\nEtiketler: ${repo.topics.join(', ')}\nKullanılan Diller: ${languages}\n\nREADME İçeriği:\n${readmeText.substring(0, 3000)}`;
 
-    // 503 hatası (Sunucu yoğunluğu) nedeniyle bekleme sürelerini artırdık
     const delays =[2000, 4000, 8000];
     
     for (let i = 0; i < maxRetries; i++) {
@@ -92,7 +90,6 @@ SADECE JSON döndür ve tüm alanları EKSİKSİZ doldur.`;
             
             const parsedData = JSON.parse(responseText);
             
-            // Eğer yapay zeka hala inat edip bir alanı eksik verirse diye varsayılan değer (fallback) atıyoruz
             return {
                 problem: parsedData.problem || "Belirtilmedi.",
                 approach: parsedData.approach || "README eksikliği nedeniyle mimari karar tespit edilemedi.",
@@ -103,8 +100,17 @@ SADECE JSON döndür ve tüm alanları EKSİKSİZ doldur.`;
         } catch (error: any) {
             console.log(`Yapay Zeka Analiz Hatası (Detay - Deneme ${i + 1}):`, error.message);
             
+            // --- 429 KOTA VE RATE LIMIT KONTROLÜ (ANINDA KESİNTİ YAPAR) ---
+            if (error.message?.includes("429") || error.message?.includes("quota") || error.message?.includes("exceeded")) {
+                return {
+                    problem: `🛑 KOTA AŞIMI (HATA 429)`,
+                    approach: `Google Gemini API ücretsiz katman limitlerine (anlık istek sınırına) takıldınız.`,
+                    solution: `Sistem ardışık çok fazla istek algıladığı için spam korumasına geçti ve isteği reddetti.`,
+                    impact: `Lütfen yaklaşık 1 dakika bekledikten sonra projeye tekrar tıklayın.`
+                };
+            }
+
             if (i === maxRetries - 1) {
-                // Eğer hata 503 ise kullanıcıya özel mesaj gösterelim
                 if (error.message?.includes("503") || error.message?.includes("high demand")) {
                     return {
                         problem: `⏳ GOOGLE SUNUCULARI ÇOK YOĞUN`,
@@ -122,7 +128,6 @@ SADECE JSON döndür ve tüm alanları EKSİKSİZ doldur.`;
                 };
             }
             
-            // Hata aldıysa belirlenen süre kadar bekle ve döngünün başına dön
             await new Promise(resolve => setTimeout(resolve, delays[i]));
         }
     }
@@ -140,7 +145,7 @@ export default function ProjectsPage() {
     const[repos, setRepos] = useState<Repo[]>([]);
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
-    const [activeRepo, setActiveRepo] = useState<Repo | null>(null);
+    const[activeRepo, setActiveRepo] = useState<Repo | null>(null);
     const [caseStudy, setCaseStudy] = useState<{ loading: boolean; data: CaseStudy | null; error: string | null }>({ loading: false, data: null, error: null });
 
     useEffect(() => {
