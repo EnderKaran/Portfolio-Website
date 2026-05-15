@@ -6,6 +6,7 @@ import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import { FaArrowUp } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { animateScroll as scroll } from 'react-scroll';
+import TerminalContact from "./TerminalContact";
 
 export const Footer = () => {
   const { t } = useTranslation(); 
@@ -109,13 +110,14 @@ export const Footer = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.5, y: 20 }}
             transition={{ duration: 0.3 }}
-            className="fixed z-50 flex items-center justify-center text-white transition-all shadow-2xl w-14 h-14 rounded-2xl bottom-8 right-8 bg-emerald-500 hover:bg-emerald-600 focus:outline-none hover:-translate-y-2 shadow-emerald-500/30"
+            className="fixed z-50 flex items-center justify-center text-white transition-all shadow-2xl w-14 h-14 rounded-2xl bottom-22 right-7 bg-emerald-500 hover:bg-emerald-600 focus:outline-none hover:-translate-y-2 shadow-emerald-500/30"
             aria-label={t('footer_aria_scrollToTop')}
           >
             <FaArrowUp size={22} />
           </motion.button>
         )}
       </AnimatePresence>
+      <TerminalContact />
     </footer>
   );
 };
