@@ -2,11 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, Variants, AnimatePresence } from 'framer-motion';
-import { FiSearch, FiGithub, FiLink, FiAlertCircle, FiEye, FiX } from 'react-icons/fi';
+import { FiSearch, FiGithub, FiLink, FiAlertCircle, FiX } from 'react-icons/fi';
 import { FaStar, FaBrain } from 'react-icons/fa';
 import { HiCheckCircle, HiTrendingUp } from 'react-icons/hi';
 import { RiRobot2Line } from 'react-icons/ri';
-import { GoogleGenerativeAI, SchemaType } from '@google/generative-ai';
+
+// YENİ GOOGLE GEN AI SDK İMPORTU
+import { GoogleGenAI } from '@google/genai';
 
 const GITHUB_USERNAME = 'EnderKaran';
 
@@ -32,7 +34,7 @@ interface CaseStudy {
 }
 
 // -------------------------------------------------------------
-// YZ (GEMINI API) BAĞLANTISI VE FORMATLAMA ALGORİTMASI
+// YZ (GEMINI API) BAĞLANTISI VE YENİ SDK ENTEGRASYONU
 // -------------------------------------------------------------
 const generateCaseStudyWithAI = async (repo: Repo, readmeText: string, languages: string, maxRetries = 3): Promise<CaseStudy> => {
     const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY || "";
@@ -46,8 +48,8 @@ const generateCaseStudyWithAI = async (repo: Repo, readmeText: string, languages
         };
     }
 
-    // Google Generative AI resmi SDK'sını başlatıyoruz
-    const genAI = new GoogleGenerativeAI(apiKey);
+    // Yeni Google Gen AI istemcisini başlatıyoruz
+    const ai = new GoogleGenAI({ apiKey: apiKey });
     
     const systemPrompt = `Sen Senior bir Yazılım Mimarı ve Ürün Yöneticisisin. Sana bir projenin README dosyasını, kullanılan dilleri ve özetini vereceğim. Senden bu projeyi profesyonel bir dille 4 aşamalı "Vaka Çalışması" (Case Study) formatında Türkçeye çevirmeni/özetlemeni istiyorum.
 
@@ -59,32 +61,33 @@ KURALLAR (KESİNLİKLE UYULACAK):
 5. "impact": Ölçülebilir sonuçlar veya projeden elde edilen net yazılım/iş faydalarını (%100 hız artışı, hatasız sistem vb.) yaz.
 SADECE JSON döndür ve tüm alanları EKSİKSİZ doldur.`;
 
-    const model = genAI.getGenerativeModel({
-        model: "gemini-2.5-flash",
-        systemInstruction: systemPrompt,
-        generationConfig: {
-            responseMimeType: "application/json",
-            responseSchema: {
-                type: SchemaType.OBJECT,
-                properties: {
-                    problem: { type: SchemaType.STRING, description: "1. Kriz & Sorun: Sadece çıkış noktası ve sorun." },
-                    approach: { type: SchemaType.STRING, description: "2. Mimari Karar: Seçilen teknolojilerin neden seçildiği ve mimari yaklaşım." },
-                    solution: { type: SchemaType.STRING, description: "3. Çözüm & Geliştirme: Kodun özellikleri ve çalışma mantığı." },
-                    impact: { type: SchemaType.STRING, description: "4. İş Etkisi (Result): Kazanımlar ve net sonuçlar." }
-                },
-                required:["problem", "approach", "solution", "impact"]
-            }
-        }
-    });
-
     const userPrompt = `Proje: ${repo.name}\nAçıklama: ${repo.description || 'Yok'}\nEtiketler: ${repo.topics.join(', ')}\nKullanılan Diller: ${languages}\n\nREADME İçeriği:\n${readmeText.substring(0, 3000)}`;
 
-    const delays =[2000, 4000, 8000];
+    const delays = [2000, 4000, 8000];
     
     for (let i = 0; i < maxRetries; i++) {
         try {
-            const result = await model.generateContent(userPrompt);
-            const responseText = result.response.text();
+            // Yeni ai.models.generateContent formatı
+            const response = await ai.models.generateContent({
+                model: "gemini-3-flash-preview",
+                contents: userPrompt,
+                config: {
+                    systemInstruction: systemPrompt,
+                    responseMimeType: "application/json",
+                    responseSchema: {
+                        type: "OBJECT",
+                        properties: {
+                            problem: { type: "STRING", description: "1. Kriz & Sorun: Sadece çıkış noktası ve sorun." },
+                            approach: { type: "STRING", description: "2. Mimari Karar: Seçilen teknolojilerin neden seçildiği ve mimari yaklaşım." },
+                            solution: { type: "STRING", description: "3. Çözüm & Geliştirme: Kodun özellikleri ve çalışma mantığı." },
+                            impact: { type: "STRING", description: "4. İş Etkisi (Result): Kazanımlar ve net sonuçlar." }
+                        },
+                        required: ["problem", "approach", "solution", "impact"]
+                    }
+                }
+            });
+
+            const responseText = response.text;
             
             if (!responseText) throw new Error("Yapay Zeka boş yanıt döndürdü.");
             
@@ -142,10 +145,10 @@ SADECE JSON döndür ve tüm alanları EKSİKSİZ doldur.`;
 // -------------------------------------------------------------
 
 export default function ProjectsPage() {
-    const[repos, setRepos] = useState<Repo[]>([]);
+    const [repos, setRepos] = useState<Repo[]>([]);
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
-    const[activeRepo, setActiveRepo] = useState<Repo | null>(null);
+    const [activeRepo, setActiveRepo] = useState<Repo | null>(null);
     const [caseStudy, setCaseStudy] = useState<{ loading: boolean; data: CaseStudy | null; error: string | null }>({ loading: false, data: null, error: null });
 
     useEffect(() => {
