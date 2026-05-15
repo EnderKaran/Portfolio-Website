@@ -10,7 +10,9 @@ import {
     FiCode, 
     FiBox, 
     FiTool, 
-    FiSmartphone 
+    FiSmartphone,
+    FiTerminal,
+    FiActivity
 } from 'react-icons/fi';
 import { 
     FaMagic, 
@@ -18,7 +20,8 @@ import {
     FaPalette, 
     FaBug, 
     FaBrain, 
-    FaRegBuilding 
+    FaRegBuilding,
+    FaGithub
 } from 'react-icons/fa';
 
 const useTranslation = () => ({
@@ -33,7 +36,12 @@ const useTranslation = () => ({
             'changelog_type_structure': 'Temel Yapı',
             'changelog_type_responsive': 'Responsive Tasarım',
             'changelog_type_newfeature': 'Yeni Özellik',
-            // --- v2.3.0 (BUGÜN YAPILANLAR) ---
+            // --- v2.4.0 (BUGÜN YAPILANLAR) ---
+            'changelog_v2_4_0_desc1': 'Projelerin anlık istatistiklerini gösteren, Sanity veritabanı destekli "Canlı Veri Paneli (Live Dashboard)" anasayfaya eklendi.',
+            'changelog_v2_4_0_desc2': 'Ekranın sağ altında açılan ve kullanıcının mesajlaşabildiği İnteraktif Chat Terminali entegre edildi.',
+            'changelog_v2_4_0_desc3': 'Projeler sayfasındaki arama çubuğunun üzerine, tüm zamanların kodlama istatistiklerini (commit) dinamik olarak çeken 3 Boyutlu GitHub Contribution Matrix eklendi.',
+            'changelog_v2_4_0_desc4': 'Terminal ve Matrix bileşenlerinde performansı artırmak için Scroll ve Intersection Observer (Görünürlük) optimizasyonları yapıldı.',
+            // --- v2.3.0 ---
             'changelog_v2_3_0_desc1': 'Projeler sayfasına Google Gemini 2.5 Flash Yapay Zeka (AI) entegrasyonu yapıldı.',
             'changelog_v2_3_0_desc2': 'GitHub repoları artık AI tarafından otonom analiz edilerek 4 aşamalı (Sorun, Mimari, Çözüm, İş Etkisi) profesyonel vaka çalışmalarına (Case Study) dönüştürülüyor.',
             'changelog_v2_3_0_desc3': 'Anasayfaya "Kurumsal Projeler" (İş Deneyimi) modülü eklendi. Yatay kaydırılabilir (Carousel) Bento kartları ile kurumsal iş geçmişi sisteme dahil edildi.',
@@ -73,11 +81,21 @@ const useTranslation = () => ({
 export default function ChangelogPage() {
     const { t } = useTranslation();
 
-    const changelogData =[
+    const changelogData = [
+        {
+            version: "v2.4.0",
+            date: "15 Mayıs 2026",
+            changes: [
+                { type: t('changelog_type_newfeature'), description: t('changelog_v2_4_0_desc1'), icon: <FiActivity size={20} /> },
+                { type: t('changelog_type_newfeature'), description: t('changelog_v2_4_0_desc2'), icon: <FiTerminal size={20} /> },
+                { type: t('changelog_type_newfeature'), description: t('changelog_v2_4_0_desc3'), icon: <FaGithub size={20} /> },
+                { type: t('changelog_type_improvement'), description: t('changelog_v2_4_0_desc4'), icon: <FiCode size={20} /> },
+            ]
+        },
         {
             version: "v2.3.0",
             date: "14 Nisan 2026",
-            changes:[
+            changes: [
                 { type: t('changelog_type_archchange'), description: t('changelog_v2_3_0_desc1'), icon: <FaBrain size={20} /> },
                 { type: t('changelog_type_newfeature'), description: t('changelog_v2_3_0_desc2'), icon: <FaMagic size={20} /> },
                 { type: t('changelog_type_newfeature'), description: t('changelog_v2_3_0_desc3'), icon: <FaRegBuilding size={20} /> },
@@ -87,7 +105,7 @@ export default function ChangelogPage() {
         {
             version: "v2.2.0",
             date: "01 Nisan 2026",
-            changes:[
+            changes: [
                 { type: t('changelog_type_archchange'), description: t('changelog_v2_2_0_desc1'), icon: <FaPalette size={20} /> },
                 { type: t('changelog_type_improvement'), description: t('changelog_v2_2_0_desc2'), icon: <FaMagic size={20} /> },
                 { type: t('changelog_type_improvement'), description: t('changelog_v2_2_0_desc3'), icon: <FiTool size={20} /> },
@@ -97,7 +115,7 @@ export default function ChangelogPage() {
         {
             version: "v2.1.0",
             date: "10 Mart 2026",
-            changes:[
+            changes: [
                 { type: t('changelog_type_newpage'), description: t('changelog_v2_1_0_desc1'), icon: <FiPlus size={20} /> },
                 { type: t('changelog_type_archchange'), description: t('changelog_v2_1_0_desc2'), icon: <FiDatabase size={20} /> },
                 { type: t('changelog_type_improvement'), description: t('changelog_v2_1_0_desc3'), icon: <FaMagic size={20} /> },
@@ -107,7 +125,7 @@ export default function ChangelogPage() {
         {
             version: "v2.0.0",
             date: "15 Ocak 2026",
-            changes:[
+            changes: [
                 { type: t('changelog_type_archchange'), description: t('changelog_v2_0_0_desc1'), icon: <FaRocket size={20} /> },
                 { type: t('changelog_type_structure'), description: t('changelog_v2_0_0_desc2'), icon: <FiCode size={20} /> },
                 { type: t('changelog_type_improvement'), description: t('changelog_v2_0_0_desc3'), icon: <FaPalette size={20} /> },
@@ -117,7 +135,7 @@ export default function ChangelogPage() {
         {
             version: "v1.9.0", 
             date: "03 Aralık 2025", 
-            changes:[
+            changes: [
                  { type: t('changelog_type_archchange'), description: t('changelog_v1_9_0_desc1'), icon: <FiBox size={20} /> },
                 { type: t('changelog_type_improvement'), description: t('changelog_v1_9_0_desc2'), icon: <FiTool size={20} /> },
             ]
@@ -125,7 +143,7 @@ export default function ChangelogPage() {
         {
             version: "v1.8.0",
             date: "02 Aralık 2025",
-            changes:[
+            changes: [
                 { type: t('changelog_type_bugfix'), description: t('changelog_v1_8_0_desc1'), icon: <FaPalette size={20} /> },
                 { type: t('changelog_type_improvement'), description: t('changelog_v1_8_0_desc2'), icon: <FiTool size={20} /> },
                 { type: t('changelog_type_responsive'), description: t('changelog_v1_8_0_desc3'), icon: <FiSmartphone size={20} /> },
@@ -135,7 +153,7 @@ export default function ChangelogPage() {
         {
             version: "v1.0.0",
             date: "Ağustos 2025",
-            changes:[
+            changes: [
                 { type: t('changelog_type_launch'), description: t('changelog_v1_0_0_desc1'), icon: <FaRocket size={20} /> },
                 { type: t('changelog_type_structure'), description: t('changelog_v1_0_0_desc2'), icon: <FiCode size={20} /> },
                 { type: t('changelog_type_responsive'), description: t('changelog_v1_0_0_desc3'), icon: <FiSmartphone size={20} /> },
