@@ -6,6 +6,7 @@ import { About } from "@/src/components/About";
 import WorkProjects from "@/src/components/WorkProjects";
 import { Portfolio } from "@/src/components/Portfolio";
 import { Stack } from "@/src/components/Stack";
+import ProjectHub from "@/src/components/ProjectHub";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <About />
       <WorkProjects />
       <Portfolio />
+      <ProjectHub />
       <Stack />
     </>
   );
