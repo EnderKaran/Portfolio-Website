@@ -6,6 +6,7 @@ import { FiSearch, FiGithub, FiLink, FiAlertCircle, FiX } from 'react-icons/fi';
 import { FaStar, FaBrain } from 'react-icons/fa';
 import { HiCheckCircle, HiTrendingUp } from 'react-icons/hi';
 import { RiRobot2Line } from 'react-icons/ri';
+import ContributionMatrix from '@/src/components/ContributionMatrix';
 
 // YENİ GOOGLE GEN AI SDK İMPORTU
 import { GoogleGenAI } from '@google/genai';
@@ -246,6 +247,8 @@ export default function ProjectsPage() {
                         Aşağıdaki projelerden birini seçin, Yapay Zeka (AI) sistemi anında analiz edip projeyi detaylı bir vaka çalışması formatında size sunsun.
                     </p>
                 </motion.div>
+
+                <ContributionMatrix />
 
                 <div className="relative max-w-xl mx-auto mb-16 group">
                     <div className="absolute inset-0 transition-all duration-300 rounded-full bg-emerald-500/10 blur-xl group-hover:bg-emerald-500/20"></div>
