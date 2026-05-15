@@ -3,9 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// --- CANVAS ÖNİZLEME İÇİN MOCK İKONLAR ---
-// Yerel projenize geçirirken bu objeyi silip orijinal react-icons importlarınızı kullanabilirsiniz.
-// Örn: import { FiTerminal, FiRefreshCw, FiSend, FiX, FiMessageSquare } from 'react-icons/fi';
+
 const Icons = {
     Terminal: ({ size = 24, className = "" }) => <svg width={size} height={size} className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>,
     RefreshCw: ({ size = 24, className = "" }) => <svg width={size} height={size} className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>,
@@ -115,7 +113,7 @@ export default function TerminalContact() {
             // E-posta oluşturma mantığı
             const subject = encodeURIComponent(`İletişim: ${selections[0]}`);
             const body = encodeURIComponent(`Merhaba Ender,\n\nPortfolyonuzdaki terminal üzerinden ulaşıyorum.\nKonu: ${selections[0]}\nDetay: ${selections[1]}\n\nGörüşmek üzere!`);
-            window.open(`mailto:senin-emailin@domain.com?subject=${subject}&body=${body}`, '_blank');
+            window.open(`mailto:ender.karan14@gmail.com?subject=${subject}&body=${body}`, '_blank');
             
             setHistory(prev => [...prev, { type: 'system', text: 'E-posta istemcisi başlatıldı. Teşekkürler! (Terminal bağlantısı kapatıldı)' }]);
             setCurrentStep('done');
